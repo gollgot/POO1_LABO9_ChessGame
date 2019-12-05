@@ -39,7 +39,7 @@ public class GUIView extends BaseView<ImageIcon> {
   //idea:https://stackoverflow.com/questions/21142686/making-a-robust-resizable-swing-chess-gui
   private final JPanel gui = new JPanel(new BorderLayout(3, 3));
   private ChessSquare[][] chessBoardSquares = new ChessSquare[8][8];
-  private final JLabel headerLabel = new JLabel("Welcome to the HEIG-VD Chess game!");
+  private final JLabel headerLabel = new JLabel("Welcome to the HEIG-VD ChessBoard game!");
   private static final String COLS = "ABCDEFGH";
   private final JLabel messageLabel = new JLabel("");
 
@@ -92,7 +92,7 @@ public class GUIView extends BaseView<ImageIcon> {
   @Override
   public void startView() {
     Runnable r = () -> {
-      JFrame f = new JFrame("HEIG-VD Chess");
+      JFrame f = new JFrame("HEIG-VD ChessBoard");
       f.add(gui);
       // Ensures JVM closes after frame(s) closed and
       // all non-daemon threads are finished

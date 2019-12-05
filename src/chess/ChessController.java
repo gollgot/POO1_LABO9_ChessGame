@@ -7,7 +7,7 @@ public interface ChessController {
 
   /**
    * Démarre la logique (contrôleur) du programme.
-   * Appelé une fois (voir Chess.main())
+   * Appelé une fois (voir ChessBoard.main())
    * @param view la vue à utiliser
    */
   void start(ChessView view);
