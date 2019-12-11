@@ -46,7 +46,7 @@ public class ConsoleView extends BaseView<String> {
 
   @Override
   public void startView() {
-    System.out.println("ChessBoard game...");
+    System.out.println("ChessBoardController game...");
     controller.newGame();
     while (true) { // TODO: ajouter un exit (comportement repris de la V1)
       printBoard();
