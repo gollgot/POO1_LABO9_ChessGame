@@ -1,4 +1,5 @@
 package engine;
 
-class Queen {
+class Queen{
+
 }

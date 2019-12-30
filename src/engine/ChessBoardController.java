@@ -29,6 +29,14 @@ public class ChessBoardController implements ChessController {
     @Override
     public boolean move(int fromX, int fromY, int toX, int toY) {
         System.out.println(String.format("(%d, %d) to (%d,%d)", fromX, fromY, toX, toY));
+        Cell fromCell = board[fromX][fromY];
+
+        if(fromCell.empty()){
+            System.out.println("No piece to move");
+        }else{
+            Piece p = fromCell.getPiece();
+            return p.isValidMove(fromX, fromY, toX, toY);
+        }
         return false;
     }
 
@@ -43,10 +51,11 @@ public class ChessBoardController implements ChessController {
             }
         }
 
-
+        // Add all pawn
+        Move[] pawnMoves = new Move[]{new Vertical(Direction.UP)};
         for(int col = 0; col < dimension; ++col){
-            Piece pawnWhite = new Pawn(PieceType.PAWN, PlayerColor.WHITE);
-            Piece pawnBlack = new Pawn(PieceType.PAWN, PlayerColor.BLACK);
+            Piece pawnWhite = new Pawn(PieceType.PAWN, PlayerColor.WHITE, pawnMoves, 1);
+            Piece pawnBlack = new Pawn(PieceType.PAWN, PlayerColor.BLACK, pawnMoves, 1);
             board[1][col].addPiece(pawnWhite);
             board[7][col].addPiece(pawnBlack);
             view.putPiece(pawnWhite.getType(), pawnWhite.getColor(), col, 1);
