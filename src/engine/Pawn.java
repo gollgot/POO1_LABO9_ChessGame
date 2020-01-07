@@ -11,6 +11,7 @@ class Pawn extends Piece{
 
     @Override
     boolean isValidMove(int fromX, int fromY, int toX, int toY) {
+        boolean isValidMove = false;
         int distance = isAlreadyMoved() ? getDistance() : 2; // First time, can move a distance 2
         Direction dirToMove;
 
@@ -26,16 +27,18 @@ class Pawn extends Piece{
                    if(!isAlreadyMoved()){
                        setAlreadyMoved(true);
                    }
-                   return true;
-               // Check diagonal ?
-
+                   isValidMove = true;
+                   break;
+               case DIAG_TOP_LEFT:
+                   break;
+               case DIAG_TOP_RIGHT:
+                   break;
                default:
-                   System.out.println("INVALID movement");
-                   return false;
+                   break;
            }
         }
 
-        return false;
+        return isValidMove;
     }
 
 

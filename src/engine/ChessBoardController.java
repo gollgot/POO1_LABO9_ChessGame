@@ -72,7 +72,7 @@ public class ChessBoardController implements ChessController {
         }
 
         // Rook
-        Move[] rookMoves = new Move[0];
+        Move[] rookMoves = new Move[]{new Vertical(Direction.UP), new Vertical(Direction.DOWN), new Horizontal(Direction.LEFT), new Horizontal(Direction.RIGHT)};
         Piece rookWhite = new Rook(PieceType.ROOK, PlayerColor.WHITE, rookMoves, dimension);
         Piece rookBlack = new Rook(PieceType.ROOK, PlayerColor.BLACK, rookMoves, dimension);
         // Knight
@@ -80,17 +80,16 @@ public class ChessBoardController implements ChessController {
         Piece knightWhite = new Rook(PieceType.KNIGHT, PlayerColor.WHITE, knightMoves, 3); // 3 ? 1 ? a voir
         Piece knightBlack = new Rook(PieceType.KNIGHT, PlayerColor.BLACK, knightMoves, 3); // 3 ? 1 ? a voir
         // Bishop
-        Move[] bishopMoves = new Move[0];
+        Move[] bishopMoves = new Move[]{new Diagonal(Direction.DIAG_TOP_LEFT), new Diagonal(Direction.DIAG_TOP_RIGHT), new Diagonal(Direction.DIAG_BOT_LEFT), new  Diagonal(Direction.DIAG_BOT_RIGHT)};
         Piece bishopWhite = new Bishop(PieceType.BISHOP, PlayerColor.WHITE, bishopMoves, dimension);
         Piece bishopBlack = new Bishop(PieceType.BISHOP, PlayerColor.BLACK, bishopMoves, dimension);
         // Queen
-        Move[] queenMoves = new Move[0];
-        Piece queenWhite = new Queen(PieceType.QUEEN, PlayerColor.WHITE, queenMoves, dimension);
-        Piece queenBlack = new Queen(PieceType.QUEEN, PlayerColor.BLACK, queenMoves, dimension);
+        Move[] queenAndKingMoves = new Move[]{new Vertical(Direction.UP), new Vertical(Direction.DOWN), new Horizontal(Direction.LEFT), new Horizontal(Direction.RIGHT), new Diagonal(Direction.DIAG_TOP_LEFT), new Diagonal(Direction.DIAG_TOP_RIGHT), new Diagonal(Direction.DIAG_BOT_LEFT), new  Diagonal(Direction.DIAG_BOT_RIGHT)};
+        Piece queenWhite = new Queen(PieceType.QUEEN, PlayerColor.WHITE, queenAndKingMoves, dimension);
+        Piece queenBlack = new Queen(PieceType.QUEEN, PlayerColor.BLACK, queenAndKingMoves, dimension);
         // King
-        Move[] kingMoves = new Move[0];
-        Piece kingWhite = new King(PieceType.KING, PlayerColor.WHITE, kingMoves, 1);
-        Piece kingBlack = new King(PieceType.KING, PlayerColor.BLACK, kingMoves, 1);
+        Piece kingWhite = new King(PieceType.KING, PlayerColor.WHITE, queenAndKingMoves, 1);
+        Piece kingBlack = new King(PieceType.KING, PlayerColor.BLACK, queenAndKingMoves, 1);
 
         // Add white pieces on the board
         board[0][0].addPiece(rookWhite);
