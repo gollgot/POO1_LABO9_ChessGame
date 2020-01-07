@@ -54,4 +54,8 @@ abstract class Piece {
         this.alreadyMoved = b;
     }
 
+    @Override
+    public String toString() {
+        return "x: " + cell.getX() + " y : " + cell.getY();
+    }
 }

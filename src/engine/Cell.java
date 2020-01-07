@@ -14,7 +14,7 @@ class Cell {
     }
 
     boolean empty() {
-        return false;
+        return piece == null;
     }
 
     void removePiece(){

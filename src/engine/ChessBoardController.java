@@ -51,12 +51,13 @@ public class ChessBoardController implements ChessController {
         }
 
         // Add all pawn
-        Move[] pawnMoves = new Move[]{new Vertical(Direction.UP)};
+        Move[] pawnMoves = new Move[]{new Vertical(Direction.DOWN)};
         for(int col = 0; col < dimension; ++col){
             Piece pawnWhite = new Pawn(PieceType.PAWN, PlayerColor.WHITE, pawnMoves, 1);
             Piece pawnBlack = new Pawn(PieceType.PAWN, PlayerColor.BLACK, pawnMoves, 1);
             board[1][col].addPiece(pawnWhite);
-            board[7][col].addPiece(pawnBlack);
+            board[6][col].addPiece(pawnBlack);
+
             view.putPiece(pawnWhite.getType(), pawnWhite.getColor(), col, 1);
             view.putPiece(pawnBlack.getType(), pawnBlack.getColor(), col, 6);
         }

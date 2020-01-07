@@ -15,7 +15,7 @@ class Pawn extends Piece{
         Direction dirToMove;
 
         for(Move move : getMoves()){
-           dirToMove = move.isValid(fromX, fromY, toX, toY, distance);
+           dirToMove = move.isValid(fromX, fromY, toX, toY, distance, getColor());
            switch(dirToMove){
                case INVALID:
                    System.out.println("INVALID movement");
