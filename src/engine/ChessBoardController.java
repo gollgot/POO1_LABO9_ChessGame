@@ -17,7 +17,6 @@ public class ChessBoardController implements ChessController {
                 board[row][col] = new Cell(col, row);
             }
         }
-
     }
 
     @Override
@@ -29,7 +28,7 @@ public class ChessBoardController implements ChessController {
     @Override
     public boolean move(int fromX, int fromY, int toX, int toY) {
         System.out.println(String.format("(%d, %d) to (%d,%d)", fromX, fromY, toX, toY));
-        Cell fromCell = board[fromX][fromY];
+        Cell fromCell = board[fromY][fromX];
 
         if(fromCell.empty()){
             System.out.println("No piece to move");
