@@ -18,7 +18,7 @@ class Cell {
     }
 
     void removePiece(){
-
+        piece = null;
     }
 
     void addPiece(Piece p){

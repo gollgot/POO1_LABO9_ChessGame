@@ -27,15 +27,24 @@ public class ChessBoardController implements ChessController {
 
     @Override
     public boolean move(int fromX, int fromY, int toX, int toY) {
-        System.out.println(String.format("(%d, %d) to (%d,%d)", fromX, fromY, toX, toY));
+        
+        // LOOK AT THIS SHIT DUDE
         Cell fromCell = board[fromY][fromX];
+        Cell toCell = board[toY][toX];
 
-        if(fromCell.empty()){
+        if(board[fromY][fromX].empty()){
             System.out.println("No piece to move");
         }else{
-            Piece p = fromCell.getPiece();
-            return p.isValidMove(fromX, fromY, toX, toY);
+            Piece p = board[fromY][fromX].getPiece();
+            if(p.isValidMove(fromX, fromY, toX, toY)){
+                board[fromY][fromX].removePiece();
+                view.removePiece(fromX, fromY);
+                board[toY][toX].addPiece(p);
+                view.putPiece(p.getType(), p.getColor(), toX, toY);
+                return true;
+            }
         }
+
         return false;
     }
 
@@ -45,13 +54,13 @@ public class ChessBoardController implements ChessController {
             for(int col = 0; col < dimension; ++col){
                 Cell currentCell = board[row][col];
                 if(!currentCell.empty()){
-                    currentCell.removePiece();
+                    board[row][col].removePiece();
                 }
             }
         }
 
         // Add all pawn
-        Move[] pawnMoves = new Move[]{new Vertical(Direction.DOWN)};
+        Move[] pawnMoves = new Move[]{new Vertical(Direction.UP)};
         for(int col = 0; col < dimension; ++col){
             Piece pawnWhite = new Pawn(PieceType.PAWN, PlayerColor.WHITE, pawnMoves, 1);
             Piece pawnBlack = new Pawn(PieceType.PAWN, PlayerColor.BLACK, pawnMoves, 1);

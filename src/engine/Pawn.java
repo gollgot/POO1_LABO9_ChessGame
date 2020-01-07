@@ -17,12 +17,21 @@ class Pawn extends Piece{
         for(Move move : getMoves()){
            dirToMove = move.isValid(fromX, fromY, toX, toY, distance, getColor());
            switch(dirToMove){
-               case INVALID:
+               // Move UP possibly OK
+               case UP:
+                   // Check obstacle etc...
+                   // ...
+                   // All check ok -> move
+
+                   if(!isAlreadyMoved()){
+                       setAlreadyMoved(true);
+                   }
+                   return true;
+               // Check diagonal ?
+
+               default:
                    System.out.println("INVALID movement");
                    return false;
-               default:
-                   System.out.println("VALID movement");
-                   return true;
            }
         }
 
