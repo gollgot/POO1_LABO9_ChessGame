@@ -2,6 +2,7 @@ package engine.pieces;
 
 import chess.PieceType;
 import chess.PlayerColor;
+import engine.Cell;
 import engine.movements.Direction;
 import engine.movements.Horizontal;
 import engine.movements.Move;
@@ -24,11 +25,11 @@ public class Rook extends Piece {
     }
 
     @Override
-    public boolean isValidMove(int fromX, int fromY, int toX, int toY) {
+    public boolean isValidMove(Cell[][] board, int fromX, int fromY, int toX, int toY) {
         boolean isValidMove = false;
 
         for(Move move : getMoves()){
-            if(move.isValid(fromX, fromY, toX, toY, getDistance(), getColor())){
+            if(move.isValid(board, fromX, fromY, toX, toY, getDistance(), getColor())){
                 isValidMove = true;
                 if(!isAlreadyMoved()){
                     setAlreadyMoved(true);

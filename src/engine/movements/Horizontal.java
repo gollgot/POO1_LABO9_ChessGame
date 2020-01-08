@@ -1,6 +1,7 @@
 package engine.movements;
 
 import chess.PlayerColor;
+import engine.Cell;
 
 public class Horizontal implements Move{
 
@@ -14,7 +15,7 @@ public class Horizontal implements Move{
     }
 
     @Override
-    public boolean isValid(int fromX, int fromY, int toX, int toY, int distance, PlayerColor playerColor) {
+    public boolean isValid(Cell[][] board, int fromX, int fromY, int toX, int toY, int distance, PlayerColor playerColor) {
         // The gap value depends on the direction choose (LEFT our RIGHT)
         int gap = direction == Direction.LEFT ? fromX - toX : toX - fromX;
 

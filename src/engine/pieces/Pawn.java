@@ -2,6 +2,7 @@ package engine.pieces;
 
 import chess.PieceType;
 import chess.PlayerColor;
+import engine.Cell;
 import engine.movements.Diagonal;
 import engine.movements.Direction;
 import engine.movements.Move;
@@ -23,12 +24,12 @@ public class Pawn extends Piece {
     }
 
     @Override
-    public boolean isValidMove(int fromX, int fromY, int toX, int toY) {
+    public boolean isValidMove(Cell[][] board, int fromX, int fromY, int toX, int toY) {
         boolean isValidMove = false;
         int distance = isAlreadyMoved() ? getDistance() : 2; // First time, can move a distance 2
 
         for(Move move : getMoves()){
-            if(move.isValid(fromX, fromY, toX, toY, distance, getColor())){
+            if(move.isValid(board, fromX, fromY, toX, toY, distance, getColor())){
                 isValidMove = true;
                 if(!isAlreadyMoved()){
                     setAlreadyMoved(true);

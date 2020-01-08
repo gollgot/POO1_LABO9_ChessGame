@@ -2,6 +2,7 @@ package engine.pieces;
 
 import chess.PieceType;
 import chess.PlayerColor;
+import engine.Cell;
 import engine.movements.Move;
 
 public class Knight extends Piece {
@@ -16,7 +17,7 @@ public class Knight extends Piece {
     }
 
     @Override
-    public boolean isValidMove(int fromX, int fromY, int toX, int toY) {
+    public boolean isValidMove(Cell[][] board, int fromX, int fromY, int toX, int toY) {
         return false;
     }
 }

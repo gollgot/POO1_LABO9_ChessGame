@@ -1,6 +1,7 @@
 package engine.movements;
 
 import chess.PlayerColor;
+import engine.Cell;
 
 public class Vertical implements Move{
 
@@ -14,20 +15,36 @@ public class Vertical implements Move{
     }
 
 
-
-    private boolean isCellClickValid(int fromX, int fromY, int toX, int toY, int distance, PlayerColor playerColor){
+    @Override
+    public boolean isValid(Cell[][] board, int fromX, int fromY, int toX, int toY, int distance, PlayerColor playerColor) {
         // Multiplier to inverse the way because black and white is the opposite
         int colorMultiplier = playerColor == PlayerColor.WHITE ? 1 : -1;
         // The gap value depends on the direction choose (UP our DOWN)
         int gap = direction == Direction.UP ? (toY - fromY) * colorMultiplier : (fromY - toY) * colorMultiplier;
 
-        // Return if the clic cell is a correct one
-        return fromX == toX && gap <= distance && gap >= 0;
-    }
+        // Clicked cell is valid
+        boolean isClickedCellValid = fromX == toX && gap <= distance && gap >= 0;
 
+        // Stop here if the clicked cell if wrong
+        if(!isClickedCellValid){
+            return false;
+        }
+        // Check if no piece is on the vertical way (dont check the last)
+        else{
+            // Loop through all cell on the gap (except last cell, the one that can maybe be eatable)
+                for(int i = 1; i < gap; ++i){
+                    int row = direction == Direction.UP ? fromY + (i * colorMultiplier): fromY - (i * colorMultiplier);
+                    int col = fromX;
+                    // If the cell is not empty -> error there is a piece on the way
+                    if(!board[row][col].empty()) {
+                        return false;
+                    }
+                }
 
-    @Override
-    public boolean isValid(int fromX, int fromY, int toX, int toY, int distance, PlayerColor playerColor) {
-        return isCellClickValid(fromX, fromY, toX, toY, distance, playerColor);
+            // Check if the cell we want to go is empty or eatable
+            Cell toCell = board[toY][toX];
+            return toCell.empty() || toCell.getPiece().getColor() != playerColor;
+        }
     }
+    
 }

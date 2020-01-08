@@ -38,7 +38,7 @@ public class ChessBoardController implements ChessController {
         // Piece on from cell -> check if move valid
         else{
             Piece p = fromCell.getPiece();
-            if(p.isValidMove(fromX, fromY, toX, toY)){
+            if(p.isValidMove(board, fromX, fromY, toX, toY)){
                 // Move
                 fromCell.removePiece();
                 view.removePiece(fromX, fromY);
@@ -77,8 +77,8 @@ public class ChessBoardController implements ChessController {
         Piece rookWhite = new Rook(PlayerColor.WHITE);
         Piece rookBlack = new Rook(PlayerColor.BLACK);
         // Knight
-        Piece knightWhite = new Rook(PlayerColor.WHITE);
-        Piece knightBlack = new Rook(PlayerColor.BLACK);
+        Piece knightWhite = new Knight(PlayerColor.WHITE);
+        Piece knightBlack = new Knight(PlayerColor.BLACK);
         // Bishop
         Piece bishopWhite = new Bishop(PlayerColor.WHITE);
         Piece bishopBlack = new Bishop(PlayerColor.BLACK);
