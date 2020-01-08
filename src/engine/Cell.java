@@ -1,41 +1,41 @@
 package engine;
 
-import engine.Piece;
+import engine.pieces.Piece;
 
-class Cell {
+public class Cell {
     private int x;
     private int y;
     private Piece piece;
 
 
-    Cell(int x, int y){
+    public Cell(int x, int y){
         this.y = y;
         this.x = x;
     }
 
-    boolean empty() {
+    public boolean empty() {
         return piece == null;
     }
 
-    void removePiece(){
+    public void removePiece(){
         piece = null;
     }
 
-    void addPiece(Piece p){
+    public void addPiece(Piece p){
         piece = p;
         piece.setCell(this);
     }
 
     // Getters
-    int getX() {
+    public int getX() {
         return x;
     }
 
-    int getY() {
+    public int getY() {
         return y;
     }
 
-    Piece getPiece() {
+    public Piece getPiece() {
         return piece;
     }
 }

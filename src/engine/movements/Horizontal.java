@@ -1,12 +1,12 @@
-package engine;
+package engine.movements;
 
 import chess.PlayerColor;
 
-class Horizontal implements Move{
+public class Horizontal implements Move{
 
     private Direction direction;
 
-    Horizontal(Direction direction) {
+    public Horizontal(Direction direction) {
         if(direction != Direction.LEFT && direction != Direction.RIGHT){
             throw new RuntimeException("Horizontal move can have only LEFT or RIGHT direction");
         }

@@ -1,16 +1,18 @@
-package engine;
+package engine.pieces;
 
 import chess.PieceType;
 import chess.PlayerColor;
+import engine.movements.Direction;
+import engine.movements.Move;
 
-class Pawn extends Piece{
+public class Pawn extends Piece{
 
-    Pawn(PieceType type, PlayerColor color, Move[] moves, int distance){
-        super(type, color, moves, distance);
+    public Pawn(PlayerColor color, Move[] moves, int distance){
+        super(PieceType.PAWN, color, moves, distance);
     }
 
     @Override
-    boolean isValidMove(int fromX, int fromY, int toX, int toY) {
+    public boolean isValidMove(int fromX, int fromY, int toX, int toY) {
         boolean isValidMove = false;
         int distance = isAlreadyMoved() ? getDistance() : 2; // First time, can move a distance 2
         Direction dirToMove;

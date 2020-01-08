@@ -1,12 +1,12 @@
-package engine;
+package engine.movements;
 
 import chess.PlayerColor;
 
-class Diagonal implements Move {
+public class Diagonal implements Move {
 
     private Direction direction;
 
-    Diagonal(Direction direction) {
+    public Diagonal(Direction direction) {
         if(direction != Direction.DIAG_TOP_LEFT && direction != Direction.DIAG_TOP_RIGHT &&
             direction != Direction.DIAG_BOT_LEFT && direction != Direction.DIAG_BOT_RIGHT){
             throw new RuntimeException("Vertical move can have only UP or DOWN direction");

@@ -1,16 +1,18 @@
-package engine;
+package engine.pieces;
 
 import chess.PieceType;
 import chess.PlayerColor;
+import engine.movements.Direction;
+import engine.movements.Move;
 
-class King extends Piece {
+public class King extends Piece {
 
-    King(PieceType type, PlayerColor color, Move[] moves, int distance){
-        super(type, color, moves, distance);
+    public King(PlayerColor color, Move[] moves, int distance){
+        super(PieceType.KING, color, moves, distance);
     }
 
     @Override
-    boolean isValidMove(int fromX, int fromY, int toX, int toY) {
+    public boolean isValidMove(int fromX, int fromY, int toX, int toY) {
         boolean isValidMove = false;
         Direction dirToMove;
 

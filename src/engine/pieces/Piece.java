@@ -1,10 +1,11 @@
-package engine;
+package engine.pieces;
 
 import chess.PieceType;
 import chess.PlayerColor;
 import engine.Cell;
+import engine.movements.Move;
 
-abstract class Piece {
+public abstract class Piece {
     private Cell cell;
     private PlayerColor color;
     private PieceType type;
@@ -12,7 +13,7 @@ abstract class Piece {
     private Move[] moves;
     private boolean alreadyMoved = false;
 
-    Piece(PieceType type, PlayerColor color, Move[] moves, int distance) {
+    public Piece(PieceType type, PlayerColor color, Move[] moves, int distance) {
         this.color = color;
         this.type = type;
         this.distance = distance;
@@ -22,35 +23,35 @@ abstract class Piece {
         }
     }
 
-    abstract boolean isValidMove(int fromX, int fromY, int toX, int toY);
+    public abstract boolean isValidMove(int fromX, int fromY, int toX, int toY);
 
     // Getters
-    PlayerColor getColor() {
+    public PlayerColor getColor() {
         return color;
     }
 
-    PieceType getType() {
+    public PieceType getType() {
         return type;
     }
 
-    int getDistance(){
+    public int getDistance(){
         return distance;
     }
 
-    Move[] getMoves() {
+    public Move[] getMoves() {
         return moves;
     }
 
-    boolean isAlreadyMoved(){
+    public boolean isAlreadyMoved(){
         return alreadyMoved;
     }
 
     // Setters
-    void setCell(Cell cell) {
+    public void setCell(Cell cell) {
         this.cell = cell;
     }
 
-    void setAlreadyMoved(boolean b){
+    public void setAlreadyMoved(boolean b){
         this.alreadyMoved = b;
     }
 

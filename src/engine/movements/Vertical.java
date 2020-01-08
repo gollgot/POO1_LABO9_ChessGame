@@ -1,12 +1,12 @@
-package engine;
+package engine.movements;
 
 import chess.PlayerColor;
 
-class Vertical implements Move{
+public class Vertical implements Move{
 
     private Direction direction;
 
-    Vertical (Direction direction) {
+    public Vertical (Direction direction) {
         if(direction != Direction.UP && direction != Direction.DOWN){
             throw new RuntimeException("Vertical move can have only UP or DOWN direction");
         }

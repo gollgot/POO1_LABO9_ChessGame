@@ -1,16 +1,18 @@
-package engine;
+package engine.pieces;
 
 import chess.PieceType;
 import chess.PlayerColor;
+import engine.movements.Direction;
+import engine.movements.Move;
 
-class Bishop extends Piece{
+public class Queen extends Piece {
 
-    Bishop(PieceType type, PlayerColor color, Move[] moves, int distance){
-        super(type, color, moves, distance);
+    public Queen(PlayerColor color, Move[] moves, int distance){
+        super(PieceType.QUEEN, color, moves, distance);
     }
 
     @Override
-    boolean isValidMove(int fromX, int fromY, int toX, int toY) {
+    public boolean isValidMove(int fromX, int fromY, int toX, int toY) {
         boolean isValidMove = false;
         Direction dirToMove;
 
@@ -18,6 +20,10 @@ class Bishop extends Piece{
             dirToMove = move.isValid(fromX, fromY, toX, toY, getDistance(), getColor());
             switch(dirToMove){
                 // Move LEFT possibly OK
+                case UP:
+                case DOWN:
+                case LEFT:
+                case RIGHT:
                 case DIAG_TOP_LEFT:
                 case DIAG_TOP_RIGHT:
                 case DIAG_BOT_LEFT:
