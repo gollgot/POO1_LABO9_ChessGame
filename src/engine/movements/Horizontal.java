@@ -19,7 +19,24 @@ public class Horizontal implements Move{
         // The gap value depends on the direction choose (LEFT our RIGHT)
         int gap = direction == Direction.LEFT ? fromX - toX : toX - fromX;
 
-        // Correct move
-        return fromY == toY && gap <= distance && gap >= 0;
+        boolean isClickedCellValid = fromY == toY && gap <= distance && gap >= 0;
+        if(!isClickedCellValid){
+            return false;
+        }
+        // Check if no piece is on the horizontal way (dont check the last)
+        else{
+            for (int i = 1; i < gap; ++i){
+                int row = fromY;
+                int col = direction == Direction.LEFT ? fromX - i : fromX + i;
+                // If the cell is not empty -> error there is a piece on the way
+                if(!board[row][col].empty()) {
+                    return false;
+                }
+            }
+
+            // Check if the cell we want to go is empty or eatable
+            Cell toCell = board[toY][toX];
+            return toCell.empty() || toCell.getPiece().getColor() != playerColor;
+        }
     }
 }
