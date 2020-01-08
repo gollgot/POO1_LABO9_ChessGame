@@ -2,13 +2,24 @@ package engine.pieces;
 
 import chess.PieceType;
 import chess.PlayerColor;
+import engine.movements.Diagonal;
 import engine.movements.Direction;
 import engine.movements.Move;
+import engine.movements.Vertical;
 
-public class Pawn extends Piece{
+public class Pawn extends Piece {
 
-    public Pawn(PlayerColor color, Move[] moves, int distance){
-        super(PieceType.PAWN, color, moves, distance);
+    public Pawn(PlayerColor color){
+        super(
+                PieceType.PAWN,
+                color,
+                new Move[]{
+                        new Vertical(Direction.UP),
+                        new Diagonal(Direction.DIAG_TOP_LEFT),
+                        new Diagonal(Direction.DIAG_TOP_RIGHT)
+                },
+                1
+        );
     }
 
     @Override
@@ -20,7 +31,8 @@ public class Pawn extends Piece{
         for(Move move : getMoves()){
            dirToMove = move.isValid(fromX, fromY, toX, toY, distance, getColor());
            switch(dirToMove){
-               // Move UP possibly OK
+               case DIAG_TOP_LEFT:
+               case DIAG_TOP_RIGHT:
                case UP:
                    // Check obstacle etc...
                    // ...
@@ -30,10 +42,6 @@ public class Pawn extends Piece{
                        setAlreadyMoved(true);
                    }
                    isValidMove = true;
-                   break;
-               case DIAG_TOP_LEFT:
-                   break;
-               case DIAG_TOP_RIGHT:
                    break;
                default:
                    break;

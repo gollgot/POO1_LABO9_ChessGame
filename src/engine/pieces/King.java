@@ -2,13 +2,26 @@ package engine.pieces;
 
 import chess.PieceType;
 import chess.PlayerColor;
-import engine.movements.Direction;
-import engine.movements.Move;
+import engine.movements.*;
 
 public class King extends Piece {
 
-    public King(PlayerColor color, Move[] moves, int distance){
-        super(PieceType.KING, color, moves, distance);
+    public King(PlayerColor color){
+        super(
+                PieceType.KING,
+                color,
+                new Move[]{
+                        new Vertical(Direction.UP),
+                        new Vertical(Direction.DOWN),
+                        new Horizontal(Direction.LEFT),
+                        new Horizontal(Direction.RIGHT),
+                        new Diagonal(Direction.DIAG_TOP_LEFT),
+                        new Diagonal(Direction.DIAG_TOP_RIGHT),
+                        new Diagonal(Direction.DIAG_BOT_LEFT),
+                        new Diagonal(Direction.DIAG_BOT_RIGHT)
+                },
+                1
+        );
     }
 
     @Override

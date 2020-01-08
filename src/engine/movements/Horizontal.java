@@ -16,8 +16,7 @@ public class Horizontal implements Move{
     @Override
     public Direction isValid(int fromX, int fromY, int toX, int toY, int distance, PlayerColor playerColor) {
 
-        // The gap value depends on the direction choose (UP our DOWN)
-        int gap = direction == Direction.LEFT ? fromX - toX : toX - fromX;
+        int gap = Math.abs(fromX - toX);
 
         // Correct move
         if(fromY == toY && gap <= distance && gap >= 0){

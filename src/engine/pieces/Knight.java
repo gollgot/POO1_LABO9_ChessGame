@@ -6,8 +6,13 @@ import engine.movements.Move;
 
 public class Knight extends Piece {
 
-    public Knight(PlayerColor color, Move[] moves, int distance){
-        super(PieceType.KNIGHT, color, moves, distance);
+    public Knight(PlayerColor color){
+        super(
+                PieceType.KNIGHT,
+                color,
+                new Move[0],
+                3 // Or 1 ? a voir
+        );
     }
 
     @Override
