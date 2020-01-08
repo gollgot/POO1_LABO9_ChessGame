@@ -14,20 +14,11 @@ public class Horizontal implements Move{
     }
 
     @Override
-    public Direction isValid(int fromX, int fromY, int toX, int toY, int distance, PlayerColor playerColor) {
-
-        int gap = Math.abs(fromX - toX);
+    public boolean isValid(int fromX, int fromY, int toX, int toY, int distance, PlayerColor playerColor) {
+        // The gap value depends on the direction choose (LEFT our RIGHT)
+        int gap = direction == Direction.LEFT ? fromX - toX : toX - fromX;
 
         // Correct move
-        if(fromY == toY && gap <= distance && gap >= 0){
-            return direction;
-        }
-        // Incorrect move
-        else{
-            return Direction.INVALID;
-        }
-
-
-
+        return fromY == toY && gap <= distance && gap >= 0;
     }
 }

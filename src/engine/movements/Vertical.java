@@ -13,23 +13,21 @@ public class Vertical implements Move{
         this.direction = direction;
     }
 
-    @Override
-    public Direction isValid(int fromX, int fromY, int toX, int toY, int distance, PlayerColor playerColor) {
+
+
+    private boolean isCellClickValid(int fromX, int fromY, int toX, int toY, int distance, PlayerColor playerColor){
         // Multiplier to inverse the way because black and white is the opposite
         int colorMultiplier = playerColor == PlayerColor.WHITE ? 1 : -1;
         // The gap value depends on the direction choose (UP our DOWN)
         int gap = direction == Direction.UP ? (toY - fromY) * colorMultiplier : (fromY - toY) * colorMultiplier;
 
-        // Correct move
-        if(fromX == toX && gap <= distance && gap >= 0){
-            return direction;
-        }
-        // Incorrect move
-        else{
-            return Direction.INVALID;
-        }
+        // Return if the clic cell is a correct one
+        return fromX == toX && gap <= distance && gap >= 0;
+    }
 
 
-
+    @Override
+    public boolean isValid(int fromX, int fromY, int toX, int toY, int distance, PlayerColor playerColor) {
+        return isCellClickValid(fromX, fromY, toX, toY, distance, playerColor);
     }
 }

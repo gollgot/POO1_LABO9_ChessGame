@@ -26,26 +26,15 @@ public class Pawn extends Piece {
     public boolean isValidMove(int fromX, int fromY, int toX, int toY) {
         boolean isValidMove = false;
         int distance = isAlreadyMoved() ? getDistance() : 2; // First time, can move a distance 2
-        Direction dirToMove;
 
         for(Move move : getMoves()){
-           dirToMove = move.isValid(fromX, fromY, toX, toY, distance, getColor());
-           switch(dirToMove){
-               case DIAG_TOP_LEFT:
-               case DIAG_TOP_RIGHT:
-               case UP:
-                   // Check obstacle etc...
-                   // ...
-                   // All check ok -> move
-
-                   if(!isAlreadyMoved()){
-                       setAlreadyMoved(true);
-                   }
-                   isValidMove = true;
-                   break;
-               default:
-                   break;
-           }
+            if(move.isValid(fromX, fromY, toX, toY, distance, getColor())){
+                isValidMove = true;
+                if(!isAlreadyMoved()){
+                    setAlreadyMoved(true);
+                }
+                break;
+            }
         }
 
         return isValidMove;
