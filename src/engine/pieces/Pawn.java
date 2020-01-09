@@ -56,6 +56,13 @@ public class Pawn extends Piece {
             }
         }
 
+        // Check promotion move type
+        if(isPromotable(toY)){
+            movement = MoveType.PROMOTION;
+        }
+
+
+
         if (movement != MoveType.IMPOSSIBLE) {
             // update the last turn the current pawn was played
             setLastTurnPlayed(turn);
@@ -65,5 +72,16 @@ public class Pawn extends Piece {
         }
 
         return movement;
+    }
+
+
+    private boolean isPromotable(int toY){
+        int lastRow = getColor() == PlayerColor.WHITE ? 7 : 0;
+        return toY == lastRow;
+    }
+
+    @Override
+    public String textValue() {
+        return "Pion";
     }
 }

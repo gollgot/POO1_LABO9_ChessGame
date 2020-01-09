@@ -29,4 +29,9 @@ public class Knight extends Piece {
 
         return MoveType.IMPOSSIBLE;
     }
+
+    @Override
+    public String textValue() {
+        return "Cavalier";
+    }
 }

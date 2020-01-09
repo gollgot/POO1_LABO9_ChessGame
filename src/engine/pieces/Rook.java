@@ -24,4 +24,8 @@ public class Rook extends Piece {
         );
     }
 
+    @Override
+    public String textValue() {
+        return "Tour";
+    }
 }

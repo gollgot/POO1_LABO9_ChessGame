@@ -1,11 +1,12 @@
 package engine.pieces;
 
+import chess.ChessView;
 import chess.PieceType;
 import chess.PlayerColor;
 import engine.Cell;
 import engine.movements.Move;
 
-public abstract class Piece {
+public abstract class Piece implements ChessView.UserChoice {
     private Cell cell;
     private PlayerColor color;
     private PieceType type;
@@ -87,8 +88,5 @@ public abstract class Piece {
     public void setLastTurnPlayed(int turn) {
         this.lastTurnPlayed = turn;
     }
-    @Override
-    public String toString() {
-        return "x: " + cell.getX() + " y : " + cell.getY();
-    }
+
 }

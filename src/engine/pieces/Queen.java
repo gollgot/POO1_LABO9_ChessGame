@@ -2,7 +2,6 @@ package engine.pieces;
 
 import chess.PieceType;
 import chess.PlayerColor;
-import engine.Cell;
 import engine.movements.*;
 
 public class Queen extends Piece {
@@ -25,4 +24,8 @@ public class Queen extends Piece {
         );
     }
 
+    @Override
+    public String textValue() {
+        return "Reine";
+    }
 }

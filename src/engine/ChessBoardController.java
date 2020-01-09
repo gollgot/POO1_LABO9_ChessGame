@@ -3,7 +3,6 @@ package engine;
 import chess.ChessController;
 import chess.ChessView;
 import chess.PlayerColor;
-import engine.movements.*;
 import engine.pieces.*;
 
 public class ChessBoardController implements ChessController {
@@ -67,6 +66,20 @@ public class ChessBoardController implements ChessController {
                     // Remove old rook from the board
                     oldRookCell.removePiece();
                     view.removePiece(oldRookCell.getX(), oldRookCell.getY());
+                }
+
+                // Specific board game update for pawn promotion
+                if(move == MoveType.PROMOTION){
+                    Piece queen = new Queen(p.getColor());
+                    Piece knight = new Knight(p.getColor());
+                    Piece rook = new Rook(p.getColor());
+                    Piece bishop = new Bishop(p.getColor());
+
+                    Piece selectedPiece = view.askUser("Promotion", "Sélectionnez la pièce de promotion", queen, knight, rook, bishop);
+                    board[p.getY()][p.getX()].removePiece();
+                    board[p.getY()][p.getX()].addPiece(selectedPiece);
+                    view.removePiece(p.getX(), p.getY());
+                    view.putPiece(selectedPiece.getType(), selectedPiece.getColor(), selectedPiece.getX(), selectedPiece.getY());
                 }
 
                 ++turn;

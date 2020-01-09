@@ -84,4 +84,8 @@ public class King extends Piece {
     }
 
 
+    @Override
+    public String textValue() {
+        return "Roi";
+    }
 }
