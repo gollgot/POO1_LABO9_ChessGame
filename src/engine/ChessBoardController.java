@@ -38,7 +38,7 @@ public class ChessBoardController implements ChessController {
         // Piece on from cell -> check if move valid
         else{
             Piece p = fromCell.getPiece();
-            if(p.isValidMove(board, fromX, fromY, toX, toY)){
+            if(p.isValidMove(board, toX, toY)){
                 // Move
                 fromCell.removePiece();
                 view.removePiece(fromX, fromY);
@@ -74,14 +74,20 @@ public class ChessBoardController implements ChessController {
         }
 
         // Rook
-        Piece rookWhite = new Rook(PlayerColor.WHITE);
-        Piece rookBlack = new Rook(PlayerColor.BLACK);
+        Piece rookWhite1 = new Rook(PlayerColor.WHITE);
+        Piece rookWhite2 = new Rook(PlayerColor.WHITE);
+        Piece rookBlack1 = new Rook(PlayerColor.BLACK);
+        Piece rookBlack2 = new Rook(PlayerColor.BLACK);
         // Knight
-        Piece knightWhite = new Knight(PlayerColor.WHITE);
-        Piece knightBlack = new Knight(PlayerColor.BLACK);
+        Piece knightWhite1 = new Knight(PlayerColor.WHITE);
+        Piece knightWhite2 = new Knight(PlayerColor.WHITE);
+        Piece knightBlack1 = new Knight(PlayerColor.BLACK);
+        Piece knightBlack2 = new Knight(PlayerColor.BLACK);
         // Bishop
-        Piece bishopWhite = new Bishop(PlayerColor.WHITE);
-        Piece bishopBlack = new Bishop(PlayerColor.BLACK);
+        Piece bishopWhite1 = new Bishop(PlayerColor.WHITE);
+        Piece bishopWhite2 = new Bishop(PlayerColor.WHITE);
+        Piece bishopBlack1 = new Bishop(PlayerColor.BLACK);
+        Piece bishopBlack2 = new Bishop(PlayerColor.BLACK);
         // Queen
         Piece queenWhite = new Queen(PlayerColor.WHITE);
         Piece queenBlack = new Queen(PlayerColor.BLACK);
@@ -90,44 +96,44 @@ public class ChessBoardController implements ChessController {
         Piece kingBlack = new King(PlayerColor.BLACK);
 
         // Add white pieces on the board
-        board[0][0].addPiece(rookWhite);
-        board[0][1].addPiece(knightWhite);
-        board[0][2].addPiece(bishopWhite);
+        board[0][0].addPiece(rookWhite1);
+        board[0][1].addPiece(knightWhite1);
+        board[0][2].addPiece(bishopWhite1);
         board[0][3].addPiece(queenWhite);
         board[0][4].addPiece(kingWhite);
-        board[0][5].addPiece(bishopWhite);
-        board[0][6].addPiece(knightWhite);
-        board[0][7].addPiece(rookWhite);
+        board[0][5].addPiece(bishopWhite2);
+        board[0][6].addPiece(knightWhite2);
+        board[0][7].addPiece(rookWhite2);
 
         // Add black pieces on the board
-        board[7][0].addPiece(rookBlack);
-        board[7][1].addPiece(knightBlack);
-        board[7][2].addPiece(bishopBlack);
+        board[7][0].addPiece(rookBlack1);
+        board[7][1].addPiece(knightBlack1);
+        board[7][2].addPiece(bishopBlack1);
         board[7][3].addPiece(queenBlack);
         board[7][4].addPiece(kingBlack);
-        board[7][5].addPiece(bishopBlack);
-        board[7][6].addPiece(knightBlack);
-        board[7][7].addPiece(rookBlack);
+        board[7][5].addPiece(bishopBlack2);
+        board[7][6].addPiece(knightBlack2);
+        board[7][7].addPiece(rookBlack2);
 
         // Display white pieces
-        view.putPiece(rookWhite.getType(), rookWhite.getColor(), 0, 0);
-        view.putPiece(knightWhite.getType(), knightWhite.getColor(), 1, 0);
-        view.putPiece(bishopWhite.getType(), bishopWhite.getColor(), 2, 0);
+        view.putPiece(rookWhite1.getType(), rookWhite1.getColor(), 0, 0);
+        view.putPiece(knightWhite1.getType(), knightWhite1.getColor(), 1, 0);
+        view.putPiece(bishopWhite1.getType(), bishopWhite1.getColor(), 2, 0);
         view.putPiece(queenWhite.getType(), queenWhite.getColor(), 3, 0);
         view.putPiece(kingWhite.getType(), kingWhite.getColor(), 4, 0);
-        view.putPiece(bishopWhite.getType(), bishopWhite.getColor(), 5, 0);
-        view.putPiece(knightWhite.getType(), knightWhite.getColor(), 6, 0);
-        view.putPiece(rookWhite.getType(), rookWhite.getColor(), 7, 0);
+        view.putPiece(bishopWhite2.getType(), bishopWhite2.getColor(), 5, 0);
+        view.putPiece(knightWhite2.getType(), knightWhite2.getColor(), 6, 0);
+        view.putPiece(rookWhite2.getType(), rookWhite2.getColor(), 7, 0);
 
         // Display black pieces
-        view.putPiece(rookBlack.getType(), rookBlack.getColor(), 0, 7);
-        view.putPiece(knightBlack.getType(), knightBlack.getColor(), 1, 7);
-        view.putPiece(bishopBlack.getType(), bishopBlack.getColor(), 2, 7);
+        view.putPiece(rookBlack1.getType(), rookBlack1.getColor(), 0, 7);
+        view.putPiece(knightBlack1.getType(), knightBlack2.getColor(), 1, 7);
+        view.putPiece(bishopBlack1.getType(), bishopBlack2.getColor(), 2, 7);
         view.putPiece(queenBlack.getType(), queenBlack.getColor(), 3, 7);
         view.putPiece(kingBlack.getType(), kingBlack.getColor(), 4, 7);
-        view.putPiece(bishopBlack.getType(), bishopBlack.getColor(), 5, 7);
-        view.putPiece(knightBlack.getType(), knightBlack.getColor(), 6, 7);
-        view.putPiece(rookBlack.getType(), rookBlack.getColor(), 7, 7);
+        view.putPiece(bishopBlack2.getType(), bishopBlack2.getColor(), 5, 7);
+        view.putPiece(knightBlack2.getType(), knightBlack2.getColor(), 6, 7);
+        view.putPiece(rookBlack2.getType(), rookBlack2.getColor(), 7, 7);
     }
 
 }

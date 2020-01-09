@@ -24,12 +24,12 @@ public class Bishop extends Piece {
     }
 
     @Override
-    public boolean isValidMove(Cell[][] board, int fromX, int fromY, int toX, int toY) {
+    public boolean isValidMove(Cell[][] board, int toX, int toY) {
         boolean isValidMove = false;
 
         // Check normal move
         for(Move move : getMoves()){
-            if(move.isClickedCellAndWayValid(board, fromX, fromY, toX, toY, getDistance(), getColor()) && move.isLastCellEmptyOrEatable(board, toX, toY, getColor())){
+            if(move.isClickedCellAndWayValid(board, getX(), getY(), toX, toY, getDistance(), getColor()) && move.isLastCellEmptyOrEatable(board, toX, toY, getColor())){
                 isValidMove = true;
                 break;
             }

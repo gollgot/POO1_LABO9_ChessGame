@@ -17,10 +17,10 @@ public class Knight extends Piece {
     }
 
     @Override
-    public boolean isValidMove(Cell[][] board, int fromX, int fromY, int toX, int toY) {
+    public boolean isValidMove(Cell[][] board, int toX, int toY) {
 
-        int yGap = fromY - toY;
-        int xGap = fromX - toX;
+        int yGap = getY() - toY;
+        int xGap = getX() - toX;
 
         Cell toCell = board[toY][toX];
         return (Math.abs(yGap) == 2 && Math.abs(xGap) == 1 || Math.abs(xGap) == 2 && Math.abs(yGap) == 1) &&

@@ -23,7 +23,7 @@ public abstract class Piece {
         }
     }
 
-    public abstract boolean isValidMove(Cell[][] board, int fromX, int fromY, int toX, int toY);
+    public abstract boolean isValidMove(Cell[][] board, int toX, int toY);
 
     // Getters
     public PlayerColor getColor() {
