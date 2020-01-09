@@ -12,14 +12,12 @@ public class Pawn extends Piece {
 
     public Pawn(PlayerColor color){
         super(
-                PieceType.PAWN,
-                color,
-                new Move[]{
-                        new Vertical(Direction.UP),
-                        new Diagonal(Direction.DIAG_TOP_LEFT),
-                        new Diagonal(Direction.DIAG_TOP_RIGHT)
-                },
-                1
+            PieceType.PAWN,
+            color,
+            new Move[]{
+                new Vertical(Direction.UP),
+            },
+            1
         );
     }
 
@@ -28,8 +26,8 @@ public class Pawn extends Piece {
         boolean isValidMove = false;
         int distance = isAlreadyMoved() ? getDistance() : 2; // First time, can move a distance 2
 
-        for(Move move : getMoves()){
-            if(move.isClickedCellAndWayValid(board, fromX, fromY, toX, toY, getDistance(), getColor()) && move.isLastCellEmptyOrEatable(board, toX, toY, getColor())){
+        for(Move move : getMoves()) {
+            if(move.isClickedCellAndWayValid(board, fromX, fromY, toX, toY, distance, getColor()) && board[toY][toX].empty()){
                 isValidMove = true;
                 if(!isAlreadyMoved()){
                     setAlreadyMoved(true);
@@ -38,8 +36,16 @@ public class Pawn extends Piece {
             }
         }
 
+        Diagonal topLeft = new Diagonal(Direction.DIAG_TOP_LEFT);
+        Diagonal topRight = new Diagonal(Direction.DIAG_TOP_RIGHT);
+
+        if ((topLeft.isClickedCellAndWayValid(board, fromX, fromY, toX, toY, getDistance(), getColor()) ||
+            topRight.isClickedCellAndWayValid(board, fromX, fromY, toX, toY, getDistance(), getColor())) &&
+            (!board[toY][toX].empty() && board[toY][toX].getPiece().getColor() != getColor())) {
+
+            return true;
+        }
+
         return isValidMove;
     }
-
-
 }
