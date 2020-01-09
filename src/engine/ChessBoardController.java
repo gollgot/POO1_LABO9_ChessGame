@@ -40,28 +40,27 @@ public class ChessBoardController implements ChessController {
         else{
             Piece p = fromCell.getPiece();
             MoveType move = p.isValidMove(board, toX, toY, turn);
-            if(move == MoveType.NORMAL){
-                // Move
+
+            // The move we want to do is correct
+            if(move != MoveType.IMPOSSIBLE){
+                // We update the board game to do the standard move (from -> to)
                 fromCell.removePiece();
                 view.removePiece(fromX, fromY);
                 toCell.addPiece(p);
                 view.putPiece(p.getType(), p.getColor(), toX, toY);
+
+                // Specific board game update for "En Passant" movetype
+                if(move == MoveType.EN_PASSANT){
+                    int eateeYPos = fromY - toY > 0 ? toY + 1 : toY - 1;
+                    Cell eateeCell = board[eateeYPos][toX];
+                    eateeCell.removePiece();
+                    view.removePiece(eateeCell.getX(), eateeCell.getY());
+                }
 
                 ++turn;
                 return true;
-            } else if (move == MoveType.EN_PASSANT) {
-                // Move
-                fromCell.removePiece();
-                view.removePiece(fromX, fromY);
-                toCell.addPiece(p);
-                view.putPiece(p.getType(), p.getColor(), toX, toY);
-
-                int eateeYPos = fromY - toY > 0 ? toY + 1 : toY - 1;
-                Cell eateeCell = board[eateeYPos][toX];
-
-                eateeCell.removePiece();
-                view.removePiece(eateeCell.getX(), eateeCell.getY());
             }
+
         }
 
         return false;
