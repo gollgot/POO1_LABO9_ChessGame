@@ -16,9 +16,7 @@ public class Knight extends Piece {
         );
     }
 
-    @Override
     public boolean isValidMove(Cell[][] board, int toX, int toY) {
-
         int yGap = getY() - toY;
         int xGap = getX() - toX;
 

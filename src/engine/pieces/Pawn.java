@@ -21,7 +21,7 @@ public class Pawn extends Piece {
         );
     }
 
-    @Override
+
     public boolean isValidMove(Cell[][] board, int toX, int toY) {
         boolean isValidMove = false;
         int distance = isAlreadyMoved() ? getDistance() : 2; // First time, can move a distance 2
