@@ -32,8 +32,10 @@ public class King extends Piece {
         // Check specific move if normal failed
         if(move == MoveType.IMPOSSIBLE){
             // Check castling
-            if(isSmallCastling(board, getX(), getY(), toX, toY) || isBigCastling(board, getX(), getY(), toX, toY)){
+            if(isKingSideCastle(board, getX(), getY(), toX, toY)){
                 move = MoveType.KING_SIDE_CASTLE;
+            }else if(isQueenSideCastle(board, getX(), getY(), toX, toY)){
+                move = MoveType.QUEEN_SIDE_CASTLE;
             }
 
             // Update already move only for the first move we did
@@ -45,7 +47,7 @@ public class King extends Piece {
         return move;
     }
 
-    private boolean isSmallCastling(Cell[][] board, int fromX, int fromY, int toX, int toY){
+    private boolean isKingSideCastle(Cell[][] board, int fromX, int fromY, int toX, int toY){
         if(!isAlreadyMoved()){
             Cell rookCell = board[getY()][7];
             Move rightMove = new Horizontal(Direction.RIGHT);
@@ -63,7 +65,7 @@ public class King extends Piece {
         return false;
     }
 
-    private boolean isBigCastling(Cell[][] board, int fromX, int fromY, int toX, int toY){
+    private boolean isQueenSideCastle(Cell[][] board, int fromX, int fromY, int toX, int toY){
         if(!isAlreadyMoved()) {
             Cell rookCell = board[getY()][0];
             Move leftMove = new Horizontal(Direction.LEFT);

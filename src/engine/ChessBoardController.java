@@ -57,6 +57,18 @@ public class ChessBoardController implements ChessController {
                     view.removePiece(eateeCell.getX(), eateeCell.getY());
                 }
 
+                // Specific board game update for castling movetype
+                if(move == MoveType.KING_SIDE_CASTLE || move == MoveType.QUEEN_SIDE_CASTLE){
+                    Cell oldRookCell = move == MoveType.KING_SIDE_CASTLE ? board[p.getY()][p.getX() + 1] : board[p.getY()][p.getX() - 2];
+                    Cell newRookCell = move == MoveType.KING_SIDE_CASTLE ? board[p.getY()][p.getX() - 1] : board[p.getY()][p.getX() + 1];
+                    // Add new rook on the board
+                    newRookCell.addPiece(oldRookCell.getPiece());
+                    view.putPiece(oldRookCell.getPiece().getType(), oldRookCell.getPiece().getColor(), newRookCell.getX(), newRookCell.getY());
+                    // Remove old rook from the board
+                    oldRookCell.removePiece();
+                    view.removePiece(oldRookCell.getX(), oldRookCell.getY());
+                }
+
                 ++turn;
                 return true;
             }
