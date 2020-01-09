@@ -52,13 +52,13 @@ public class King extends Piece {
 
     private boolean isSmallCastling(Cell[][] board, int fromX, int fromY, int toX, int toY){
         if(!isAlreadyMoved()){
-            Cell rookCell = board[0][7];
+            Cell rookCell = board[getY()][7];
             Move rightMove = new Horizontal(Direction.RIGHT);
             if(
                     !rookCell.empty() &&
                     rookCell.getPiece().getType() == PieceType.ROOK &&
                     !rookCell.getPiece().isAlreadyMoved() &&
-                    toX == 6 && toY == 0 &&
+                    toX == 6 && toY == getY() &&
                     rightMove.isClickedCellAndWayValid(board, fromX, fromY, rookCell.getX(), rookCell.getY(), 8, getColor())
             ){
                 return true;
@@ -69,14 +69,14 @@ public class King extends Piece {
     }
 
     private boolean isBigCastling(Cell[][] board, int fromX, int fromY, int toX, int toY){
-        if(!isAlreadyMoved()){
-            Cell rookCell = board[0][0];
+        if(!isAlreadyMoved()) {
+            Cell rookCell = board[getY()][0];
             Move leftMove = new Horizontal(Direction.LEFT);
             if(
                     !rookCell.empty() &&
                     rookCell.getPiece().getType() == PieceType.ROOK &&
                     !rookCell.getPiece().isAlreadyMoved() &&
-                    toX == 2 && toY == 0 &&
+                    toX == 2 && toY == getY() &&
                     leftMove.isClickedCellAndWayValid(board, fromX, fromY, rookCell.getX(), rookCell.getY(), 8, getColor())
             ){
                 return true;

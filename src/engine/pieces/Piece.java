@@ -46,6 +46,14 @@ public abstract class Piece {
         return alreadyMoved;
     }
 
+    public int getX() {
+        return cell.getX();
+    }
+
+    public int getY() {
+        return cell.getY();
+    }
+
     // Setters
     public void setCell(Cell cell) {
         this.cell = cell;
