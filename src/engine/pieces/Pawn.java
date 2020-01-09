@@ -48,7 +48,7 @@ public class Pawn extends Piece {
             // check if the pawn is doing an `En passant`
             int eateeYPos = getY() - toY > 0 ? toY + 1 : toY - 1;
             if (!board[toY][toX].empty() || board[eateeYPos][toX].empty())
-                movement = MoveType.IMPOSSIBLE;
+                return MoveType.IMPOSSIBLE;
 
             Piece eatee = board[eateeYPos][toX].getPiece();
             if (eatee.getColor() != getColor() && (turn - eatee.getLastTurnPlayed()) == 1) {
