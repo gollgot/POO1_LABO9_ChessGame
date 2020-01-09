@@ -3,7 +3,7 @@ package engine.movements;
 import chess.PlayerColor;
 import engine.Cell;
 
-public class Vertical implements Move{
+public class Vertical implements Move {
 
     private Direction direction;
 
@@ -16,7 +16,14 @@ public class Vertical implements Move{
 
 
     @Override
-    public boolean isValid(Cell[][] board, int fromX, int fromY, int toX, int toY, int distance, PlayerColor playerColor) {
+    public boolean isLastCellEmptyOrEatable(Cell[][] board, int toX, int toY, PlayerColor playerColor) {
+        // Check if the cell we want to go is empty or eatable
+        Cell toCell = board[toY][toX];
+        return toCell.empty() || toCell.getPiece().getColor() != playerColor;
+    }
+
+    @Override
+    public boolean isClickedCellAndWayValid(Cell[][] board, int fromX, int fromY, int toX, int toY, int distance, PlayerColor playerColor) {
         // Multiplier to inverse the way because black and white is the opposite
         int colorMultiplier = playerColor == PlayerColor.WHITE ? 1 : -1;
         // The gap value depends on the direction choose (UP our DOWN)
@@ -41,9 +48,7 @@ public class Vertical implements Move{
                     }
                 }
 
-            // Check if the cell we want to go is empty or eatable
-            Cell toCell = board[toY][toX];
-            return toCell.empty() || toCell.getPiece().getColor() != playerColor;
+            return true;
         }
     }
     

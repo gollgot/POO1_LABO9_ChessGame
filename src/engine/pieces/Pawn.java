@@ -29,7 +29,7 @@ public class Pawn extends Piece {
         int distance = isAlreadyMoved() ? getDistance() : 2; // First time, can move a distance 2
 
         for(Move move : getMoves()){
-            if(move.isValid(board, fromX, fromY, toX, toY, distance, getColor())){
+            if(move.isClickedCellAndWayValid(board, fromX, fromY, toX, toY, getDistance(), getColor()) && move.isLastCellEmptyOrEatable(board, toX, toY, getColor())){
                 isValidMove = true;
                 if(!isAlreadyMoved()){
                     setAlreadyMoved(true);

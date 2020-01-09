@@ -30,7 +30,7 @@ public class King extends Piece {
         boolean isValidMove = false;
 
         for(Move move : getMoves()){
-            if(move.isValid(board, fromX, fromY, toX, toY, getDistance(), getColor())){
+            if(move.isClickedCellAndWayValid(board, fromX, fromY, toX, toY, getDistance(), getColor()) && move.isLastCellEmptyOrEatable(board, toX, toY, getColor())){
                 isValidMove = true;
                 if(!isAlreadyMoved()){
                     setAlreadyMoved(true);
@@ -41,4 +41,7 @@ public class King extends Piece {
 
         return isValidMove;
     }
+
+
+
 }
