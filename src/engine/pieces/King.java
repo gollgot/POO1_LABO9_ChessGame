@@ -29,19 +29,62 @@ public class King extends Piece {
     public boolean isValidMove(Cell[][] board, int fromX, int fromY, int toX, int toY) {
         boolean isValidMove = false;
 
+        // Check normal move
         for(Move move : getMoves()){
             if(move.isClickedCellAndWayValid(board, fromX, fromY, toX, toY, getDistance(), getColor()) && move.isLastCellEmptyOrEatable(board, toX, toY, getColor())){
                 isValidMove = true;
-                if(!isAlreadyMoved()){
-                    setAlreadyMoved(true);
-                }
                 break;
             }
+        }
+
+        // Check castling
+        if(isSmallCastling(board, fromX, fromY, toX, toY) || isBigCastling(board, fromX, fromY, toX, toY)){
+            isValidMove = true;
+        }
+
+        // Update already move only for the first move we did
+        if(isValidMove && !isAlreadyMoved()){
+            setAlreadyMoved(true);
         }
 
         return isValidMove;
     }
 
+    private boolean isSmallCastling(Cell[][] board, int fromX, int fromY, int toX, int toY){
+        if(!isAlreadyMoved()){
+            Cell rookCell = board[0][7];
+            Move rightMove = new Horizontal(Direction.RIGHT);
+            if(
+                    !rookCell.empty() &&
+                    rookCell.getPiece().getType() == PieceType.ROOK &&
+                    !rookCell.getPiece().isAlreadyMoved() &&
+                    toX == 6 && toY == 0 &&
+                    rightMove.isClickedCellAndWayValid(board, fromX, fromY, rookCell.getX(), rookCell.getY(), 8, getColor())
+            ){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private boolean isBigCastling(Cell[][] board, int fromX, int fromY, int toX, int toY){
+        if(!isAlreadyMoved()){
+            Cell rookCell = board[0][0];
+            Move leftMove = new Horizontal(Direction.LEFT);
+            if(
+                    !rookCell.empty() &&
+                    rookCell.getPiece().getType() == PieceType.ROOK &&
+                    !rookCell.getPiece().isAlreadyMoved() &&
+                    toX == 2 && toY == 0 &&
+                    leftMove.isClickedCellAndWayValid(board, fromX, fromY, rookCell.getX(), rookCell.getY(), 8, getColor())
+            ){
+                return true;
+            }
+        }
+
+        return false;
+    }
 
 
 }
