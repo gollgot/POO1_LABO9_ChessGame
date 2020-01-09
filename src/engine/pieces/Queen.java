@@ -29,14 +29,17 @@ public class Queen extends Piece {
     public boolean isValidMove(Cell[][] board, int fromX, int fromY, int toX, int toY) {
         boolean isValidMove = false;
 
+        // Check normal move
         for(Move move : getMoves()){
             if(move.isClickedCellAndWayValid(board, fromX, fromY, toX, toY, getDistance(), getColor()) && move.isLastCellEmptyOrEatable(board, toX, toY, getColor())){
                 isValidMove = true;
-                if(!isAlreadyMoved()){
-                    setAlreadyMoved(true);
-                }
                 break;
             }
+        }
+
+        // Update already move only for the first move we did
+        if(isValidMove && !isAlreadyMoved()){
+            setAlreadyMoved(true);
         }
 
         return isValidMove;

@@ -26,12 +26,10 @@ public class Pawn extends Piece {
         boolean isValidMove = false;
         int distance = isAlreadyMoved() ? getDistance() : 2; // First time, can move a distance 2
 
+        // Check normal move
         for(Move move : getMoves()) {
             if(move.isClickedCellAndWayValid(board, fromX, fromY, toX, toY, distance, getColor()) && board[toY][toX].empty()){
                 isValidMove = true;
-                if(!isAlreadyMoved()){
-                    setAlreadyMoved(true);
-                }
                 break;
             }
         }
@@ -44,6 +42,11 @@ public class Pawn extends Piece {
             (!board[toY][toX].empty() && board[toY][toX].getPiece().getColor() != getColor())) {
 
             return true;
+        }
+
+        // Update already move only for the first move we did
+        if(isValidMove && !isAlreadyMoved()){
+            setAlreadyMoved(true);
         }
 
         return isValidMove;
