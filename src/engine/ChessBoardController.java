@@ -10,6 +10,7 @@ public class ChessBoardController implements ChessController {
     private ChessView view;
     private static final int dimension = 8;
     private Cell[][] board;
+    private int turn;
 
     public ChessBoardController(){
         board = new Cell[8][8];
@@ -38,13 +39,28 @@ public class ChessBoardController implements ChessController {
         // Piece on from cell -> check if move valid
         else{
             Piece p = fromCell.getPiece();
-            if(p.isValidMove(board, toX, toY)){
+            MoveType move = p.isValidMove(board, toX, toY, turn);
+            if(move == MoveType.NORMAL){
                 // Move
                 fromCell.removePiece();
                 view.removePiece(fromX, fromY);
                 toCell.addPiece(p);
                 view.putPiece(p.getType(), p.getColor(), toX, toY);
+
+                ++turn;
                 return true;
+            } else if (move == MoveType.EN_PASSANT) {
+                // Move
+                fromCell.removePiece();
+                view.removePiece(fromX, fromY);
+                toCell.addPiece(p);
+                view.putPiece(p.getType(), p.getColor(), toX, toY);
+
+                int eateeYPos = fromY - toY > 0 ? toY + 1 : toY - 1;
+                Cell eateeCell = board[eateeYPos][toX];
+
+                eateeCell.removePiece();
+                view.removePiece(eateeCell.getX(), eateeCell.getY());
             }
         }
 
@@ -53,6 +69,9 @@ public class ChessBoardController implements ChessController {
 
     @Override
     public void newGame() {
+        // set turn number to 1
+        this.turn = 1;
+
         for(int row = 0; row < dimension; ++row){
             for(int col = 0; col < dimension; ++col){
                 Cell currentCell = board[row][col];

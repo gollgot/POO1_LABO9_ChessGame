@@ -12,6 +12,7 @@ public abstract class Piece {
     private int distance;
     private Move[] moves;
     private boolean alreadyMoved = false;
+    private int lastTurnPlayed;
 
     public Piece(PieceType type, PlayerColor color, Move[] moves, int distance) {
         this.color = color;
@@ -23,23 +24,22 @@ public abstract class Piece {
         }
     }
 
-    public boolean isValidMove(Cell[][] board, int toX, int toY) {
+    public MoveType isValidMove(Cell[][] board, int toX, int toY, int turn) {
         boolean isValidMove = false;
 
         // Check normal move
         for(Move move : getMoves()){
             if(move.isClickedCellAndWayValid(board, getX(), getY(), toX, toY, getDistance(), getColor()) && move.isLastCellEmptyOrEatable(board, toX, toY, getColor())){
-                isValidMove = true;
-                break;
+                lastTurnPlayed = turn;
+
+                // Update already move only for the first move we did
+                if(!isAlreadyMoved()) setAlreadyMoved(true);
+
+                return MoveType.NORMAL;
             }
         }
 
-        // Update already move only for the first move we did
-        if(isValidMove && !isAlreadyMoved()){
-            setAlreadyMoved(true);
-        }
-
-        return isValidMove;
+        return MoveType.IMPOSSIBLE;
     }
 
     // Getters
@@ -71,6 +71,10 @@ public abstract class Piece {
         return cell.getY();
     }
 
+    public int getLastTurnPlayed() {
+        return lastTurnPlayed;
+    }
+
     // Setters
     public void setCell(Cell cell) {
         this.cell = cell;
@@ -80,6 +84,9 @@ public abstract class Piece {
         this.alreadyMoved = b;
     }
 
+    public void setLastTurnPlayed(int turn) {
+        this.lastTurnPlayed = turn;
+    }
     @Override
     public String toString() {
         return "x: " + cell.getX() + " y : " + cell.getY();

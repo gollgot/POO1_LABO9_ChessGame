@@ -25,25 +25,24 @@ public class King extends Piece {
         );
     }
 
-
-    public boolean isValidMove(Cell[][] board, int toX, int toY) {
+    public MoveType isValidMove(Cell[][] board, int toX, int toY, int turn) {
         // Check the normal move into the super class
-        boolean isValidMove = super.isValidMove(board, toX, toY);
+        MoveType move = super.isValidMove(board, toX, toY, turn);
 
         // Check specific move if normal failed
-        if(!isValidMove){
+        if(move == MoveType.IMPOSSIBLE){
             // Check castling
             if(isSmallCastling(board, getX(), getY(), toX, toY) || isBigCastling(board, getX(), getY(), toX, toY)){
-                isValidMove = true;
+                move = MoveType.KING_SIDE_CASTLE;
             }
 
             // Update already move only for the first move we did
-            if(isValidMove && !isAlreadyMoved()){
+            if(move != MoveType.IMPOSSIBLE && !isAlreadyMoved()){
                 setAlreadyMoved(true);
             }
         }
 
-        return isValidMove;
+        return move;
     }
 
     private boolean isSmallCastling(Cell[][] board, int fromX, int fromY, int toX, int toY){

@@ -16,12 +16,17 @@ public class Knight extends Piece {
         );
     }
 
-    public boolean isValidMove(Cell[][] board, int toX, int toY) {
+    public MoveType isValidMove(Cell[][] board, int toX, int toY, int turn) {
         int yGap = getY() - toY;
         int xGap = getX() - toX;
 
         Cell toCell = board[toY][toX];
-        return (Math.abs(yGap) == 2 && Math.abs(xGap) == 1 || Math.abs(xGap) == 2 && Math.abs(yGap) == 1) &&
-                (toCell.empty() || toCell.getPiece().getColor() != getColor());
+        if ((Math.abs(yGap) == 2 && Math.abs(xGap) == 1 || Math.abs(xGap) == 2 && Math.abs(yGap) == 1) &&
+                (toCell.empty() || toCell.getPiece().getColor() != getColor())) {
+            setLastTurnPlayed(turn);
+            return MoveType.NORMAL;
+        }
+
+        return MoveType.IMPOSSIBLE;
     }
 }
