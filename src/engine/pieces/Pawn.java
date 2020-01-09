@@ -51,7 +51,7 @@ public class Pawn extends Piece {
                 return MoveType.IMPOSSIBLE;
 
             Piece eatee = board[eateeYPos][toX].getPiece();
-            if (eatee.getColor() != getColor() && (turn - eatee.getLastTurnPlayed()) == 1) {
+            if (eatee.getType() == PieceType.PAWN && eatee.getColor() != getColor() && (turn - eatee.getLastTurnPlayed()) == 1) {
                 movement = MoveType.EN_PASSANT;
             }
         }
