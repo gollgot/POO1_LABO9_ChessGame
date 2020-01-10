@@ -38,54 +38,56 @@ public class ChessBoardController implements ChessController {
         // Piece on from cell -> check if move valid
         else{
             Piece p = fromCell.getPiece();
-            MoveType move = p.isValidMove(board, toX, toY, turn);
+            // Odd turn is white player and even is black (turn begin to 1)
+            if(turn % 2 == 1 && p.getColor() == PlayerColor.WHITE || turn % 2 == 0 && p.getColor() == PlayerColor.BLACK) {
+                MoveType move = p.isValidMove(board, toX, toY, turn);
 
-            // The move we want to do is correct
-            if(move != MoveType.IMPOSSIBLE){
-                // We update the board game to do the standard move (from -> to)
-                fromCell.removePiece();
-                view.removePiece(fromX, fromY);
-                toCell.addPiece(p);
-                view.putPiece(p.getType(), p.getColor(), toX, toY);
+                // The move we want to do is correct
+                if (move != MoveType.IMPOSSIBLE) {
+                    // We update the board game to do the standard move (from -> to)
+                    fromCell.removePiece();
+                    view.removePiece(fromX, fromY);
+                    toCell.addPiece(p);
+                    view.putPiece(p.getType(), p.getColor(), toX, toY);
 
-                // Specific board game update for "En Passant" movetype
-                if(move == MoveType.EN_PASSANT){
-                    int eateeYPos = fromY - toY > 0 ? toY + 1 : toY - 1;
-                    Cell eateeCell = board[eateeYPos][toX];
-                    eateeCell.removePiece();
-                    view.removePiece(eateeCell.getX(), eateeCell.getY());
+                    // Specific board game update for "En Passant" movetype
+                    if (move == MoveType.EN_PASSANT) {
+                        int eateeYPos = fromY - toY > 0 ? toY + 1 : toY - 1;
+                        Cell eateeCell = board[eateeYPos][toX];
+                        eateeCell.removePiece();
+                        view.removePiece(eateeCell.getX(), eateeCell.getY());
+                    }
+
+                    // Specific board game update for castling movetype
+                    if (move == MoveType.KING_SIDE_CASTLE || move == MoveType.QUEEN_SIDE_CASTLE) {
+                        Cell oldRookCell = move == MoveType.KING_SIDE_CASTLE ? board[p.getY()][p.getX() + 1] : board[p.getY()][p.getX() - 2];
+                        Cell newRookCell = move == MoveType.KING_SIDE_CASTLE ? board[p.getY()][p.getX() - 1] : board[p.getY()][p.getX() + 1];
+                        // Add new rook on the board
+                        newRookCell.addPiece(oldRookCell.getPiece());
+                        view.putPiece(oldRookCell.getPiece().getType(), oldRookCell.getPiece().getColor(), newRookCell.getX(), newRookCell.getY());
+                        // Remove old rook from the board
+                        oldRookCell.removePiece();
+                        view.removePiece(oldRookCell.getX(), oldRookCell.getY());
+                    }
+
+                    // Specific board game update for pawn promotion
+                    if (move == MoveType.PROMOTION) {
+                        Piece queen = new Queen(p.getColor());
+                        Piece knight = new Knight(p.getColor());
+                        Piece rook = new Rook(p.getColor());
+                        Piece bishop = new Bishop(p.getColor());
+
+                        Piece selectedPiece = view.askUser("Promotion", "Sélectionnez la pièce de promotion", queen, knight, rook, bishop);
+                        board[p.getY()][p.getX()].removePiece();
+                        board[p.getY()][p.getX()].addPiece(selectedPiece);
+                        view.removePiece(p.getX(), p.getY());
+                        view.putPiece(selectedPiece.getType(), selectedPiece.getColor(), selectedPiece.getX(), selectedPiece.getY());
+                    }
+
+                    ++turn;
+                    return true;
                 }
-
-                // Specific board game update for castling movetype
-                if(move == MoveType.KING_SIDE_CASTLE || move == MoveType.QUEEN_SIDE_CASTLE){
-                    Cell oldRookCell = move == MoveType.KING_SIDE_CASTLE ? board[p.getY()][p.getX() + 1] : board[p.getY()][p.getX() - 2];
-                    Cell newRookCell = move == MoveType.KING_SIDE_CASTLE ? board[p.getY()][p.getX() - 1] : board[p.getY()][p.getX() + 1];
-                    // Add new rook on the board
-                    newRookCell.addPiece(oldRookCell.getPiece());
-                    view.putPiece(oldRookCell.getPiece().getType(), oldRookCell.getPiece().getColor(), newRookCell.getX(), newRookCell.getY());
-                    // Remove old rook from the board
-                    oldRookCell.removePiece();
-                    view.removePiece(oldRookCell.getX(), oldRookCell.getY());
-                }
-
-                // Specific board game update for pawn promotion
-                if(move == MoveType.PROMOTION){
-                    Piece queen = new Queen(p.getColor());
-                    Piece knight = new Knight(p.getColor());
-                    Piece rook = new Rook(p.getColor());
-                    Piece bishop = new Bishop(p.getColor());
-
-                    Piece selectedPiece = view.askUser("Promotion", "Sélectionnez la pièce de promotion", queen, knight, rook, bishop);
-                    board[p.getY()][p.getX()].removePiece();
-                    board[p.getY()][p.getX()].addPiece(selectedPiece);
-                    view.removePiece(p.getX(), p.getY());
-                    view.putPiece(selectedPiece.getType(), selectedPiece.getColor(), selectedPiece.getX(), selectedPiece.getY());
-                }
-
-                ++turn;
-                return true;
             }
-
         }
 
         return false;
