@@ -58,7 +58,7 @@ public class Pawn extends Piece {
         }
 
         // Check promotion move type
-        if(isPromotable(toY)){
+        else if(isPromotable(toY)){
             movement = MoveType.PROMOTION;
         }
 
@@ -76,7 +76,7 @@ public class Pawn extends Piece {
 
     private boolean isPromotable(int toY){
         int lastRow = getColor() == PlayerColor.WHITE ? 7 : 0;
-        return toY == lastRow;
+        return toY == lastRow && getY() == Math.abs(lastRow - 1);
     }
 
     @Override

@@ -10,6 +10,9 @@ public class ChessBoardController implements ChessController {
     private static final int dimension = 8;
     private Cell[][] board;
     private int turn;
+    private Piece kingWhite;
+    private Piece kingBlack;
+    private boolean kingIsChess;
 
     public ChessBoardController(){
         board = new Cell[8][8];
@@ -31,24 +34,40 @@ public class ChessBoardController implements ChessController {
         Cell fromCell = board[fromY][fromX];
         Cell toCell = board[toY][toX];
 
-        // From cell empty -> no piece to move
-        if(fromCell.empty()){
-            System.out.println("No piece to move");
+        // Even if we do an invalid move, display the chess if there is one
+        if(kingIsChess){
+            view.displayMessage("Echec");
         }
+
         // Piece on from cell -> check if move valid
-        else{
+        if(!fromCell.empty()){
             Piece p = fromCell.getPiece();
             // Odd turn is white player and even is black (turn begin to 1)
             if(turn % 2 == 1 && p.getColor() == PlayerColor.WHITE || turn % 2 == 0 && p.getColor() == PlayerColor.BLACK) {
                 MoveType move = p.isValidMove(board, toX, toY, turn);
 
-                // The move we want to do is correct
+                // The move we want to do must be correct
                 if (move != MoveType.IMPOSSIBLE) {
-                    // We update the board game to do the standard move (from -> to)
+
+                    PlayerColor colorDoingChess = p.getColor() == PlayerColor.WHITE ? PlayerColor.BLACK : PlayerColor.WHITE;
+                    // Simulate the move
                     fromCell.removePiece();
-                    view.removePiece(fromX, fromY);
                     toCell.addPiece(p);
-                    view.putPiece(p.getType(), p.getColor(), toX, toY);
+
+                    // The move will cause a chess -> restore the move and try another move
+                    if(isKingChess(colorDoingChess)){
+                        toCell.removePiece();
+                        fromCell.addPiece(p);
+                        return false;
+                    }
+                    // The move defend a chess or doesn't cause a chess-> update the view with the move and continue
+                    else{
+                        kingIsChess = false;
+                        view.displayMessage("");
+                        view.removePiece(fromX, fromY);
+                        view.putPiece(p.getType(), p.getColor(), toX, toY);
+                    }
+
 
                     // Specific board game update for "En Passant" movetype
                     if (move == MoveType.EN_PASSANT) {
@@ -57,9 +76,8 @@ public class ChessBoardController implements ChessController {
                         eateeCell.removePiece();
                         view.removePiece(eateeCell.getX(), eateeCell.getY());
                     }
-
                     // Specific board game update for castling movetype
-                    if (move == MoveType.KING_SIDE_CASTLE || move == MoveType.QUEEN_SIDE_CASTLE) {
+                    else if (move == MoveType.KING_SIDE_CASTLE || move == MoveType.QUEEN_SIDE_CASTLE) {
                         Cell oldRookCell = move == MoveType.KING_SIDE_CASTLE ? board[p.getY()][p.getX() + 1] : board[p.getY()][p.getX() - 2];
                         Cell newRookCell = move == MoveType.KING_SIDE_CASTLE ? board[p.getY()][p.getX() - 1] : board[p.getY()][p.getX() + 1];
                         // Add new rook on the board
@@ -69,9 +87,8 @@ public class ChessBoardController implements ChessController {
                         oldRookCell.removePiece();
                         view.removePiece(oldRookCell.getX(), oldRookCell.getY());
                     }
-
                     // Specific board game update for pawn promotion
-                    if (move == MoveType.PROMOTION) {
+                    else if (move == MoveType.PROMOTION) {
                         Piece queen = new Queen(p.getColor());
                         Piece knight = new Knight(p.getColor());
                         Piece rook = new Rook(p.getColor());
@@ -84,8 +101,35 @@ public class ChessBoardController implements ChessController {
                         view.putPiece(selectedPiece.getType(), selectedPiece.getColor(), selectedPiece.getX(), selectedPiece.getY());
                     }
 
+
+                    // If the player that just move right now can chess the other player
+                    if(isKingChess(p.getColor())){
+                        view.displayMessage("Echec");
+                        kingIsChess = true;
+                    }else{
+                        kingIsChess = false;
+                    }
+
                     ++turn;
                     return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+
+    private boolean isKingChess(PlayerColor colorDoingChess){
+        // Check chess to king
+        Piece kingPossiblyCheck = colorDoingChess == PlayerColor.BLACK ? kingWhite : kingBlack;
+        for(int row = 0; row < dimension; ++row){
+            for(int col = 0; col < dimension; ++col){
+                Cell currentCell = board[row][col];
+                if(!currentCell.empty() && currentCell.getPiece().getColor() == colorDoingChess){
+                    if(currentCell.getPiece().isValidMove(board, kingPossiblyCheck.getX(), kingPossiblyCheck.getY(), turn + 1) != MoveType.IMPOSSIBLE){
+                        return true;
+                    }
                 }
             }
         }
@@ -96,7 +140,8 @@ public class ChessBoardController implements ChessController {
     @Override
     public void newGame() {
         // set turn number to 1
-        this.turn = 1;
+        turn = 1;
+        kingIsChess = false;
 
         for(int row = 0; row < dimension; ++row){
             for(int col = 0; col < dimension; ++col){
@@ -137,8 +182,8 @@ public class ChessBoardController implements ChessController {
         Piece queenWhite = new Queen(PlayerColor.WHITE);
         Piece queenBlack = new Queen(PlayerColor.BLACK);
         // King
-        Piece kingWhite = new King(PlayerColor.WHITE);
-        Piece kingBlack = new King(PlayerColor.BLACK);
+        kingWhite = new King(PlayerColor.WHITE);
+        kingBlack = new King(PlayerColor.BLACK);
 
         // Add white pieces on the board
         board[0][0].addPiece(rookWhite1);

@@ -29,12 +29,12 @@ public abstract class Piece implements ChessView.UserChoice {
         boolean isValidMove = false;
 
         // Check normal move
-        for(Move move : getMoves()){
-            if(move.isClickedCellAndWayValid(board, getX(), getY(), toX, toY, getDistance(), getColor()) && move.isLastCellEmptyOrEatable(board, toX, toY, getColor())){
+        for (Move move : getMoves()) {
+            if (move.isClickedCellAndWayValid(board, getX(), getY(), toX, toY, getDistance(), getColor()) && move.isLastCellEmptyOrEatable(board, toX, toY, getColor())) {
                 lastTurnPlayed = turn;
 
                 // Update already move only for the first move we did
-                if(!isAlreadyMoved()) setAlreadyMoved(true);
+                if (!isAlreadyMoved()) setAlreadyMoved(true);
 
                 return MoveType.NORMAL;
             }
