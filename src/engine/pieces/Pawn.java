@@ -43,16 +43,17 @@ public class Pawn extends Piece {
             // check if the pawn is eating another piece
             if (!board[toY][toX].empty() && board[toY][toX].getPiece().getColor() != getColor()) {
                 movement = MoveType.NORMAL;
-            }
+            } else {
 
-            // check if the pawn is doing an `En passant`
-            int eateeYPos = getY() - toY > 0 ? toY + 1 : toY - 1;
-            if (!board[toY][toX].empty() || board[eateeYPos][toX].empty())
-                return MoveType.IMPOSSIBLE;
+                // check if the pawn is doing an `En passant`
+                int eateeYPos = getY() - toY > 0 ? toY + 1 : toY - 1;
+                if (!board[toY][toX].empty() || board[eateeYPos][toX].empty())
+                    return MoveType.IMPOSSIBLE;
 
-            Piece eatee = board[eateeYPos][toX].getPiece();
-            if (eatee.getType() == PieceType.PAWN && eatee.getColor() != getColor() && (turn - eatee.getLastTurnPlayed()) == 1) {
-                movement = MoveType.EN_PASSANT;
+                Piece eatee = board[eateeYPos][toX].getPiece();
+                if (eatee.getType() == PieceType.PAWN && eatee.getColor() != getColor() && (turn - eatee.getLastTurnPlayed()) == 1) {
+                    movement = MoveType.EN_PASSANT;
+                }
             }
         }
 
@@ -60,8 +61,6 @@ public class Pawn extends Piece {
         if(isPromotable(toY)){
             movement = MoveType.PROMOTION;
         }
-
-
 
         if (movement != MoveType.IMPOSSIBLE) {
             // update the last turn the current pawn was played
