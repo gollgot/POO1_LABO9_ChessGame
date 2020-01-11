@@ -7,6 +7,10 @@ import engine.movements.Move;
 
 public class Knight extends Piece {
 
+    /**
+     * Constructor
+     * @param color The Piece color
+     */
     public Knight(PlayerColor color) {
         super(
                 PieceType.KNIGHT,
@@ -16,6 +20,14 @@ public class Knight extends Piece {
         );
     }
 
+    /**
+     * Check if the move is valid
+     * @param board The current board game
+     * @param toX ToX coordinate
+     * @param toY ToY coordinate
+     * @param turn The turn (begin to 1 (white))
+     * @return True if the move is valid, false otherwise
+     */
     public MoveType isValidMove(Cell[][] board, int toX, int toY, int turn) {
         int yGap = getY() - toY;
         int xGap = getX() - toX;

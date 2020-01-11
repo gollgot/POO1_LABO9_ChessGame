@@ -14,6 +14,13 @@ public abstract class Piece implements ChessView.UserChoice {
     private Move[] moves;
     private int lastPlayedTurn;
 
+    /**
+     * Piece constructor
+     * @param type The Piece type
+     * @param color The Piece color
+     * @param moves All moves that the Piece can do
+     * @param distance The maximum distance that the Piece can move
+     */
     public Piece(PieceType type, PlayerColor color, Move[] moves, int distance) {
         this.color = color;
         this.type = type;
@@ -24,16 +31,22 @@ public abstract class Piece implements ChessView.UserChoice {
         }
     }
 
+    /**
+     * Check if the move is valid
+     * @param board The current board game
+     * @param toX ToX coordinate
+     * @param toY ToY coordinate
+     * @param turn The turn (begin to 1 (white))
+     * @return True if the move is valid, false otherwise
+     */
     public MoveType isValidMove(Cell[][] board, int toX, int toY, int turn) {
-
         // Check normal move
         for (Move move : getMoves()) {
-            if (move.isPathClear(board, getX(), getY(), toX, toY, getDistance(), getColor()) && move.isDestinationOccupied(board, toX, toY, getColor())) {
+            if (move.isPathClear(board, getX(), getY(), toX, toY, getDistance(), getColor()) && move.isDestinationTakable(board, toX, toY, getColor())) {
                 lastPlayedTurn = turn;
                 return MoveType.NORMAL;
             }
         }
-
         return MoveType.IMPOSSIBLE;
     }
 
@@ -54,12 +67,6 @@ public abstract class Piece implements ChessView.UserChoice {
         return moves;
     }
 
-    /*
-    public boolean isAlreadyMoved(){
-        return alreadyMoved;
-    }
-     */
-
     public int getX() {
         return cell.getX();
     }
@@ -76,12 +83,6 @@ public abstract class Piece implements ChessView.UserChoice {
     public void setCell(Cell cell) {
         this.cell = cell;
     }
-
-    /*
-    public void setAlreadyMoved(boolean b){
-        this.alreadyMoved = b;
-    }
-     */
 
     public void setLastPlayedTurn(int turn) {
         this.lastPlayedTurn = turn;

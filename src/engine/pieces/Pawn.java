@@ -9,6 +9,11 @@ import engine.movements.Move;
 import engine.movements.Vertical;
 
 public class Pawn extends Restricted {
+
+    /**
+     * Constructor
+     * @param color The Piece color
+     */
     public Pawn(PlayerColor color) {
         super(
                 PieceType.PAWN,
@@ -20,6 +25,14 @@ public class Pawn extends Restricted {
         );
     }
 
+    /**
+     * Check if the move is valid
+     * @param board The current board game
+     * @param toX ToX coordinate
+     * @param toY ToY coordinate
+     * @param turn The turn (begin to 1 (white))
+     * @return True if the move is valid, false otherwise
+     */
     public MoveType isValidMove(Cell[][] board, int toX, int toY, int turn) {
         MoveType movement = MoveType.IMPOSSIBLE;
         int distance = alreadyMoved() ? getDistance() : 2; // First time, can move a distance 2
@@ -54,6 +67,14 @@ public class Pawn extends Restricted {
         return movement;
     }
 
+    /**
+     * Check if the move is a special move and return it
+     * @param board The current game board
+     * @param toX The toX coordinate
+     * @param toY The toY coordinate
+     * @param turn The turn (begin to 1 (white))
+     * @return The type of move that is playing (possibly special)
+     */
     private MoveType specialMove(Cell[][] board, int toX, int toY, int turn) {
         Diagonal topLeft = new Diagonal(Direction.DIAG_TOP_LEFT);
         Diagonal topRight = new Diagonal(Direction.DIAG_TOP_RIGHT);
@@ -72,10 +93,23 @@ public class Pawn extends Restricted {
         return MoveType.IMPOSSIBLE;
     }
 
+    /**
+     * Check if the target cell can be eat
+     * @param targetCell The target Cell
+     * @return True if the target cell can be eat, false otherwise
+     */
     private boolean eating(Cell targetCell) {
         return !targetCell.empty() && targetCell.getPiece().getColor() != getColor();
     }
 
+    /**
+     * Check if the move is a "enPassant" move
+     * @param board The current game board
+     * @param toX The toX coordinate
+     * @param toY The toY coordinate
+     * @param turn The turn (begin to 1 (white))
+     * @return True if the move is "enPassant", false otherwise
+     */
     private boolean enPassant(Cell[][] board, int toX, int toY, int turn) {
         // check if the pawn is doing an `En passant`
         int eateeYPos = getY() - toY > 0 ? toY + 1 : toY - 1;
@@ -90,6 +124,11 @@ public class Pawn extends Restricted {
         return false;
     }
 
+    /**
+     * Check if the move is a "promotable"
+     * @param targetCell The target Cell
+     * @return True if the move is "promotable", false otherwise
+     */
     private boolean promotable(Cell targetCell) {
         int lastRow = getColor() == PlayerColor.WHITE ? 7 : 0;
         return targetCell.getY() == lastRow && getY() == Math.abs(lastRow - 1);
