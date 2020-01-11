@@ -5,6 +5,9 @@ import chess.ChessView;
 import chess.PlayerColor;
 import engine.pieces.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class ChessBoardController implements ChessController {
     private static final int dimension = 8;
     private ChessView view;
@@ -13,6 +16,9 @@ public class ChessBoardController implements ChessController {
     private Piece whiteKing;
     private Piece blackKing;
 
+    /**
+     * Constructor, create the board with 8 * 8 Cell object
+     */
     public ChessBoardController() {
         board = new Cell[8][8];
         for (int row = 0; row < dimension; ++row) {
@@ -20,6 +26,7 @@ public class ChessBoardController implements ChessController {
                 board[row][col] = new Cell(col, row);
             }
         }
+        // Careful that our board is board[row][col] => board[y][x] (don't inverse)
     }
 
     @Override
@@ -88,6 +95,14 @@ public class ChessBoardController implements ChessController {
         return true;
     }
 
+    /**
+     * Specific board game update for castling movement type
+     * @param k The king which do the castle move
+     * @param castleType The castle type (KING_SIDE_CASTLE or QUEEN_SIDE_CASTLE)
+     * @param toX To X coordinate
+     * @param toY To Y coordinates
+     * @return True if castle move is correct false otherwise
+     */
     private boolean doCastle(King k, MoveType castleType, int toX, int toY) {
         Cell kingOgCell = board[k.getY()][k.getX()];
         // get the kings next cells
@@ -138,6 +153,12 @@ public class ChessBoardController implements ChessController {
         return true;
     }
 
+    /**
+     * Specific board game update for "en passant" movement type
+     * @param fromY From Y coordinate
+     * @param toX To X coordinate
+     * @param toY To Y coordinate
+     */
     private void doEnPasant(int fromY, int toX, int toY) {
         int eateeYPos = fromY - toY > 0 ? toY + 1 : toY - 1;
         Cell eateeCell = board[eateeYPos][toX];
@@ -146,7 +167,12 @@ public class ChessBoardController implements ChessController {
         view.removePiece(eateeCell.getX(), eateeCell.getY());
     }
 
+    /**
+     * Specific board game update for the promotion movement type
+     * @param p The Piece object which doing the promotion
+     */
     private void doPromotion(Piece p) {
+        // New piece suggestions
         Piece queen = new Queen(p.getColor());
         Piece knight = new Knight(p.getColor());
         Piece rook = new Rook(p.getColor());
@@ -161,8 +187,12 @@ public class ChessBoardController implements ChessController {
         view.putPiece(selectedPiece.getType(), selectedPiece.getColor(), selectedPiece.getX(), selectedPiece.getY());
     }
 
+    /**
+     * Check if a king (inverse color of the opponent color) is check
+     * @param opponentColor The color of the opponent
+     * @return True if the king is check, false otherwise
+     */
     private boolean isKingCheck(PlayerColor opponentColor) {
-        // Check chess to king
         Piece king = opponentColor == PlayerColor.BLACK ? whiteKing : blackKing;
         for (int row = 0; row < dimension; ++row) {
             for (int col = 0; col < dimension; ++col) {
@@ -179,6 +209,11 @@ public class ChessBoardController implements ChessController {
         return false;
     }
 
+    /**
+     * Return the color of the opponent
+     * @param color The current player
+     * @return The color of the opponent
+     */
     private PlayerColor getOpponentColor(PlayerColor color) {
         return color == PlayerColor.WHITE ? PlayerColor.BLACK : PlayerColor.WHITE;
     }
@@ -188,6 +223,7 @@ public class ChessBoardController implements ChessController {
         // set turn number to 1
         turn = 1;
 
+        // Remove all piece on the board
         for (int row = 0; row < dimension; ++row) {
             for (int col = 0; col < dimension; ++col) {
                 Cell currentCell = board[row][col];
@@ -208,67 +244,56 @@ public class ChessBoardController implements ChessController {
             view.putPiece(pawnBlack.getType(), pawnBlack.getColor(), col, 6);
         }
 
-        // Rook
-        Piece rookWhite1 = new Rook(PlayerColor.WHITE);
-        Piece rookWhite2 = new Rook(PlayerColor.WHITE);
-        Piece rookBlack1 = new Rook(PlayerColor.BLACK);
-        Piece rookBlack2 = new Rook(PlayerColor.BLACK);
-        // Knight
-        Piece knightWhite1 = new Knight(PlayerColor.WHITE);
-        Piece knightWhite2 = new Knight(PlayerColor.WHITE);
-        Piece knightBlack1 = new Knight(PlayerColor.BLACK);
-        Piece knightBlack2 = new Knight(PlayerColor.BLACK);
-        // Bishop
-        Piece bishopWhite1 = new Bishop(PlayerColor.WHITE);
-        Piece bishopWhite2 = new Bishop(PlayerColor.WHITE);
-        Piece bishopBlack1 = new Bishop(PlayerColor.BLACK);
-        Piece bishopBlack2 = new Bishop(PlayerColor.BLACK);
-        // Queen
-        Piece queenWhite = new Queen(PlayerColor.WHITE);
-        Piece queenBlack = new Queen(PlayerColor.BLACK);
-        // King
+
         whiteKing = new King(PlayerColor.WHITE);
         blackKing = new King(PlayerColor.BLACK);
 
-        // Add white pieces on the board
-        board[0][0].addPiece(rookWhite1);
-        board[0][1].addPiece(knightWhite1);
-        board[0][2].addPiece(bishopWhite1);
-        board[0][3].addPiece(queenWhite);
-        board[0][4].addPiece(whiteKing);
-        board[0][5].addPiece(bishopWhite2);
-        board[0][6].addPiece(knightWhite2);
-        board[0][7].addPiece(rookWhite2);
+        // White pieces
+        ArrayList<Piece> whitePieces = new ArrayList<>(
+            Arrays.asList(
+                new Rook(PlayerColor.WHITE),
+                new Knight(PlayerColor.WHITE),
+                new Bishop(PlayerColor.WHITE),
+                new Queen(PlayerColor.WHITE),
+                whiteKing,
+                new Bishop(PlayerColor.WHITE),
+                new Knight(PlayerColor.WHITE),
+                new Rook(PlayerColor.WHITE)
+            )
+        );
 
-        // Add black pieces on the board
-        board[7][0].addPiece(rookBlack1);
-        board[7][1].addPiece(knightBlack1);
-        board[7][2].addPiece(bishopBlack1);
-        board[7][3].addPiece(queenBlack);
-        board[7][4].addPiece(blackKing);
-        board[7][5].addPiece(bishopBlack2);
-        board[7][6].addPiece(knightBlack2);
-        board[7][7].addPiece(rookBlack2);
+        // Black pieces
+        ArrayList<Piece> blackPieces = new ArrayList<>(
+            Arrays.asList(
+                new Rook(PlayerColor.BLACK),
+                new Knight(PlayerColor.BLACK),
+                new Bishop(PlayerColor.BLACK),
+                new Queen(PlayerColor.BLACK),
+                blackKing,
+                new Bishop(PlayerColor.BLACK),
+                new Knight(PlayerColor.BLACK),
+                new Rook(PlayerColor.BLACK)
+            )
+        );
 
-        // Display white pieces
-        view.putPiece(rookWhite1.getType(), rookWhite1.getColor(), 0, 0);
-        view.putPiece(knightWhite1.getType(), knightWhite1.getColor(), 1, 0);
-        view.putPiece(bishopWhite1.getType(), bishopWhite1.getColor(), 2, 0);
-        view.putPiece(queenWhite.getType(), queenWhite.getColor(), 3, 0);
-        view.putPiece(whiteKing.getType(), whiteKing.getColor(), 4, 0);
-        view.putPiece(bishopWhite2.getType(), bishopWhite2.getColor(), 5, 0);
-        view.putPiece(knightWhite2.getType(), knightWhite2.getColor(), 6, 0);
-        view.putPiece(rookWhite2.getType(), rookWhite2.getColor(), 7, 0);
+        // Add all white pieces on the board and display them
+        for(int i = 0; i < dimension; ++i){
+            Piece p = whitePieces.get(i);
+            // Add piece on the board
+            board[0][i].addPiece(p);
+            // Display piece
+            view.putPiece(p.getType(), p.getColor(), i, 0);
+        }
 
-        // Display black pieces
-        view.putPiece(rookBlack1.getType(), rookBlack1.getColor(), 0, 7);
-        view.putPiece(knightBlack1.getType(), knightBlack2.getColor(), 1, 7);
-        view.putPiece(bishopBlack1.getType(), bishopBlack2.getColor(), 2, 7);
-        view.putPiece(queenBlack.getType(), queenBlack.getColor(), 3, 7);
-        view.putPiece(blackKing.getType(), blackKing.getColor(), 4, 7);
-        view.putPiece(bishopBlack2.getType(), bishopBlack2.getColor(), 5, 7);
-        view.putPiece(knightBlack2.getType(), knightBlack2.getColor(), 6, 7);
-        view.putPiece(rookBlack2.getType(), rookBlack2.getColor(), 7, 7);
+        // Add all black pieces on the board and display them
+        for(int i = 0; i < dimension; ++i){
+            Piece p = blackPieces.get(i);
+            // Add piece on the board
+            board[7][i].addPiece(p);
+            // Display piece
+            view.putPiece(p.getType(), p.getColor(), i, 7);
+        }
+
     }
 
 }
