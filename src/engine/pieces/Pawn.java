@@ -33,14 +33,21 @@ public class Pawn extends Restricted {
             }
         }
 
-        // if the move isn't a normal, it's could ba a special
+        // if the move isn't a normal, it's could ba special :o
         movement = movement != MoveType.NORMAL ? specialMove(board, toX, toY, turn) : movement;
 
+
         if (movement != MoveType.IMPOSSIBLE) {
+
+            // the movement might result into a promotion
+            // such a lucky pawn
+            if (promotable(board[toY][toX]))
+                movement = MoveType.PROMOTION;
+
             // update the last turn the current pawn was played
             setLastPlayedTurn(turn);
 
-            // if it's the pawns first movement, update already move flag
+            // if it's the pawns first movement, update movement flag
             if (!alreadyMoved()) setMoved(true);
         }
 
@@ -61,9 +68,6 @@ public class Pawn extends Restricted {
             if (enPassant(board, toX, toY, turn))
                 return MoveType.EN_PASSANT;
         }
-
-        if (promotable(toY))
-            return MoveType.PROMOTION;
 
         return MoveType.IMPOSSIBLE;
     }
@@ -86,9 +90,9 @@ public class Pawn extends Restricted {
         return false;
     }
 
-    private boolean promotable(int toY){
+    private boolean promotable(Cell targetCell) {
         int lastRow = getColor() == PlayerColor.WHITE ? 7 : 0;
-        return toY == lastRow && getY() == Math.abs(lastRow - 1);
+        return targetCell.getY() == lastRow && getY() == Math.abs(lastRow - 1);
     }
 
     @Override

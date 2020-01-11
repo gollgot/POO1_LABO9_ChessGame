@@ -152,7 +152,9 @@ public class ChessBoardController implements ChessController {
         Piece rook = new Rook(p.getColor());
         Piece bishop = new Bishop(p.getColor());
 
-        Piece selectedPiece = view.askUser("Promotion", "Sélectionnez la pièce de promotion", queen, knight, rook, bishop);
+        Piece selectedPiece = view.askUser(
+                "Promotion", "Choose to which piece you wish to promote to", queen, knight, rook, bishop
+        );
         board[p.getY()][p.getX()].removePiece();
         board[p.getY()][p.getX()].addPiece(selectedPiece);
         view.removePiece(p.getX(), p.getY());
