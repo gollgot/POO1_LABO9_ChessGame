@@ -5,7 +5,7 @@ import chess.PlayerColor;
 import engine.Cell;
 import engine.movements.*;
 
-public class King extends Piece {
+public class King extends Restricted {
 
     public King(PlayerColor color){
         super(
@@ -39,48 +39,43 @@ public class King extends Piece {
             }
 
             // Update already move only for the first move we did
-            if(move != MoveType.IMPOSSIBLE && !isAlreadyMoved()){
-                setAlreadyMoved(true);
+            if(move != MoveType.IMPOSSIBLE && !alreadyMoved()){
+                setMoved(true);
             }
         }
 
         return move;
     }
 
-    private boolean isKingSideCastle(Cell[][] board, int fromX, int fromY, int toX, int toY){
-        if(!isAlreadyMoved()){
-            Cell rookCell = board[getY()][7];
-            Move rightMove = new Horizontal(Direction.RIGHT);
-            if(
-                    !rookCell.empty() &&
-                    rookCell.getPiece().getType() == PieceType.ROOK &&
-                    !rookCell.getPiece().isAlreadyMoved() &&
-                    toX == 6 && toY == getY() &&
-                    rightMove.isClickedCellAndWayValid(board, fromX, fromY, rookCell.getX(), rookCell.getY(), 8, getColor())
-            ){
-                return true;
-            }
-        }
+    private boolean isCastle(Cell[][] board, Cell rookCell, Move move, int fromX, int fromY) {
+        if (rookCell.empty() || rookCell.getPiece().getType() != PieceType.ROOK)
+            return false;
 
-        return false;
+        Rook rook = (Rook)rookCell.getPiece();
+
+        if (rook.alreadyMoved()) return false;
+
+        return move.isClickedCellAndWayValid(
+                board, fromX, fromY, rookCell.getX(), rookCell.getY(), 8, getColor()
+        );
+    }
+
+    private boolean isKingSideCastle(Cell[][] board, int fromX, int fromY, int toX, int toY){
+        if (alreadyMoved() || (toX != 6 && toY != getY())) return false;
+
+        Cell rookCell = board[getY()][7];
+        Move rightMove = new Horizontal(Direction.RIGHT);
+
+        return isCastle(board, rookCell, rightMove, fromX, fromY);
     }
 
     private boolean isQueenSideCastle(Cell[][] board, int fromX, int fromY, int toX, int toY){
-        if(!isAlreadyMoved()) {
-            Cell rookCell = board[getY()][0];
-            Move leftMove = new Horizontal(Direction.LEFT);
-            if(
-                    !rookCell.empty() &&
-                    rookCell.getPiece().getType() == PieceType.ROOK &&
-                    !rookCell.getPiece().isAlreadyMoved() &&
-                    toX == 2 && toY == getY() &&
-                    leftMove.isClickedCellAndWayValid(board, fromX, fromY, rookCell.getX(), rookCell.getY(), 8, getColor())
-            ){
-                return true;
-            }
-        }
+        if (alreadyMoved() || (toX != 2 && toY != getY())) return false;
 
-        return false;
+        Cell rookCell = board[getY()][0];
+        Move leftMove = new Horizontal(Direction.LEFT);
+
+        return isCastle(board, rookCell, leftMove, fromX, fromY);
     }
 
 

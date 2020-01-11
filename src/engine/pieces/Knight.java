@@ -23,7 +23,7 @@ public class Knight extends Piece {
         Cell toCell = board[toY][toX];
         if ((Math.abs(yGap) == 2 && Math.abs(xGap) == 1 || Math.abs(xGap) == 2 && Math.abs(yGap) == 1) &&
                 (toCell.empty() || toCell.getPiece().getColor() != getColor())) {
-            setLastTurnPlayed(turn);
+            setLastPlayedTurn(turn);
             return MoveType.NORMAL;
         }
 

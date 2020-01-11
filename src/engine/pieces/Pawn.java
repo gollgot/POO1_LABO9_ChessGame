@@ -8,7 +8,7 @@ import engine.movements.Direction;
 import engine.movements.Move;
 import engine.movements.Vertical;
 
-public class Pawn extends Piece {
+public class Pawn extends Restricted {
     public Pawn(PlayerColor color) {
         super(
                 PieceType.PAWN,
@@ -22,7 +22,7 @@ public class Pawn extends Piece {
 
     public MoveType isValidMove(Cell[][] board, int toX, int toY, int turn) {
         MoveType movement = MoveType.IMPOSSIBLE;
-        int distance = isAlreadyMoved() ? getDistance() : 2; // First time, can move a distance 2
+        int distance = alreadyMoved() ? getDistance() : 2; // First time, can move a distance 2
 
         // Check normal move
         for (Move move : getMoves()) {
@@ -41,7 +41,7 @@ public class Pawn extends Piece {
                 topRight.isClickedCellAndWayValid(board, getX(), getY(), toX, toY, getDistance(), getColor())) {
 
             // check if the pawn is eating another piece
-            if (!board[toY][toX].empty() && board[toY][toX].getPiece().getColor() != getColor()) {
+            if (eating(board[toY][toX])) {
                 movement = MoveType.NORMAL;
             } else {
 
@@ -51,30 +51,49 @@ public class Pawn extends Piece {
                     return MoveType.IMPOSSIBLE;
 
                 Piece eatee = board[eateeYPos][toX].getPiece();
-                if (eatee.getType() == PieceType.PAWN && eatee.getColor() != getColor() && (turn - eatee.getLastTurnPlayed()) == 1) {
+                if (eatee.getType() == PieceType.PAWN && eatee.getColor() != getColor() && (turn - eatee.getLastPlayedTurn()) == 1) {
                     movement = MoveType.EN_PASSANT;
                 }
             }
         }
-
         // Check promotion move type
-        else if(isPromotable(toY)){
+        else if(promotable(toY)){
             movement = MoveType.PROMOTION;
         }
 
         if (movement != MoveType.IMPOSSIBLE) {
             // update the last turn the current pawn was played
-            setLastTurnPlayed(turn);
+            setLastPlayedTurn(turn);
 
             // if it's the pawns first movement, update already move flag
-            if (!isAlreadyMoved()) setAlreadyMoved(true);
+            if (!alreadyMoved()) setMoved(true);
         }
 
         return movement;
     }
 
 
-    private boolean isPromotable(int toY){
+    private boolean eating(Cell targetCell) {
+        return !targetCell.empty() && targetCell.getPiece().getColor() != getColor();
+    }
+
+    /*
+    private MoveType enPassant(Cell[][] board, int toX, int toY) {
+        // check if the pawn is doing an `En passant`
+        int eateeYPos = getY() - toY > 0 ? toY + 1 : toY - 1;
+        if (!board[toY][toX].empty() || board[eateeYPos][toX].empty())
+            return MoveType.IMPOSSIBLE;
+
+        Piece eatee = board[eateeYPos][toX].getPiece();
+        if (eatee.getType() == PieceType.PAWN && eatee.getColor() != getColor() && (turn - eatee.getLastPlayedTurn()) == 1) {
+            return MoveType.EN_PASSANT;
+        }
+
+        return MoveType.IMPOSSIBLE;
+    }
+     */
+
+    private boolean promotable(int toY){
         int lastRow = getColor() == PlayerColor.WHITE ? 7 : 0;
         return toY == lastRow && getY() == Math.abs(lastRow - 1);
     }

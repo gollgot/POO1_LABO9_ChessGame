@@ -54,13 +54,13 @@ public class ChessBoardController implements ChessController {
                     fromCell.removePiece();
                     toCell.addPiece(p);
 
-                    // The move will cause a chess -> restore the move and try another move
+                    // The move will cause a check -> restore the move and try another move
                     if(isKingChess(colorDoingChess)){
                         toCell.removePiece();
                         fromCell.addPiece(p);
                         return false;
                     }
-                    // The move defend a chess or doesn't cause a chess-> update the view with the move and continue
+                    // The move defend a check or doesn't cause a check -> update the view with the move and continue
                     else{
                         kingIsChess = false;
                         view.displayMessage("");
@@ -78,7 +78,7 @@ public class ChessBoardController implements ChessController {
                     }
                     // Specific board game update for castling movetype
                     else if (move == MoveType.KING_SIDE_CASTLE || move == MoveType.QUEEN_SIDE_CASTLE) {
-                        Cell oldRookCell = move == MoveType.KING_SIDE_CASTLE ? board[p.getY()][p.getX() + 1] : board[p.getY()][p.getX() - 2];
+                        Cell oldRookCell = move == MoveType.KING_SIDE_CASTLE ? board[p.getY()][p.getX() + 1] : board[p.getY()][p.getX() - 1];
                         Cell newRookCell = move == MoveType.KING_SIDE_CASTLE ? board[p.getY()][p.getX() - 1] : board[p.getY()][p.getX() + 1];
                         // Add new rook on the board
                         newRookCell.addPiece(oldRookCell.getPiece());

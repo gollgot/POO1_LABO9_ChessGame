@@ -12,8 +12,7 @@ public abstract class Piece implements ChessView.UserChoice {
     private PieceType type;
     private int distance;
     private Move[] moves;
-    private boolean alreadyMoved = false;
-    private int lastTurnPlayed;
+    private int lastPlayedTurn;
 
     public Piece(PieceType type, PlayerColor color, Move[] moves, int distance) {
         this.color = color;
@@ -26,16 +25,11 @@ public abstract class Piece implements ChessView.UserChoice {
     }
 
     public MoveType isValidMove(Cell[][] board, int toX, int toY, int turn) {
-        boolean isValidMove = false;
 
         // Check normal move
         for (Move move : getMoves()) {
             if (move.isClickedCellAndWayValid(board, getX(), getY(), toX, toY, getDistance(), getColor()) && move.isLastCellEmptyOrEatable(board, toX, toY, getColor())) {
-                lastTurnPlayed = turn;
-
-                // Update already move only for the first move we did
-                if (!isAlreadyMoved()) setAlreadyMoved(true);
-
+                lastPlayedTurn = turn;
                 return MoveType.NORMAL;
             }
         }
@@ -60,9 +54,11 @@ public abstract class Piece implements ChessView.UserChoice {
         return moves;
     }
 
+    /*
     public boolean isAlreadyMoved(){
         return alreadyMoved;
     }
+     */
 
     public int getX() {
         return cell.getX();
@@ -72,8 +68,8 @@ public abstract class Piece implements ChessView.UserChoice {
         return cell.getY();
     }
 
-    public int getLastTurnPlayed() {
-        return lastTurnPlayed;
+    public int getLastPlayedTurn() {
+        return lastPlayedTurn;
     }
 
     // Setters
@@ -81,12 +77,14 @@ public abstract class Piece implements ChessView.UserChoice {
         this.cell = cell;
     }
 
+    /*
     public void setAlreadyMoved(boolean b){
         this.alreadyMoved = b;
     }
+     */
 
-    public void setLastTurnPlayed(int turn) {
-        this.lastTurnPlayed = turn;
+    public void setLastPlayedTurn(int turn) {
+        this.lastPlayedTurn = turn;
     }
 
 }

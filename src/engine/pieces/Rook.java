@@ -8,7 +8,7 @@ import engine.movements.Horizontal;
 import engine.movements.Move;
 import engine.movements.Vertical;
 
-public class Rook extends Piece {
+public class Rook extends Restricted {
 
     public Rook(PlayerColor color){
         super(
