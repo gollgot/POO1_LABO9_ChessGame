@@ -7,7 +7,7 @@ import engine.movements.*;
 
 public class King extends Restricted {
 
-    public King(PlayerColor color){
+    public King(PlayerColor color) {
         super(
                 PieceType.KING,
                 color,
@@ -30,16 +30,16 @@ public class King extends Restricted {
         MoveType move = super.isValidMove(board, toX, toY, turn);
 
         // Check specific move if normal failed
-        if(move == MoveType.IMPOSSIBLE){
+        if (move == MoveType.IMPOSSIBLE) {
             // Check castling
-            if(isKingSideCastle(board, getX(), getY(), toX, toY)){
+            if (isKingSideCastle(board, getX(), getY(), toX, toY)) {
                 move = MoveType.KING_SIDE_CASTLE;
-            }else if(isQueenSideCastle(board, getX(), getY(), toX, toY)){
+            } else if (isQueenSideCastle(board, getX(), getY(), toX, toY)) {
                 move = MoveType.QUEEN_SIDE_CASTLE;
             }
 
             // Update already move only for the first move we did
-            if(move != MoveType.IMPOSSIBLE && !alreadyMoved()){
+            if (move != MoveType.IMPOSSIBLE && !alreadyMoved()) {
                 setMoved(true);
             }
         }
@@ -51,7 +51,7 @@ public class King extends Restricted {
         if (rookCell.empty() || rookCell.getPiece().getType() != PieceType.ROOK)
             return false;
 
-        Rook rook = (Rook)rookCell.getPiece();
+        Rook rook = (Rook) rookCell.getPiece();
 
         if (rook.alreadyMoved()) return false;
 
@@ -60,7 +60,7 @@ public class King extends Restricted {
         );
     }
 
-    private boolean isKingSideCastle(Cell[][] board, int fromX, int fromY, int toX, int toY){
+    private boolean isKingSideCastle(Cell[][] board, int fromX, int fromY, int toX, int toY) {
         if (alreadyMoved() || (toX != 6 && toY != getY())) return false;
 
         Cell rookCell = board[getY()][7];
@@ -69,8 +69,8 @@ public class King extends Restricted {
         return isCastle(board, rookCell, rightMove, fromX, fromY);
     }
 
-    private boolean isQueenSideCastle(Cell[][] board, int fromX, int fromY, int toX, int toY){
-        if (alreadyMoved() || (toX != 2 && toY != getY())) return false;
+    private boolean isQueenSideCastle(Cell[][] board, int fromX, int fromY, int toX, int toY) {
+        if (alreadyMoved() || (toX != 3 && toY != getY())) return false;
 
         Cell rookCell = board[getY()][0];
         Move leftMove = new Horizontal(Direction.LEFT);
