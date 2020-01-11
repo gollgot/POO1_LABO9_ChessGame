@@ -185,7 +185,6 @@ public class ChessBoardController implements ChessController {
     public void newGame() {
         // set turn number to 1
         turn = 1;
-        kingIsChess = false;
 
         for (int row = 0; row < dimension; ++row) {
             for (int col = 0; col < dimension; ++col) {
