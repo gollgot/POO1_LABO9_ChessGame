@@ -118,7 +118,8 @@ public class King extends Restricted {
     }
 
     @Override
-    public String textValue() {
+    public String toString() {
         return "King";
     }
+
 }

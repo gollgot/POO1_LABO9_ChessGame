@@ -43,7 +43,8 @@ public class Knight extends Piece {
     }
 
     @Override
-    public String textValue() {
+    public String toString() {
         return "Knight";
     }
+
 }

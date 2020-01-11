@@ -52,8 +52,8 @@ public class ChessBoardController implements ChessController {
         }
 
         // Odd turn is white player and even is black (turn begin to 1)
-        //if(turn % 2 == 1 && p.getColor() != PlayerColor.WHITE || turn % 2 == 0 && p.getColor() != PlayerColor.BLACK)
-        //return false;
+        if(turn % 2 == 1 && p.getColor() != PlayerColor.WHITE || turn % 2 == 0 && p.getColor() != PlayerColor.BLACK)
+            return false;
 
         MoveType move = p.isValidMove(board, toX, toY, turn);
 

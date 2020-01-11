@@ -28,7 +28,8 @@ public class Rook extends Restricted {
     }
 
     @Override
-    public String textValue() {
+    public String toString() {
         return "Rook";
     }
+
 }

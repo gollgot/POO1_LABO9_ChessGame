@@ -135,7 +135,8 @@ public class Pawn extends Restricted {
     }
 
     @Override
-    public String textValue() {
+    public String toString() {
         return "Pawn";
     }
+
 }

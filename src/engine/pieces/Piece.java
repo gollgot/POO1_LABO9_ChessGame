@@ -88,4 +88,9 @@ public abstract class Piece implements ChessView.UserChoice {
         this.lastPlayedTurn = turn;
     }
 
+
+    @Override
+    public String textValue() {
+        return toString();
+    }
 }

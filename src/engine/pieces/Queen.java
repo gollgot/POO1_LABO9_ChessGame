@@ -29,7 +29,8 @@ public class Queen extends Piece {
     }
 
     @Override
-    public String textValue() {
+    public String toString() {
         return "Queen";
     }
+
 }
