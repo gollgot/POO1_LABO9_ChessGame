@@ -32,6 +32,6 @@ public class Knight extends Piece {
 
     @Override
     public String textValue() {
-        return "Cavalier";
+        return "Knight";
     }
 }

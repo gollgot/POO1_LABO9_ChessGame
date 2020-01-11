@@ -25,6 +25,6 @@ public class Rook extends Restricted {
 
     @Override
     public String textValue() {
-        return "Tour";
+        return "Rook";
     }
 }

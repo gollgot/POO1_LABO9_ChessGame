@@ -81,6 +81,6 @@ public class King extends Restricted {
 
     @Override
     public String textValue() {
-        return "Roi";
+        return "King";
     }
 }

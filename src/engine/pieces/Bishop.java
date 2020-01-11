@@ -24,6 +24,6 @@ public class Bishop extends Piece {
 
     @Override
     public String textValue() {
-        return "Fou";
+        return "Bishop";
     }
 }

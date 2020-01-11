@@ -93,6 +93,6 @@ public class Pawn extends Restricted {
 
     @Override
     public String textValue() {
-        return "Pion";
+        return "Pawn";
     }
 }
