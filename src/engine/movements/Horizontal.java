@@ -7,6 +7,10 @@ public class Horizontal implements Move {
 
     private Direction direction;
 
+    /**
+     * Constructor
+     * @param direction The Direction for which we want to move
+     */
     public Horizontal(Direction direction) {
         if (direction != Direction.LEFT && direction != Direction.RIGHT) {
             throw new RuntimeException("Horizontal move can have only LEFT or RIGHT direction");
@@ -16,7 +20,7 @@ public class Horizontal implements Move {
 
 
     @Override
-    public boolean isDestinationOccupied(Cell[][] board, int toX, int toY, PlayerColor playerColor) {
+    public boolean isDestinationTakable(Cell[][] board, int toX, int toY, PlayerColor playerColor) {
         // Check if the cell we want to go is empty or eatable
         Cell toCell = board[toY][toX];
         return toCell.empty() || toCell.getPiece().getColor() != playerColor;

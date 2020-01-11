@@ -7,16 +7,22 @@ public class Diagonal implements Move {
 
     private Direction direction;
 
+    /**
+     * Constructor
+     * @param direction The Direction for which we want to move
+     */
     public Diagonal(Direction direction) {
         if (direction != Direction.DIAG_TOP_LEFT && direction != Direction.DIAG_TOP_RIGHT &&
                 direction != Direction.DIAG_BOT_LEFT && direction != Direction.DIAG_BOT_RIGHT)
-            throw new RuntimeException("Vertical move can have only UP or DOWN direction");
+            throw new RuntimeException(
+                "Diagonal move can have only DIAG_TOP_LEFT, DIAG_TOP_RIGHT, DIAG_BOT_LEFT, DIAG_BOT_RIGHT direction"
+            );
 
         this.direction = direction;
     }
 
     @Override
-    public boolean isDestinationOccupied(Cell[][] board, int toX, int toY, PlayerColor playerColor) {
+    public boolean isDestinationTakable(Cell[][] board, int toX, int toY, PlayerColor playerColor) {
         // Check if the cell we want to go is empty or eatable
         Cell toCell = board[toY][toX];
         return toCell.empty() || toCell.getPiece().getColor() != playerColor;
