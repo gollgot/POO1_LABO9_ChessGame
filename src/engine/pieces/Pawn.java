@@ -33,33 +33,8 @@ public class Pawn extends Restricted {
             }
         }
 
-        Diagonal topLeft = new Diagonal(Direction.DIAG_TOP_LEFT);
-        Diagonal topRight = new Diagonal(Direction.DIAG_TOP_RIGHT);
-
-        // check if there's a valid diagonal movement
-        if (topLeft.isClickedCellAndWayValid(board, getX(), getY(), toX, toY, getDistance(), getColor()) ||
-                topRight.isClickedCellAndWayValid(board, getX(), getY(), toX, toY, getDistance(), getColor())) {
-
-            // check if the pawn is eating another piece
-            if (eating(board[toY][toX])) {
-                movement = MoveType.NORMAL;
-            } else {
-
-                // check if the pawn is doing an `En passant`
-                int eateeYPos = getY() - toY > 0 ? toY + 1 : toY - 1;
-                if (!board[toY][toX].empty() || board[eateeYPos][toX].empty())
-                    return MoveType.IMPOSSIBLE;
-
-                Piece eatee = board[eateeYPos][toX].getPiece();
-                if (eatee.getType() == PieceType.PAWN && eatee.getColor() != getColor() && (turn - eatee.getLastPlayedTurn()) == 1) {
-                    movement = MoveType.EN_PASSANT;
-                }
-            }
-        }
-        // Check promotion move type
-        else if(promotable(toY)){
-            movement = MoveType.PROMOTION;
-        }
+        // if the move isn't a normal, it's could ba a special
+        movement = movement != MoveType.NORMAL ? specialMove(board, toX, toY, turn) : movement;
 
         if (movement != MoveType.IMPOSSIBLE) {
             // update the last turn the current pawn was played
@@ -72,26 +47,44 @@ public class Pawn extends Restricted {
         return movement;
     }
 
+    private MoveType specialMove(Cell[][] board, int toX, int toY, int turn) {
+        Diagonal topLeft = new Diagonal(Direction.DIAG_TOP_LEFT);
+        Diagonal topRight = new Diagonal(Direction.DIAG_TOP_RIGHT);
+
+        if (topLeft.isClickedCellAndWayValid(board, getX(), getY(), toX, toY, getDistance(), getColor()) ||
+            topRight.isClickedCellAndWayValid(board, getX(), getY(), toX, toY, getDistance(), getColor())) {
+
+            if (eating(board[toY][toX]))
+                return MoveType.NORMAL;
+
+            // check if the pawn is doing an `En passant`
+            if (enPassant(board, toX, toY, turn))
+                return MoveType.EN_PASSANT;
+        }
+
+        if (promotable(toY))
+            return MoveType.PROMOTION;
+
+        return MoveType.IMPOSSIBLE;
+    }
 
     private boolean eating(Cell targetCell) {
         return !targetCell.empty() && targetCell.getPiece().getColor() != getColor();
     }
 
-    /*
-    private MoveType enPassant(Cell[][] board, int toX, int toY) {
+    private boolean enPassant(Cell[][] board, int toX, int toY, int turn) {
         // check if the pawn is doing an `En passant`
         int eateeYPos = getY() - toY > 0 ? toY + 1 : toY - 1;
         if (!board[toY][toX].empty() || board[eateeYPos][toX].empty())
-            return MoveType.IMPOSSIBLE;
+            return false;
 
         Piece eatee = board[eateeYPos][toX].getPiece();
         if (eatee.getType() == PieceType.PAWN && eatee.getColor() != getColor() && (turn - eatee.getLastPlayedTurn()) == 1) {
-            return MoveType.EN_PASSANT;
+            return true;
         }
 
-        return MoveType.IMPOSSIBLE;
+        return false;
     }
-     */
 
     private boolean promotable(int toY){
         int lastRow = getColor() == PlayerColor.WHITE ? 7 : 0;
