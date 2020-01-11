@@ -28,7 +28,7 @@ public abstract class Piece implements ChessView.UserChoice {
 
         // Check normal move
         for (Move move : getMoves()) {
-            if (move.isClickedCellAndWayValid(board, getX(), getY(), toX, toY, getDistance(), getColor()) && move.isLastCellEmptyOrEatable(board, toX, toY, getColor())) {
+            if (move.isPathClear(board, getX(), getY(), toX, toY, getDistance(), getColor()) && move.isDestinationOccupied(board, toX, toY, getColor())) {
                 lastPlayedTurn = turn;
                 return MoveType.NORMAL;
             }

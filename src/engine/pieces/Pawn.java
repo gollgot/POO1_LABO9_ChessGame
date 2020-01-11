@@ -26,7 +26,7 @@ public class Pawn extends Restricted {
 
         // Check normal move
         for (Move move : getMoves()) {
-            if (move.isClickedCellAndWayValid(board, getX(), getY(), toX, toY, distance, getColor()) &&
+            if (move.isPathClear(board, getX(), getY(), toX, toY, distance, getColor()) &&
                     board[toY][toX].empty()) {
                 movement = MoveType.NORMAL;
                 break;
@@ -51,8 +51,8 @@ public class Pawn extends Restricted {
         Diagonal topLeft = new Diagonal(Direction.DIAG_TOP_LEFT);
         Diagonal topRight = new Diagonal(Direction.DIAG_TOP_RIGHT);
 
-        if (topLeft.isClickedCellAndWayValid(board, getX(), getY(), toX, toY, getDistance(), getColor()) ||
-            topRight.isClickedCellAndWayValid(board, getX(), getY(), toX, toY, getDistance(), getColor())) {
+        if (topLeft.isPathClear(board, getX(), getY(), toX, toY, getDistance(), getColor()) ||
+            topRight.isPathClear(board, getX(), getY(), toX, toY, getDistance(), getColor())) {
 
             if (eating(board[toY][toX]))
                 return MoveType.NORMAL;

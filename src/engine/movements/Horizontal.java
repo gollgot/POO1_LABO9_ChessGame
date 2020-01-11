@@ -16,7 +16,7 @@ public class Horizontal implements Move {
 
 
     @Override
-    public boolean isLastCellEmptyOrEatable(Cell[][] board, int toX, int toY, PlayerColor playerColor) {
+    public boolean isDestinationOccupied(Cell[][] board, int toX, int toY, PlayerColor playerColor) {
         // Check if the cell we want to go is empty or eatable
         Cell toCell = board[toY][toX];
         return toCell.empty() || toCell.getPiece().getColor() != playerColor;
@@ -24,7 +24,7 @@ public class Horizontal implements Move {
 
 
     @Override
-    public boolean isClickedCellAndWayValid(Cell[][] board, int fromX, int fromY, int toX, int toY, int distance, PlayerColor playerColor) {
+    public boolean isPathClear(Cell[][] board, int fromX, int fromY, int toX, int toY, int distance, PlayerColor playerColor) {
         // The gap value depends on the direction choose (LEFT our RIGHT)
         int gap = direction == Direction.LEFT ? fromX - toX : toX - fromX;
 

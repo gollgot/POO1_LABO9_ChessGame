@@ -16,14 +16,14 @@ public class Diagonal implements Move {
     }
 
     @Override
-    public boolean isLastCellEmptyOrEatable(Cell[][] board, int toX, int toY, PlayerColor playerColor) {
+    public boolean isDestinationOccupied(Cell[][] board, int toX, int toY, PlayerColor playerColor) {
         // Check if the cell we want to go is empty or eatable
         Cell toCell = board[toY][toX];
         return toCell.empty() || toCell.getPiece().getColor() != playerColor;
     }
 
     @Override
-    public boolean isClickedCellAndWayValid(Cell[][] board, int fromX, int fromY, int toX, int toY, int distance, PlayerColor playerColor) {
+    public boolean isPathClear(Cell[][] board, int fromX, int fromY, int toX, int toY, int distance, PlayerColor playerColor) {
         int horizontalGap = direction == Direction.DIAG_TOP_LEFT || direction == Direction.DIAG_BOT_LEFT ? fromX - toX : toX - fromX;
         int verticalMultiplier = direction == Direction.DIAG_TOP_LEFT || direction == Direction.DIAG_TOP_RIGHT ? 1 : -1;
         int colorMultiplier = playerColor == PlayerColor.WHITE ? 1 : -1;

@@ -55,7 +55,7 @@ public class King extends Restricted {
 
         if (rook.alreadyMoved()) return false;
 
-        return move.isClickedCellAndWayValid(
+        return move.isPathClear(
                 board, fromX, fromY, rookCell.getX(), rookCell.getY(), 8, getColor()
         );
     }
