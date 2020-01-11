@@ -8,7 +8,7 @@ public class Cell {
     private Piece piece;
 
 
-    public Cell(int x, int y){
+    public Cell(int x, int y) {
         this.y = y;
         this.x = x;
     }
@@ -17,11 +17,11 @@ public class Cell {
         return piece == null;
     }
 
-    public void removePiece(){
+    public void removePiece() {
         piece = null;
     }
 
-    public void addPiece(Piece p){
+    public void addPiece(Piece p) {
         piece = p;
         piece.setCell(this);
     }

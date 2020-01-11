@@ -2,7 +2,6 @@ package engine.pieces;
 
 import chess.PieceType;
 import chess.PlayerColor;
-import engine.Cell;
 import engine.movements.Direction;
 import engine.movements.Horizontal;
 import engine.movements.Move;
@@ -10,7 +9,7 @@ import engine.movements.Vertical;
 
 public class Rook extends Restricted {
 
-    public Rook(PlayerColor color){
+    public Rook(PlayerColor color) {
         super(
                 PieceType.ROOK,
                 color,

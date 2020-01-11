@@ -7,12 +7,12 @@ import engine.movements.Move;
 
 public class Knight extends Piece {
 
-    public Knight(PlayerColor color){
+    public Knight(PlayerColor color) {
         super(
-            PieceType.KNIGHT,
-            color,
-            new Move[0],
-            3
+                PieceType.KNIGHT,
+                color,
+                new Move[0],
+                3
         );
     }
 

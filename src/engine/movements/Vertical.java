@@ -7,8 +7,8 @@ public class Vertical implements Move {
 
     private Direction direction;
 
-    public Vertical (Direction direction) {
-        if(direction != Direction.UP && direction != Direction.DOWN){
+    public Vertical(Direction direction) {
+        if (direction != Direction.UP && direction != Direction.DOWN) {
             throw new RuntimeException("Vertical move can have only UP or DOWN direction");
         }
         this.direction = direction;
@@ -33,23 +33,23 @@ public class Vertical implements Move {
         boolean isClickedCellValid = fromX == toX && gap <= distance && gap >= 0;
 
         // Stop here if the clicked cell if wrong
-        if(!isClickedCellValid){
+        if (!isClickedCellValid) {
             return false;
         }
         // Check if no piece is on the vertical way (dont check the last)
-        else{
+        else {
             // Loop through all cell on the gap (except last cell, the one that can maybe be eatable)
-                for(int i = 1; i < gap; ++i){
-                    int row = direction == Direction.UP ? fromY + (i * colorMultiplier): fromY - (i * colorMultiplier);
-                    int col = fromX;
-                    // If the cell is not empty -> error there is a piece on the way
-                    if(!board[row][col].empty()) {
-                        return false;
-                    }
+            for (int i = 1; i < gap; ++i) {
+                int row = direction == Direction.UP ? fromY + (i * colorMultiplier) : fromY - (i * colorMultiplier);
+                int col = fromX;
+                // If the cell is not empty -> error there is a piece on the way
+                if (!board[row][col].empty()) {
+                    return false;
                 }
+            }
 
             return true;
         }
     }
-    
+
 }

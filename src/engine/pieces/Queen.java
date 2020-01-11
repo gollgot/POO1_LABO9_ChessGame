@@ -6,7 +6,7 @@ import engine.movements.*;
 
 public class Queen extends Piece {
 
-    public Queen(PlayerColor color){
+    public Queen(PlayerColor color) {
         super(
                 PieceType.QUEEN,
                 color,

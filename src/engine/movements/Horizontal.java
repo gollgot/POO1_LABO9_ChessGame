@@ -3,12 +3,12 @@ package engine.movements;
 import chess.PlayerColor;
 import engine.Cell;
 
-public class Horizontal implements Move{
+public class Horizontal implements Move {
 
     private Direction direction;
 
     public Horizontal(Direction direction) {
-        if(direction != Direction.LEFT && direction != Direction.RIGHT){
+        if (direction != Direction.LEFT && direction != Direction.RIGHT) {
             throw new RuntimeException("Horizontal move can have only LEFT or RIGHT direction");
         }
         this.direction = direction;
@@ -29,16 +29,16 @@ public class Horizontal implements Move{
         int gap = direction == Direction.LEFT ? fromX - toX : toX - fromX;
 
         boolean isClickedCellValid = fromY == toY && gap <= distance && gap >= 0;
-        if(!isClickedCellValid){
+        if (!isClickedCellValid) {
             return false;
         }
         // Check if no piece is on the horizontal way (dont check the last)
-        else{
-            for (int i = 1; i < gap; ++i){
+        else {
+            for (int i = 1; i < gap; ++i) {
                 int row = fromY;
                 int col = direction == Direction.LEFT ? fromX - i : fromX + i;
                 // If the cell is not empty -> error there is a piece on the way
-                if(!board[row][col].empty()) {
+                if (!board[row][col].empty()) {
                     return false;
                 }
             }
