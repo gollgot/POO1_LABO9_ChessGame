@@ -16,6 +16,9 @@ public class ChessBoardController implements ChessController {
     private Piece whiteKing;
     private Piece blackKing;
 
+    ArrayList<Piece> whitePieces;
+    ArrayList<Piece> blackPieces;
+
     /**
      * Constructor, create the board with 8 * 8 Cell object
      */
@@ -194,16 +197,11 @@ public class ChessBoardController implements ChessController {
      */
     private boolean isKingCheck(PlayerColor opponentColor) {
         Piece king = opponentColor == PlayerColor.BLACK ? whiteKing : blackKing;
-        for (int row = 0; row < dimension; ++row) {
-            for (int col = 0; col < dimension; ++col) {
-                Cell currentCell = board[row][col];
+        ArrayList<Piece> opponents = opponentColor == PlayerColor.BLACK ? blackPieces : whitePieces;
 
-                if (currentCell.empty() || currentCell.getPiece().getColor() == king.getColor())
-                    continue;
-
-                if (currentCell.getPiece().isValidMove(board, king.getX(), king.getY(), turn + 1) != MoveType.IMPOSSIBLE)
-                    return true;
-            }
+        for (Piece opponent : opponents) {
+            if (opponent.isValidMove(board, king.getX(), king.getY(), turn + 1) != MoveType.IMPOSSIBLE)
+                return true;
         }
 
         return false;
@@ -249,7 +247,7 @@ public class ChessBoardController implements ChessController {
         blackKing = new King(PlayerColor.BLACK);
 
         // White pieces
-        ArrayList<Piece> whitePieces = new ArrayList<>(
+        whitePieces = new ArrayList<>(
             Arrays.asList(
                 new Rook(PlayerColor.WHITE),
                 new Knight(PlayerColor.WHITE),
@@ -263,7 +261,7 @@ public class ChessBoardController implements ChessController {
         );
 
         // Black pieces
-        ArrayList<Piece> blackPieces = new ArrayList<>(
+        blackPieces = new ArrayList<>(
             Arrays.asList(
                 new Rook(PlayerColor.BLACK),
                 new Knight(PlayerColor.BLACK),
