@@ -197,13 +197,20 @@ public class ChessBoardController implements ChessController {
      */
     private boolean isKingCheck(PlayerColor opponentColor) {
         Piece king = opponentColor == PlayerColor.BLACK ? whiteKing : blackKing;
-        ArrayList<Piece> opponents = opponentColor == PlayerColor.BLACK ? blackPieces : whitePieces;
 
-        for (Piece opponent : opponents) {
-            if (opponent.isValidMove(board, king.getX(), king.getY(), turn + 1) != MoveType.IMPOSSIBLE)
-                return true;
+        for (int row = 0; row < dimension; ++row) {
+            for (int col = 0; col < dimension; ++col) {
+                Cell currentCell = board[row][col];
+
+                if (currentCell.empty() || currentCell.getPiece().getColor() == king.getColor())
+                    continue;
+
+                if (currentCell.getPiece().isValidMove(board, king.getX(), king.getY(), turn + 1) != MoveType.IMPOSSIBLE)
+                    return true;
+            }
         }
 
+        // no opponents were able to reach the king. He is safe!
         return false;
     }
 
