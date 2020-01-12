@@ -18,7 +18,7 @@ public class Cell {
     }
 
     /**
-     * Check if there is a Piece on the Cell
+     * Check if the Cell is occupied
      * @return True if there is a piece on the Cell, false otherwise
      */
     public boolean empty() {
@@ -29,6 +29,7 @@ public class Cell {
      * Remove the Piece on the cell
      */
     public void removePiece() {
+        piece.setCell(null);
         piece = null;
     }
 
@@ -37,6 +38,8 @@ public class Cell {
      * @param p The Piece that will be add on the Cell
      */
     public void addPiece(Piece p) {
+        if (piece != null)
+            removePiece();
         piece = p;
         piece.setCell(this);
     }

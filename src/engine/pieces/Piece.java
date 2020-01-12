@@ -33,11 +33,11 @@ public abstract class Piece implements ChessView.UserChoice {
 
     /**
      * Check if the move is valid
-     * @param board The current board game
-     * @param toX ToX coordinate
-     * @param toY ToY coordinate
-     * @param turn The turn (begin to 1 (white))
-     * @return True if the move is valid, false otherwise
+     * @param board Board
+     * @param toX Target X coordinate
+     * @param toY Target Y coordinate
+     * @param turn Turn n°
+     * @return True if the move is valid, otherwise false
      */
     public MoveType isValidMove(Cell[][] board, int toX, int toY, int turn) {
         // Check normal move
@@ -79,6 +79,10 @@ public abstract class Piece implements ChessView.UserChoice {
         return lastPlayedTurn;
     }
 
+    public Cell getCell() {
+        return cell;
+    }
+
     // Setters
     public void setCell(Cell cell) {
         this.cell = cell;
@@ -87,7 +91,6 @@ public abstract class Piece implements ChessView.UserChoice {
     public void setLastPlayedTurn(int turn) {
         this.lastPlayedTurn = turn;
     }
-
 
     @Override
     public String textValue() {

@@ -22,11 +22,11 @@ public class Knight extends Piece {
 
     /**
      * Check if the move is valid
-     * @param board The current board game
-     * @param toX ToX coordinate
-     * @param toY ToY coordinate
-     * @param turn The turn (begin to 1 (white))
-     * @return True if the move is valid, false otherwise
+     * @param board Board
+     * @param toX Target X coordinate
+     * @param toY Target Y coordinate
+     * @param turn Turn n°
+     * @return True if the move is valid, otherwise false
      */
     public MoveType isValidMove(Cell[][] board, int toX, int toY, int turn) {
         int yGap = getY() - toY;
