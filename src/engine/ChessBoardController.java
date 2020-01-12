@@ -46,14 +46,9 @@ public class ChessBoardController implements ChessController {
         // Piece doing the move
         Piece p = fromCell.getPiece();
 
-        // Even if we do an invalid move, display the chess if there is one
-        if (isKingCheck(getOpponentColor(p.getColor())))
-            view.displayMessage("Echec");
-
-
         // Odd turn is white player and even is black (turn begin to 1)
-        // if(turn % 2 == 1 && p.getColor() != PlayerColor.WHITE || turn % 2 == 0 && p.getColor() != PlayerColor.BLACK)
-            // return false;
+        if(turn % 2 == 1 && p.getColor() != PlayerColor.WHITE || turn % 2 == 0 && p.getColor() != PlayerColor.BLACK)
+            return false;
 
         MoveType move = p.isValidMove(board, toX, toY, turn);
 
@@ -90,6 +85,10 @@ public class ChessBoardController implements ChessController {
         else if (move == MoveType.PROMOTION) {
             doPromotion(p);
         }
+
+        // check if the castle put the opponents king in check
+        if (isKingCheck(p.getColor()))
+            view.displayMessage("Check");
 
         ++turn;
         return true;
@@ -154,8 +153,11 @@ public class ChessBoardController implements ChessController {
         oldRookCell.removePiece();
         view.removePiece(oldRookCell.getX(), oldRookCell.getY());
 
-        ++turn;
+        // check if the castle put the opponents king in check
+        if (isKingCheck(k.getColor()))
+            view.displayMessage("Check");
 
+        ++turn;
         return true;
     }
 
