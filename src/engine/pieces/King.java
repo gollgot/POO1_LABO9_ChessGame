@@ -45,17 +45,16 @@ public class King extends Restricted {
         // if might by a special move i.e. Castle
         if (move == MoveType.IMPOSSIBLE && !alreadyMoved()) {
             // Check castling
-            if (isKingSideCastle(board, getX(), getY(), toX, toY)) {
+            if (isKingSideCastle(board, toX, toY)) {
                 move = MoveType.KING_SIDE_CASTLE;
-            } else if (isQueenSideCastle(board, getX(), getY(), toX, toY)) {
+            } else if (isQueenSideCastle(board, toX, toY)) {
                 move = MoveType.QUEEN_SIDE_CASTLE;
             }
         }
 
         // if it was the kings first movement, update the flag
-        if (move != MoveType.IMPOSSIBLE && !alreadyMoved()) {
+        if (move != MoveType.IMPOSSIBLE && !alreadyMoved())
             setMoved(true);
-        }
 
         return move;
     }
@@ -65,11 +64,9 @@ public class King extends Restricted {
      * @param board Board
      * @param rookCell The Rook cell
      * @param move Move to check
-     * @param fromX Source X coordinate
-     * @param fromY Source Y coordinate
      * @return True if the move is a castle, otherwise false
      */
-    private boolean isCastle(Cell[][] board, Cell rookCell, Move move, int fromX, int fromY) {
+    private boolean isCastle(Cell[][] board, Cell rookCell, Move move) {
         if (rookCell.empty() || rookCell.getPiece().getType() != PieceType.ROOK)
             return false;
 
@@ -78,44 +75,40 @@ public class King extends Restricted {
         if (rook.alreadyMoved()) return false;
 
         return move.isPathClear(
-                board, fromX, fromY, rookCell.getX(), rookCell.getY(), 8, getColor()
+                board, getX(), getY(), rookCell.getX(), rookCell.getY(), 8, getColor()
         );
     }
 
     /**
      * Check if the wanted move is a King side castle
      * @param board Board
-     * @param fromX Source X coordinate
-     * @param fromY Source Y coordinate
      * @param toX Target X coordinate
      * @param toY Target Y coordinate
      * @return True if it's a King side castle
      */
-    private boolean isKingSideCastle(Cell[][] board, int fromX, int fromY, int toX, int toY) {
-        if (alreadyMoved() || (toX != 6 && toY != getY())) return false;
+    private boolean isKingSideCastle(Cell[][] board, int toX, int toY) {
+        if (alreadyMoved() || (toX != 6 || toY != getY())) return false;
 
         Cell rookCell = board[getY()][7];
         Move rightMove = new Horizontal(Direction.RIGHT);
 
-        return isCastle(board, rookCell, rightMove, fromX, fromY);
+        return isCastle(board, rookCell, rightMove);
     }
 
     /**
      * Check if the wanted move is a Queen side castle
      * @param board Board
-     * @param fromX Source X coordinate
-     * @param fromY Source Y coordinate
      * @param toX Target X coordinate
      * @param toY Target Y coordinate
      * @return True if it's a Queen side castle
      */
-    private boolean isQueenSideCastle(Cell[][] board, int fromX, int fromY, int toX, int toY) {
+    private boolean isQueenSideCastle(Cell[][] board, int toX, int toY) {
         if (alreadyMoved() || (toX != 3 && toY != getY())) return false;
 
         Cell rookCell = board[getY()][0];
         Move leftMove = new Horizontal(Direction.LEFT);
 
-        return isCastle(board, rookCell, leftMove, fromX, fromY);
+        return isCastle(board, rookCell, leftMove);
     }
 
     @Override

@@ -26,6 +26,7 @@ public abstract class Piece implements ChessView.UserChoice {
         this.type = type;
         this.distance = distance;
         this.moves = new Move[moves.length];
+
         for(int i = 0; i < this.moves.length; ++i){
             this.moves[i] = moves[i];
         }
@@ -40,6 +41,9 @@ public abstract class Piece implements ChessView.UserChoice {
      * @return True if the move is valid, otherwise false
      */
     public MoveType isValidMove(Cell[][] board, int toX, int toY, int turn) {
+        if (getCell() == null)
+            return MoveType.IMPOSSIBLE;
+
         // Check normal move
         for (Move move : getMoves()) {
             if (move.isPathClear(board, getX(), getY(), toX, toY, getDistance(), getColor()) && move.isDestinationTakable(board, toX, toY, getColor())) {
