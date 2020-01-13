@@ -10,6 +10,7 @@ public class Vertical implements Move {
     /**
      * Constructor
      * @param direction The Direction for which we want to move
+     * @throws RuntimeException if direction is something else than UP or DOWN
      */
     public Vertical(Direction direction) {
         if (direction != Direction.UP && direction != Direction.DOWN) {

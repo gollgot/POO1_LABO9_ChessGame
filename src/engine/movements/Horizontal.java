@@ -10,6 +10,7 @@ public class Horizontal implements Move {
     /**
      * Constructor
      * @param direction The Direction for which we want to move
+     * @throws RuntimeException if direction is something else than LEFT or RIGHT
      */
     public Horizontal(Direction direction) {
         if (direction != Direction.LEFT && direction != Direction.RIGHT) {

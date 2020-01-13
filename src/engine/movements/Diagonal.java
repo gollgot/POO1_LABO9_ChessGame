@@ -10,6 +10,7 @@ public class Diagonal implements Move {
     /**
      * Constructor
      * @param direction The Direction for which we want to move
+     * @throws RuntimeException if direction is something else than DIAG_TOP_LEFT / RIGHT or DIAG_BOT_LEFT / RIGHT
      */
     public Diagonal(Direction direction) {
         if (direction != Direction.DIAG_TOP_LEFT && direction != Direction.DIAG_TOP_RIGHT &&
