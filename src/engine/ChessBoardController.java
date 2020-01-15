@@ -15,6 +15,7 @@ public class ChessBoardController implements ChessController {
     private int turn;
     private Piece whiteKing;
     private Piece blackKing;
+    private boolean kingIsCheck;
 
     /**
      * Constructor, create the board  (array of 8 * 8 Cell)
@@ -39,6 +40,11 @@ public class ChessBoardController implements ChessController {
     public boolean move(int fromX, int fromY, int toX, int toY) {
         Cell fromCell = board[fromY][fromX];
         Cell toCell = board[toY][toX];
+
+        // If king is check, even if we clic random move we still display the Check msg
+        if(kingIsCheck){
+            view.displayMessage("Check");
+        }
 
         if (fromCell.empty())
             return false;
@@ -211,10 +217,14 @@ public class ChessBoardController implements ChessController {
                 if (currentCell.empty() || currentCell.getPiece().getColor() == king.getColor())
                     continue;
 
-                if (currentCell.getPiece().isValidMove(board, king.getX(), king.getY(), turn + 1) != MoveType.IMPOSSIBLE)
+                if (currentCell.getPiece().isValidMove(board, king.getX(), king.getY(), turn + 1) != MoveType.IMPOSSIBLE){
+                    kingIsCheck = true;
                     return true;
+                }
             }
         }
+
+        kingIsCheck = false;
 
         // no opponents were able to reach the king. He is safe!
         return false;
@@ -233,6 +243,7 @@ public class ChessBoardController implements ChessController {
     public void newGame() {
         // set turn number to 1
         turn = 1;
+        kingIsCheck = false;
 
         // Remove all piece on the board
         for (int row = 0; row < dimension; ++row) {
