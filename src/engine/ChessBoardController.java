@@ -41,10 +41,9 @@ public class ChessBoardController implements ChessController {
         Cell fromCell = board[fromY][fromX];
         Cell toCell = board[toY][toX];
 
-        // If king is check, even if we clic random move we still display the Check msg
-        if(kingIsCheck){
+        // If king is check, even if we click random move we still display the Check message
+        if(kingIsCheck)
             view.displayMessage("Check");
-        }
 
         if (fromCell.empty())
             return false;
@@ -152,12 +151,15 @@ public class ChessBoardController implements ChessController {
         Cell oldRookCell = castleType == MoveType.KING_SIDE_CASTLE ? board[k.getY()][k.getX() + 1] : board[k.getY()][k.getX() - 2];
         Cell newRookCell = castleType == MoveType.KING_SIDE_CASTLE ? board[k.getY()][k.getX() - 1] : board[k.getY()][k.getX() + 1];
 
-        // Add new rook on the board
-        newRookCell.addPiece(oldRookCell.getPiece());
-        view.putPiece(oldRookCell.getPiece().getType(), oldRookCell.getPiece().getColor(), newRookCell.getX(), newRookCell.getY());
+        Piece r = oldRookCell.getPiece();
+
         // Remove old rook from the board
         oldRookCell.removePiece();
         view.removePiece(oldRookCell.getX(), oldRookCell.getY());
+
+        // Add new rook on the board
+        newRookCell.addPiece(r);
+        view.putPiece(r.getType(), r.getColor(), newRookCell.getX(), newRookCell.getY());
 
         // check if the castle put the opponents king in check
         if (isKingCheck(k.getColor()))
