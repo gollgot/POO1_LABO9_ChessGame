@@ -10,6 +10,8 @@ import engine.movements.Vertical;
 
 public class Pawn extends Restricted {
 
+    MoveType lastMove;
+
     /**
      * Constructor
      * @param color The Piece color
@@ -36,18 +38,20 @@ public class Pawn extends Restricted {
     public MoveType isValidMove(Cell[][] board, int toX, int toY, int turn) {
         MoveType movement = MoveType.IMPOSSIBLE;
         int distance = alreadyMoved() ? getDistance() : 2; // First time, can move a distance 2
+        int actualDistance = Math.abs(getY() - toY);
 
         // Check normal move
         for (Move move : getMoves()) {
             if (move.isPathClear(board, getX(), getY(), toX, toY, distance, getColor()) &&
                     board[toY][toX].empty()) {
-                movement = MoveType.NORMAL;
+                movement = actualDistance == 2 ? MoveType.DOUBLE : MoveType.NORMAL;
                 break;
             }
         }
 
-        // if the move isn't a normal, it's could ba special :o
-        movement = movement != MoveType.NORMAL ? specialMove(board, toX, toY, turn) : movement;
+        // if the move isn't a normal, it's could be a special :o
+        movement = movement != MoveType.NORMAL && movement != MoveType.DOUBLE ?
+                specialMove(board, toX, toY, turn) : movement;
 
 
         if (movement != MoveType.IMPOSSIBLE) {
@@ -63,6 +67,8 @@ public class Pawn extends Restricted {
             // if it's the pawns first movement, update movement flag
             if (!alreadyMoved()) setMoved(true);
         }
+
+        this.lastMove = movement != MoveType.IMPOSSIBLE ? movement : this.lastMove;
 
         return movement;
     }
@@ -116,12 +122,12 @@ public class Pawn extends Restricted {
         if (!board[toY][toX].empty() || board[eateeYPos][toX].empty())
             return false;
 
-        Piece eatee = board[eateeYPos][toX].getPiece();
-        if (eatee.getType() == PieceType.PAWN && eatee.getColor() != getColor() && (turn - eatee.getLastPlayedTurn()) == 1) {
-            return true;
-        }
+        if (board[eateeYPos][toX].getPiece().getType() != PieceType.PAWN ||
+            board[eateeYPos][toX].getPiece().getColor() == getColor())
+            return false;
 
-        return false;
+        Pawn eatee = (Pawn) board[eateeYPos][toX].getPiece();
+        return (turn - eatee.getLastPlayedTurn()) == 1 && eatee.lastMove == MoveType.DOUBLE;
     }
 
     /**

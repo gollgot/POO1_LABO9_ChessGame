@@ -6,5 +6,6 @@ public enum MoveType {
     KING_SIDE_CASTLE,
     QUEEN_SIDE_CASTLE,
     PROMOTION,
+    DOUBLE,
     IMPOSSIBLE
 }
