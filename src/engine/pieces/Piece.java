@@ -16,9 +16,10 @@ public abstract class Piece implements ChessView.UserChoice {
 
     /**
      * Piece constructor
-     * @param type The Piece type
-     * @param color The Piece color
-     * @param moves All moves that the Piece can do
+     *
+     * @param type     The Piece type
+     * @param color    The Piece color
+     * @param moves    All moves that the Piece can do
      * @param distance The maximum distance that the Piece can move
      */
     public Piece(PieceType type, PlayerColor color, Move[] moves, int distance) {
@@ -27,17 +28,18 @@ public abstract class Piece implements ChessView.UserChoice {
         this.distance = distance;
         this.moves = new Move[moves.length];
 
-        for(int i = 0; i < this.moves.length; ++i){
+        for (int i = 0; i < this.moves.length; ++i) {
             this.moves[i] = moves[i];
         }
     }
 
     /**
      * Check if the move is valid
+     *
      * @param board Board
-     * @param toX Target X coordinate
-     * @param toY Target Y coordinate
-     * @param turn Turn n°
+     * @param toX   Target X coordinate
+     * @param toY   Target Y coordinate
+     * @param turn  Turn n°
      * @return True if the move is valid, otherwise false
      */
     public MoveType isValidMove(Cell[][] board, int toX, int toY, int turn) {
@@ -46,7 +48,8 @@ public abstract class Piece implements ChessView.UserChoice {
 
         // Check normal move
         for (Move move : getMoves()) {
-            if (move.isPathClear(board, getX(), getY(), toX, toY, getDistance(), getColor()) && move.isDestinationTakable(board, toX, toY, getColor())) {
+            if (move.isPathClear(board, getX(), getY(), toX, toY, getDistance(), getColor()) &&
+                    move.isDestinationTakable(board, toX, toY, getColor())) {
                 lastPlayedTurn = turn;
                 return MoveType.NORMAL;
             }
@@ -63,7 +66,7 @@ public abstract class Piece implements ChessView.UserChoice {
         return type;
     }
 
-    public int getDistance(){
+    public int getDistance() {
         return distance;
     }
 
@@ -83,6 +86,10 @@ public abstract class Piece implements ChessView.UserChoice {
         return lastPlayedTurn;
     }
 
+    public void setLastPlayedTurn(int turn) {
+        this.lastPlayedTurn = turn;
+    }
+
     public Cell getCell() {
         return cell;
     }
@@ -90,10 +97,6 @@ public abstract class Piece implements ChessView.UserChoice {
     // Setters
     public void setCell(Cell cell) {
         this.cell = cell;
-    }
-
-    public void setLastPlayedTurn(int turn) {
-        this.lastPlayedTurn = turn;
     }
 
     @Override

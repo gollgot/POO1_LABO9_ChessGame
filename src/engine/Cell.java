@@ -9,6 +9,7 @@ public class Cell {
 
     /**
      * Constructor
+     *
      * @param x The X coordinate
      * @param y The Y coordinate
      */
@@ -19,6 +20,7 @@ public class Cell {
 
     /**
      * Check if the Cell is occupied
+     *
      * @return True if there is a piece on the Cell, false otherwise
      */
     public boolean empty() {
@@ -35,6 +37,7 @@ public class Cell {
 
     /**
      * Add a piece on the Cell
+     *
      * @param p The Piece that will be add on the Cell
      */
     public void addPiece(Piece p) {

@@ -9,6 +9,7 @@ public class Diagonal implements Move {
 
     /**
      * Constructor
+     *
      * @param direction The Direction for which we want to move
      * @throws RuntimeException if direction is something else than DIAG_TOP_LEFT / RIGHT or DIAG_BOT_LEFT / RIGHT
      */
@@ -16,7 +17,7 @@ public class Diagonal implements Move {
         if (direction != Direction.DIAG_TOP_LEFT && direction != Direction.DIAG_TOP_RIGHT &&
                 direction != Direction.DIAG_BOT_LEFT && direction != Direction.DIAG_BOT_RIGHT)
             throw new RuntimeException(
-                "Diagonal move can have only DIAG_TOP_LEFT, DIAG_TOP_RIGHT, DIAG_BOT_LEFT, DIAG_BOT_RIGHT direction"
+                    "Diagonal move can have only DIAG_TOP_LEFT, DIAG_TOP_RIGHT, DIAG_BOT_LEFT, DIAG_BOT_RIGHT direction"
             );
 
         this.direction = direction;
@@ -30,11 +31,14 @@ public class Diagonal implements Move {
     }
 
     @Override
-    public boolean isPathClear(Cell[][] board, int fromX, int fromY, int toX, int toY, int distance, PlayerColor playerColor) {
-        int horizontalGap = direction == Direction.DIAG_TOP_LEFT || direction == Direction.DIAG_BOT_LEFT ? fromX - toX : toX - fromX;
+    public boolean isPathClear(Cell[][] board, int fromX, int fromY, int toX, int toY, int distance,
+                               PlayerColor playerColor) {
+        int horizontalGap = direction == Direction.DIAG_TOP_LEFT || direction == Direction.DIAG_BOT_LEFT ? fromX - toX :
+                toX - fromX;
         int verticalMultiplier = direction == Direction.DIAG_TOP_LEFT || direction == Direction.DIAG_TOP_RIGHT ? 1 : -1;
         int colorMultiplier = playerColor == PlayerColor.WHITE ? 1 : -1;
-        int verticalGap = playerColor == PlayerColor.WHITE ? (toY - fromY) * verticalMultiplier : (fromY - toY) * verticalMultiplier;
+        int verticalGap = playerColor == PlayerColor.WHITE ? (toY - fromY) * verticalMultiplier :
+                (fromY - toY) * verticalMultiplier;
         int gap = -1;
 
         if (horizontalGap == verticalGap) {
@@ -48,8 +52,10 @@ public class Diagonal implements Move {
         // Check if no piece is on the diagonal way (dont check the last)
         else {
             for (int i = 1; i < gap; ++i) {
-                int row = direction == Direction.DIAG_TOP_LEFT || direction == Direction.DIAG_TOP_RIGHT ? fromY + (i * colorMultiplier) : fromY - (i * colorMultiplier);
-                int col = direction == Direction.DIAG_TOP_LEFT || direction == Direction.DIAG_BOT_LEFT ? fromX - i : fromX + i;
+                int row = direction == Direction.DIAG_TOP_LEFT || direction == Direction.DIAG_TOP_RIGHT ?
+                        fromY + (i * colorMultiplier) : fromY - (i * colorMultiplier);
+                int col = direction == Direction.DIAG_TOP_LEFT || direction == Direction.DIAG_BOT_LEFT ? fromX - i :
+                        fromX + i;
                 // If the cell is not empty -> error there is a piece on the way
                 if (!board[row][col].empty()) {
                     return false;

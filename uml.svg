@@ -1,15 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="229mm" y="90mm" width="1582mm" height="1046mm" viewBox="229 90 1582 1046">
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="229mm" y="90mm" width="1582mm" height="1001mm" viewBox="229 90 1582 1001">
 <style type="text/css"><![CDATA[
 text { font:12px Dialog; }
 ]]></style>
-<line x1="480" y1="460" x2="680" y2="460" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<line x1="830" y1="420" x2="1110" y2="250" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
 <line x1="370" y1="335" x2="370" y2="410" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
 <polyline points="362,390 370,410 378,390" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<line x1="830" y1="420" x2="1110" y2="250" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<line x1="1670" y1="400" x2="1670" y2="370" style="fill:none;stroke:rgb(64,64,64);stroke-dasharray:7;stroke-dashoffset:0" />
-<line x1="1670" y1="370" x2="1450" y2="370" style="fill:none;stroke:rgb(64,64,64);stroke-dasharray:7;stroke-dashoffset:0" />
+<line x1="480" y1="460" x2="680" y2="460" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<line x1="1030" y1="720" x2="1030" y2="650" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<line x1="1030" y1="650" x2="890" y2="650" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<line x1="890" y1="650" x2="890" y2="565" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<polygon points="890,565 898,585 882,585" style="fill:rgb(255,255,255);stroke:none" />
+<polygon points="890,565 898,585 882,585" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<line x1="670" y1="720" x2="670" y2="650" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<line x1="670" y1="650" x2="890" y2="650" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<line x1="890" y1="650" x2="890" y2="565" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<polygon points="890,565 898,585 882,585" style="fill:rgb(255,255,255);stroke:none" />
+<polygon points="890,565 898,585 882,585" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<line x1="450" y1="620" x2="450" y2="600" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<line x1="450" y1="600" x2="890" y2="600" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<line x1="890" y1="600" x2="890" y2="565" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<polygon points="890,565 898,585 882,585" style="fill:rgb(255,255,255);stroke:none" />
+<polygon points="890,565 898,585 882,585" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<line x1="850" y1="720" x2="850" y2="650" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<line x1="850" y1="650" x2="890" y2="650" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<line x1="890" y1="650" x2="890" y2="565" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<polygon points="890,565 898,585 882,585" style="fill:rgb(255,255,255);stroke:none" />
+<polygon points="890,565 898,585 882,585" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<line x1="1450" y1="940" x2="1450" y2="880" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<line x1="1450" y1="880" x2="1030" y2="880" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<line x1="1030" y1="880" x2="1030" y2="790" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<polygon points="1030,790 1038,810 1022,810" style="fill:rgb(255,255,255);stroke:none" />
+<polygon points="1030,790 1038,810 1022,810" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<line x1="740" y1="940" x2="740" y2="880" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<line x1="740" y1="880" x2="1030" y2="880" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<line x1="1030" y1="880" x2="1030" y2="790" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<polygon points="1030,790 1038,810 1022,810" style="fill:rgb(255,255,255);stroke:none" />
+<polygon points="1030,790 1038,810 1022,810" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<line x1="1030" y1="940" x2="1030" y2="790" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<polygon points="1030,790 1038,810 1022,810" style="fill:rgb(255,255,255);stroke:none" />
+<polygon points="1030,790 1038,810 1022,810" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<line x1="1290" y1="400" x2="1290" y2="370" style="fill:none;stroke:rgb(64,64,64);stroke-dasharray:7;stroke-dashoffset:0" />
+<line x1="1290" y1="370" x2="1450" y2="370" style="fill:none;stroke:rgb(64,64,64);stroke-dasharray:7;stroke-dashoffset:0" />
 <line x1="1450" y1="370" x2="1450" y2="309" style="fill:none;stroke:rgb(64,64,64);stroke-dasharray:7;stroke-dashoffset:0" />
 <polygon points="1450,309 1458,329 1442,329" style="fill:rgb(255,255,255);stroke:none" />
 <polygon points="1450,309 1458,329 1442,329" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
@@ -18,144 +51,26 @@ text { font:12px Dialog; }
 <line x1="1450" y1="370" x2="1450" y2="309" style="fill:none;stroke:rgb(64,64,64);stroke-dasharray:7;stroke-dashoffset:0" />
 <polygon points="1450,309 1458,329 1442,329" style="fill:rgb(255,255,255);stroke:none" />
 <polygon points="1450,309 1458,329 1442,329" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<line x1="1290" y1="400" x2="1290" y2="370" style="fill:none;stroke:rgb(64,64,64);stroke-dasharray:7;stroke-dashoffset:0" />
-<line x1="1290" y1="370" x2="1450" y2="370" style="fill:none;stroke:rgb(64,64,64);stroke-dasharray:7;stroke-dashoffset:0" />
+<line x1="1670" y1="400" x2="1670" y2="370" style="fill:none;stroke:rgb(64,64,64);stroke-dasharray:7;stroke-dashoffset:0" />
+<line x1="1670" y1="370" x2="1450" y2="370" style="fill:none;stroke:rgb(64,64,64);stroke-dasharray:7;stroke-dashoffset:0" />
 <line x1="1450" y1="370" x2="1450" y2="309" style="fill:none;stroke:rgb(64,64,64);stroke-dasharray:7;stroke-dashoffset:0" />
 <polygon points="1450,309 1458,329 1442,329" style="fill:rgb(255,255,255);stroke:none" />
 <polygon points="1450,309 1458,329 1442,329" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<line x1="450" y1="620" x2="450" y2="600" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<line x1="450" y1="600" x2="860" y2="600" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<line x1="860" y1="600" x2="860" y2="565" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<polygon points="860,565 868,585 852,585" style="fill:rgb(255,255,255);stroke:none" />
-<polygon points="860,565 868,585 852,585" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<line x1="670" y1="750" x2="670" y2="670" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<line x1="670" y1="670" x2="860" y2="670" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<line x1="860" y1="670" x2="860" y2="565" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<polygon points="860,565 868,585 852,585" style="fill:rgb(255,255,255);stroke:none" />
-<polygon points="860,565 868,585 852,585" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<line x1="840" y1="750" x2="840" y2="670" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<line x1="840" y1="670" x2="860" y2="670" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<line x1="860" y1="670" x2="860" y2="565" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<polygon points="860,565 868,585 852,585" style="fill:rgb(255,255,255);stroke:none" />
-<polygon points="860,565 868,585 852,585" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<line x1="1030" y1="750" x2="1030" y2="670" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<line x1="1030" y1="670" x2="860" y2="670" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<line x1="860" y1="670" x2="860" y2="565" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<polygon points="860,565 868,585 852,585" style="fill:rgb(255,255,255);stroke:none" />
-<polygon points="860,565 868,585 852,585" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<line x1="1030" y1="970" x2="1030" y2="820" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<polygon points="1030,820 1038,840 1022,840" style="fill:rgb(255,255,255);stroke:none" />
-<polygon points="1030,820 1038,840 1022,840" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<line x1="1140" y1="890" x2="1140" y2="860" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<line x1="1140" y1="860" x2="1030" y2="860" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<line x1="1030" y1="860" x2="1030" y2="820" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<polygon points="1030,820 1038,840 1022,840" style="fill:rgb(255,255,255);stroke:none" />
-<polygon points="1030,820 1038,840 1022,840" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<line x1="740" y1="970" x2="740" y2="860" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<line x1="740" y1="860" x2="1030" y2="860" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<line x1="1030" y1="860" x2="1030" y2="820" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<polygon points="1030,820 1038,840 1022,840" style="fill:rgb(255,255,255);stroke:none" />
-<polygon points="1030,820 1038,840 1022,840" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
-<rect x="1480" y="510" width="150" height="171" style="fill:rgb(255,247,225);stroke:none" />
-<rect x="1480" y="510" width="150" height="171" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<text x="1526" y="529" style="font:11px Ubuntu">&lt;&lt; enum &gt;&gt;</text>
-<text x="1530" y="546" style="font:12px Ubuntu">Direction</text>
-<line x1="1480" y1="559" x2="1630" y2="559" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<text x="1488" y="574" style="font:12px Ubuntu">UP</text>
-<text x="1488" y="588" style="font:12px Ubuntu">DOWN</text>
-<text x="1488" y="602" style="font:12px Ubuntu">LEFT</text>
-<text x="1488" y="616" style="font:12px Ubuntu">RIGHT</text>
-<text x="1488" y="630" style="font:12px Ubuntu">DIAG_TOP_LEFT</text>
-<text x="1488" y="644" style="font:12px Ubuntu">DIAG_TOP_RIGHT</text>
-<text x="1488" y="658" style="font:12px Ubuntu">DIAG_BOT_LEFT</text>
-<text x="1488" y="672" style="font:12px Ubuntu">DIAG_BOT_RIGHT</text>
-<rect x="1280" y="510" width="150" height="143" style="fill:rgb(255,247,225);stroke:none" />
-<rect x="1280" y="510" width="150" height="143" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<text x="1326" y="529" style="font:11px Ubuntu">&lt;&lt; enum &gt;&gt;</text>
-<text x="1326" y="546" style="font:12px Ubuntu">MoveType</text>
-<line x1="1280" y1="559" x2="1430" y2="559" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<text x="1288" y="574" style="font:12px Ubuntu">NORMAL</text>
-<text x="1288" y="588" style="font:12px Ubuntu">EN_PASSANT</text>
-<text x="1288" y="602" style="font:12px Ubuntu">KING_SIDE_CASTLE</text>
-<text x="1288" y="616" style="font:12px Ubuntu">QUEEN_SIDE_CASTLE</text>
-<text x="1288" y="630" style="font:12px Ubuntu">PROMOTION</text>
-<text x="1288" y="644" style="font:12px Ubuntu">IMPOSSIBLE</text>
-<rect x="1590" y="400" width="150" height="55" style="fill:rgb(255,247,225);stroke:none" />
-<rect x="1590" y="400" width="150" height="55" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<text x="1641" y="422" style="font:12px Ubuntu">Diagonal</text>
-<line x1="1590" y1="435" x2="1740" y2="435" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<line x1="1590" y1="445" x2="1740" y2="445" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<rect x="1400" y="400" width="150" height="55" style="fill:rgb(255,247,225);stroke:none" />
-<rect x="1400" y="400" width="150" height="55" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<text x="1454" y="422" style="font:12px Ubuntu">Vertical</text>
-<line x1="1400" y1="435" x2="1550" y2="435" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<line x1="1400" y1="445" x2="1550" y2="445" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<rect x="1210" y="400" width="150" height="55" style="fill:rgb(255,247,225);stroke:none" />
-<rect x="1210" y="400" width="150" height="55" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<text x="1256" y="422" style="font:12px Ubuntu">Horizontal</text>
-<line x1="1210" y1="435" x2="1360" y2="435" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<line x1="1210" y1="445" x2="1360" y2="445" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<rect x="1110" y="210" width="680" height="97" style="fill:rgb(255,247,225);stroke:none" />
-<rect x="1110" y="210" width="680" height="97" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<text x="1412" y="229" style="font:11px Ubuntu">&lt;&lt; interface &gt;&gt;</text>
-<text x="1435" y="246" style="font:12px Ubuntu">Move</text>
-<line x1="1110" y1="259" x2="1790" y2="259" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<line x1="1110" y1="269" x2="1790" y2="269" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<text x="1118" y="284" style="font:12px Ubuntu">~ isPathClear (board : Cell[][], fromX : int, fromY : int, toX : int, toY : int, distance : int, playerColor : PlayerColor) : bool...</text>
-<text x="1118" y="298" style="font:12px Ubuntu">~ isDestinationTakable (board : Cell[][], toX : int, toY : int, playerColor : PlayerColor) : boolean</text>
-<rect x="1070" y="890" width="150" height="55" style="fill:rgb(255,247,225);stroke:none" />
-<rect x="1070" y="890" width="150" height="55" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<text x="1131" y="912" style="font:12px Ubuntu">Rook</text>
-<line x1="1070" y1="925" x2="1220" y2="925" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<line x1="1070" y1="935" x2="1220" y2="935" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<rect x="590" y="750" width="150" height="55" style="fill:rgb(255,247,225);stroke:none" />
-<rect x="590" y="750" width="150" height="55" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<text x="646" y="772" style="font:12px Ubuntu">Queen</text>
-<line x1="590" y1="785" x2="740" y2="785" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<line x1="590" y1="795" x2="740" y2="795" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<rect x="950" y="970" width="410" height="139" style="fill:rgb(255,247,225);stroke:none" />
-<rect x="950" y="970" width="410" height="139" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<text x="1140" y="992" style="font:12px Ubuntu">Pawn</text>
-<line x1="950" y1="1005" x2="1360" y2="1005" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<line x1="950" y1="1015" x2="1360" y2="1015" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<text x="958" y="1030" style="font:12px Ubuntu">+ isValidMove (board : Cell[][], toX : int, toY : int, turn : int) : MoveType</text>
-<text x="958" y="1044" style="font:12px Ubuntu">- specialMove (board : Cell[][], toX : int, toY : int, turn : int) : MoveType</text>
-<text x="958" y="1058" style="font:12px Ubuntu">- promotable (targetCell : Cell) : boolean</text>
-<text x="958" y="1072" style="font:12px Ubuntu">- eating (targetCell : Cell) : boolean</text>
-<text x="958" y="1086" style="font:12px Ubuntu">- enPassant (board : Cell[][], toX : int, toY : int, turn : int) : boolean</text>
-<text x="958" y="1100" style="font:12px Ubuntu">- promotable (targetCell : Cell) : boolean</text>
-<rect x="250" y="620" width="400" height="69" style="fill:rgb(255,247,225);stroke:none" />
-<rect x="250" y="620" width="400" height="69" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<text x="432" y="642" style="font:12px Ubuntu">Knight</text>
-<line x1="250" y1="655" x2="650" y2="655" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<line x1="250" y1="665" x2="650" y2="665" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<text x="258" y="680" style="font:12px Ubuntu">+ isValidMove (board : Cell[][], toX : int, toY : int, turn : int) : MoveTy...</text>
-<rect x="760" y="750" width="150" height="55" style="fill:rgb(255,247,225);stroke:none" />
-<rect x="760" y="750" width="150" height="55" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<text x="816" y="772" style="font:12px Ubuntu">Bishop</text>
-<line x1="760" y1="785" x2="910" y2="785" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<line x1="760" y1="795" x2="910" y2="795" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<rect x="680" y="420" width="360" height="139" style="fill:rgb(255,247,225);stroke:none" />
-<rect x="680" y="420" width="360" height="139" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<text x="845" y="442" style="font:12px Ubuntu">Piece</text>
-<line x1="680" y1="455" x2="1040" y2="455" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<text x="688" y="470" style="font:12px Ubuntu">- cell : Cell</text>
-<text x="688" y="484" style="font:12px Ubuntu">- color : PlayerColor</text>
-<text x="688" y="498" style="font:12px Ubuntu">- type : PieceType</text>
-<text x="688" y="512" style="font:12px Ubuntu">- distance : int</text>
-<text x="688" y="526" style="font:12px Ubuntu">- moves : Move[]</text>
-<line x1="680" y1="535" x2="1040" y2="535" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<text x="688" y="550" style="font:12px Ubuntu">+ isValidMove (board : Cell[][], toX : int, toY : int, turn : int) : ...</text>
-<rect x="300" y="410" width="180" height="125" style="fill:rgb(255,247,225);stroke:none" />
-<rect x="300" y="410" width="180" height="125" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<text x="379" y="432" style="font:12px Ubuntu">Cell</text>
-<line x1="300" y1="445" x2="480" y2="445" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<text x="308" y="460" style="font:12px Ubuntu">- x : int</text>
-<text x="308" y="474" style="font:12px Ubuntu">- y : int</text>
-<line x1="300" y1="483" x2="480" y2="483" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<text x="308" y="498" style="font:12px Ubuntu">+ empty () : boolean</text>
-<text x="308" y="512" style="font:12px Ubuntu">+ addPiece (p : Piece) : void</text>
-<text x="308" y="526" style="font:12px Ubuntu">+ removePiece () : void</text>
+<rect x="540" y="940" width="400" height="111" style="fill:rgb(255,247,225);stroke:none" />
+<rect x="540" y="940" width="400" height="111" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<text x="728" y="962" style="font:12px Ubuntu">King</text>
+<line x1="540" y1="975" x2="940" y2="975" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<line x1="540" y1="985" x2="940" y2="985" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<text x="548" y="1000" style="font:12px Ubuntu">+ isValidMove (board : Cell[][], toX : int, toY : int, turn : int) : MoveTy...</text>
+<text x="548" y="1014" style="font:12px Ubuntu">- isCastle (board : Cell[][], rookCell : Cell, move : Move) : boolean</text>
+<text x="548" y="1028" style="font:12px Ubuntu">- isKingSideCastle (board : Cell[][], toX : int, toY : int) : booan</text>
+<text x="548" y="1042" style="font:12px Ubuntu">- isQueenSideCastle (board : Cell[][], toX : int, toY : int) : void</text>
+<rect x="950" y="720" width="150" height="69" style="fill:rgb(255,247,225);stroke:none" />
+<rect x="950" y="720" width="150" height="69" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<text x="997" y="742" style="font:12px Ubuntu">Restricted</text>
+<line x1="950" y1="755" x2="1100" y2="755" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<text x="958" y="770" style="font:12px Ubuntu">- moved : boolean</text>
+<line x1="950" y1="779" x2="1100" y2="779" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
 <rect x="300" y="130" width="410" height="195" style="fill:rgb(255,247,225);stroke:none" />
 <rect x="300" y="130" width="410" height="195" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
 <text x="445" y="152" style="font:12px Ubuntu">ChessBoardController</text>
@@ -171,32 +86,116 @@ text { font:12px Dialog; }
 <text x="308" y="288" style="font:12px Ubuntu">- doPromotion (p : Piece) : void</text>
 <text x="308" y="302" style="font:12px Ubuntu">- isKingCheck (opponentColor : PlayerColor) : boolean</text>
 <text x="308" y="316" style="font:12px Ubuntu">- getOpponentColor (color : PlayerColor) : PlayerColor</text>
-<rect x="950" y="750" width="150" height="69" style="fill:rgb(255,247,225);stroke:none" />
-<rect x="950" y="750" width="150" height="69" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<text x="997" y="772" style="font:12px Ubuntu">Restricted</text>
-<line x1="950" y1="785" x2="1100" y2="785" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<text x="958" y="800" style="font:12px Ubuntu">- moved : boolean</text>
-<line x1="950" y1="809" x2="1100" y2="809" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<rect x="540" y="970" width="400" height="111" style="fill:rgb(255,247,225);stroke:none" />
-<rect x="540" y="970" width="400" height="111" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<text x="728" y="992" style="font:12px Ubuntu">King</text>
-<line x1="540" y1="1005" x2="940" y2="1005" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<line x1="540" y1="1015" x2="940" y2="1015" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
-<text x="548" y="1030" style="font:12px Ubuntu">+ isValidMove (board : Cell[][], toX : int, toY : int, turn : int) : MoveTy...</text>
-<text x="548" y="1044" style="font:12px Ubuntu">- isCastle (board : Cell[][], rookCell : Cell, move : Move) : boolean</text>
-<text x="548" y="1058" style="font:12px Ubuntu">- isKingSideCastle (board : Cell[][], toX : int, toY : int) : booan</text>
-<text x="548" y="1072" style="font:12px Ubuntu">- isQueenSideCastle (board : Cell[][], toX : int, toY : int) : void</text>
-<text x="549" y="480" style="font:14px Ubuntu">contains &gt;</text>
-<text x="485" y="452" style="font:14px Ubuntu">1</text>
-<text x="652" y="452" style="font:14px Ubuntu">0..1</text>
-<text x="378" y="373" style="font:14px Ubuntu">contains &gt;</text>
-<text x="357" y="353" style="font:14px Ubuntu">1</text>
-<text x="341" y="402" style="font:14px Ubuntu">64</text>
+<rect x="300" y="410" width="180" height="125" style="fill:rgb(255,247,225);stroke:none" />
+<rect x="300" y="410" width="180" height="125" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<text x="379" y="432" style="font:12px Ubuntu">Cell</text>
+<line x1="300" y1="445" x2="480" y2="445" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<text x="308" y="460" style="font:12px Ubuntu">- x : int</text>
+<text x="308" y="474" style="font:12px Ubuntu">- y : int</text>
+<line x1="300" y1="483" x2="480" y2="483" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<text x="308" y="498" style="font:12px Ubuntu">+ empty () : boolean</text>
+<text x="308" y="512" style="font:12px Ubuntu">+ addPiece (p : Piece) : void</text>
+<text x="308" y="526" style="font:12px Ubuntu">+ removePiece () : void</text>
+<rect x="680" y="420" width="410" height="139" style="fill:rgb(255,247,225);stroke:none" />
+<rect x="680" y="420" width="410" height="139" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<text x="870" y="442" style="font:12px Ubuntu">Piece</text>
+<line x1="680" y1="455" x2="1090" y2="455" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<text x="688" y="470" style="font:12px Ubuntu">- cell : Cell</text>
+<text x="688" y="484" style="font:12px Ubuntu">- color : PlayerColor</text>
+<text x="688" y="498" style="font:12px Ubuntu">- type : PieceType</text>
+<text x="688" y="512" style="font:12px Ubuntu">- distance : int</text>
+<text x="688" y="526" style="font:12px Ubuntu">- moves : Move[]</text>
+<line x1="680" y1="535" x2="1090" y2="535" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<text x="688" y="550" style="font:12px Ubuntu">+ isValidMove (board : Cell[][], toX : int, toY : int, turn : int) : MoveType</text>
+<rect x="770" y="720" width="150" height="55" style="fill:rgb(255,247,225);stroke:none" />
+<rect x="770" y="720" width="150" height="55" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<text x="826" y="742" style="font:12px Ubuntu">Bishop</text>
+<line x1="770" y1="755" x2="920" y2="755" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<line x1="770" y1="765" x2="920" y2="765" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<rect x="250" y="620" width="400" height="69" style="fill:rgb(255,247,225);stroke:none" />
+<rect x="250" y="620" width="400" height="69" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<text x="432" y="642" style="font:12px Ubuntu">Knight</text>
+<line x1="250" y1="655" x2="650" y2="655" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<line x1="250" y1="665" x2="650" y2="665" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<text x="258" y="680" style="font:12px Ubuntu">+ isValidMove (board : Cell[][], toX : int, toY : int, turn : int) : MoveTy...</text>
+<rect x="950" y="940" width="410" height="125" style="fill:rgb(255,247,225);stroke:none" />
+<rect x="950" y="940" width="410" height="125" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<text x="1140" y="962" style="font:12px Ubuntu">Pawn</text>
+<line x1="950" y1="975" x2="1360" y2="975" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<line x1="950" y1="985" x2="1360" y2="985" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<text x="958" y="1000" style="font:12px Ubuntu">+ isValidMove (board : Cell[][], toX : int, toY : int, turn : int) : MoveType</text>
+<text x="958" y="1014" style="font:12px Ubuntu">- specialMove (board : Cell[][], toX : int, toY : int, turn : int) : MoveType</text>
+<text x="958" y="1028" style="font:12px Ubuntu">- promotable (targetCell : Cell) : boolean</text>
+<text x="958" y="1042" style="font:12px Ubuntu">- eating (targetCell : Cell) : boolean</text>
+<text x="958" y="1056" style="font:12px Ubuntu">- enPassant (board : Cell[][], toX : int, toY : int, turn : int) : boolean</text>
+<rect x="590" y="720" width="150" height="55" style="fill:rgb(255,247,225);stroke:none" />
+<rect x="590" y="720" width="150" height="55" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<text x="646" y="742" style="font:12px Ubuntu">Queen</text>
+<line x1="590" y1="755" x2="740" y2="755" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<line x1="590" y1="765" x2="740" y2="765" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<rect x="1370" y="940" width="150" height="55" style="fill:rgb(255,247,225);stroke:none" />
+<rect x="1370" y="940" width="150" height="55" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<text x="1431" y="962" style="font:12px Ubuntu">Rook</text>
+<line x1="1370" y1="975" x2="1520" y2="975" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<line x1="1370" y1="985" x2="1520" y2="985" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<rect x="1110" y="210" width="680" height="97" style="fill:rgb(255,247,225);stroke:none" />
+<rect x="1110" y="210" width="680" height="97" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<text x="1412" y="229" style="font:11px Ubuntu">&lt;&lt; interface &gt;&gt;</text>
+<text x="1435" y="246" style="font:12px Ubuntu">Move</text>
+<line x1="1110" y1="259" x2="1790" y2="259" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<line x1="1110" y1="269" x2="1790" y2="269" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<text x="1118" y="284" style="font:12px Ubuntu">~ isPathClear (board : Cell[][], fromX : int, fromY : int, toX : int, toY : int, distance : int, playerColor : PlayerColor) : bool...</text>
+<text x="1118" y="298" style="font:12px Ubuntu">~ isDestinationTakable (board : Cell[][], toX : int, toY : int, playerColor : PlayerColor) : boolean</text>
+<rect x="1210" y="400" width="150" height="55" style="fill:rgb(255,247,225);stroke:none" />
+<rect x="1210" y="400" width="150" height="55" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<text x="1256" y="422" style="font:12px Ubuntu">Horizontal</text>
+<line x1="1210" y1="435" x2="1360" y2="435" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<line x1="1210" y1="445" x2="1360" y2="445" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<rect x="1400" y="400" width="150" height="55" style="fill:rgb(255,247,225);stroke:none" />
+<rect x="1400" y="400" width="150" height="55" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<text x="1454" y="422" style="font:12px Ubuntu">Vertical</text>
+<line x1="1400" y1="435" x2="1550" y2="435" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<line x1="1400" y1="445" x2="1550" y2="445" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<rect x="1590" y="400" width="150" height="55" style="fill:rgb(255,247,225);stroke:none" />
+<rect x="1590" y="400" width="150" height="55" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<text x="1641" y="422" style="font:12px Ubuntu">Diagonal</text>
+<line x1="1590" y1="435" x2="1740" y2="435" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<line x1="1590" y1="445" x2="1740" y2="445" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<rect x="1200" y="550" width="150" height="143" style="fill:rgb(255,247,225);stroke:none" />
+<rect x="1200" y="550" width="150" height="143" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<text x="1246" y="569" style="font:11px Ubuntu">&lt;&lt; enum &gt;&gt;</text>
+<text x="1246" y="586" style="font:12px Ubuntu">MoveType</text>
+<line x1="1200" y1="599" x2="1350" y2="599" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<text x="1208" y="614" style="font:12px Ubuntu">NORMAL</text>
+<text x="1208" y="628" style="font:12px Ubuntu">EN_PASSANT</text>
+<text x="1208" y="642" style="font:12px Ubuntu">KING_SIDE_CASTLE</text>
+<text x="1208" y="656" style="font:12px Ubuntu">QUEEN_SIDE_CASTLE</text>
+<text x="1208" y="670" style="font:12px Ubuntu">PROMOTION</text>
+<text x="1208" y="684" style="font:12px Ubuntu">IMPOSSIBLE</text>
+<rect x="1380" y="550" width="150" height="171" style="fill:rgb(255,247,225);stroke:none" />
+<rect x="1380" y="550" width="150" height="171" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<text x="1426" y="569" style="font:11px Ubuntu">&lt;&lt; enum &gt;&gt;</text>
+<text x="1430" y="586" style="font:12px Ubuntu">Direction</text>
+<line x1="1380" y1="599" x2="1530" y2="599" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
+<text x="1388" y="614" style="font:12px Ubuntu">UP</text>
+<text x="1388" y="628" style="font:12px Ubuntu">DOWN</text>
+<text x="1388" y="642" style="font:12px Ubuntu">LEFT</text>
+<text x="1388" y="656" style="font:12px Ubuntu">RIGHT</text>
+<text x="1388" y="670" style="font:12px Ubuntu">DIAG_TOP_LEFT</text>
+<text x="1388" y="684" style="font:12px Ubuntu">DIAG_TOP_RIGHT</text>
+<text x="1388" y="698" style="font:12px Ubuntu">DIAG_BOT_LEFT</text>
+<text x="1388" y="712" style="font:12px Ubuntu">DIAG_BOT_RIGHT</text>
 <text x="975" y="353" style="font:14px Ubuntu">Defines &gt;</text>
 <text x="818" y="412" style="font:14px Ubuntu">*</text>
 <text x="1098" y="242" style="font:14px Ubuntu">*</text>
+<text x="378" y="373" style="font:14px Ubuntu">contains &gt;</text>
+<text x="357" y="353" style="font:14px Ubuntu">1</text>
+<text x="341" y="402" style="font:14px Ubuntu">64</text>
+<text x="549" y="480" style="font:14px Ubuntu">contains &gt;</text>
+<text x="485" y="452" style="font:14px Ubuntu">1</text>
+<text x="652" y="452" style="font:14px Ubuntu">0..1</text>
 <path d="M230,91 L230,121 L267,121 Q297,121 297,91 L230,91" style="fill:rgb(255,247,225);stroke:none" />
 <path d="M230,91 L230,121 L267,121 Q297,121 297,91 L230,91" style="fill:none;stroke:rgb(65,65,65);stroke-width:1.2;stroke-linecap:square" />
 <text x="235" y="113" style="font:16px Ubuntu">Chess</text>
-<rect x="230" y="91" width="1579" height="1043" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
+<rect x="230" y="91" width="1579" height="998" style="fill:none;stroke:rgb(64,64,64);stroke-linecap:square" />
 </svg>

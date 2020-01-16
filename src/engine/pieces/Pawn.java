@@ -14,6 +14,7 @@ public class Pawn extends Restricted {
 
     /**
      * Constructor
+     *
      * @param color The Piece color
      */
     public Pawn(PlayerColor color) {
@@ -29,10 +30,11 @@ public class Pawn extends Restricted {
 
     /**
      * Check if the move is valid
+     *
      * @param board Board
-     * @param toX Target X coordinate
-     * @param toY Target Y coordinate
-     * @param turn Turn n°
+     * @param toX   Target X coordinate
+     * @param toY   Target Y coordinate
+     * @param turn  Turn n°
      * @return True if the move is valid, otherwise false
      */
     public MoveType isValidMove(Cell[][] board, int toX, int toY, int turn) {
@@ -75,10 +77,11 @@ public class Pawn extends Restricted {
 
     /**
      * Check if the move is a special move and return it
+     *
      * @param board The current game board
-     * @param toX The toX coordinate
-     * @param toY The toY coordinate
-     * @param turn The turn (begin to 1 (white))
+     * @param toX   The toX coordinate
+     * @param toY   The toY coordinate
+     * @param turn  The turn (begin to 1 (white))
      * @return The type of move that is playing (possibly special)
      */
     private MoveType specialMove(Cell[][] board, int toX, int toY, int turn) {
@@ -86,7 +89,7 @@ public class Pawn extends Restricted {
         Diagonal topRight = new Diagonal(Direction.DIAG_TOP_RIGHT);
 
         if (topLeft.isPathClear(board, getX(), getY(), toX, toY, getDistance(), getColor()) ||
-            topRight.isPathClear(board, getX(), getY(), toX, toY, getDistance(), getColor())) {
+                topRight.isPathClear(board, getX(), getY(), toX, toY, getDistance(), getColor())) {
 
             if (eating(board[toY][toX]))
                 return MoveType.NORMAL;
@@ -101,6 +104,7 @@ public class Pawn extends Restricted {
 
     /**
      * Check if the target cell can be eat
+     *
      * @param targetCell The target Cell
      * @return True if the target cell can be eat, false otherwise
      */
@@ -110,10 +114,11 @@ public class Pawn extends Restricted {
 
     /**
      * Check if the move is a "enPassant" move
+     *
      * @param board The current game board
-     * @param toX The toX coordinate
-     * @param toY The toY coordinate
-     * @param turn The turn (begin to 1 (white))
+     * @param toX   The toX coordinate
+     * @param toY   The toY coordinate
+     * @param turn  The turn (begin to 1 (white))
      * @return True if the move is "enPassant", false otherwise
      */
     private boolean enPassant(Cell[][] board, int toX, int toY, int turn) {
@@ -123,7 +128,7 @@ public class Pawn extends Restricted {
             return false;
 
         if (board[eateeYPos][toX].getPiece().getType() != PieceType.PAWN ||
-            board[eateeYPos][toX].getPiece().getColor() == getColor())
+                board[eateeYPos][toX].getPiece().getColor() == getColor())
             return false;
 
         Pawn eatee = (Pawn) board[eateeYPos][toX].getPiece();
@@ -132,6 +137,7 @@ public class Pawn extends Restricted {
 
     /**
      * Check if the move is a "promotable"
+     *
      * @param targetCell The target Cell
      * @return True if the move is "promotable", false otherwise
      */

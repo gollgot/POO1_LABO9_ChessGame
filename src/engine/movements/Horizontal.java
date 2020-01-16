@@ -9,6 +9,7 @@ public class Horizontal implements Move {
 
     /**
      * Constructor
+     *
      * @param direction The Direction for which we want to move
      * @throws RuntimeException if direction is something else than LEFT or RIGHT
      */
@@ -29,7 +30,8 @@ public class Horizontal implements Move {
 
 
     @Override
-    public boolean isPathClear(Cell[][] board, int fromX, int fromY, int toX, int toY, int distance, PlayerColor playerColor) {
+    public boolean isPathClear(Cell[][] board, int fromX, int fromY, int toX, int toY, int distance,
+                               PlayerColor playerColor) {
         // The gap value depends on the direction choose (LEFT our RIGHT)
         int gap = direction == Direction.LEFT ? fromX - toX : toX - fromX;
 

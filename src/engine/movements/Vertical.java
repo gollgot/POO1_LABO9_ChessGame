@@ -9,6 +9,7 @@ public class Vertical implements Move {
 
     /**
      * Constructor
+     *
      * @param direction The Direction for which we want to move
      * @throws RuntimeException if direction is something else than UP or DOWN
      */
@@ -28,7 +29,8 @@ public class Vertical implements Move {
     }
 
     @Override
-    public boolean isPathClear(Cell[][] board, int fromX, int fromY, int toX, int toY, int distance, PlayerColor playerColor) {
+    public boolean isPathClear(Cell[][] board, int fromX, int fromY, int toX, int toY, int distance,
+                               PlayerColor playerColor) {
         // Multiplier to inverse the way because black and white is the opposite
         int colorMultiplier = playerColor == PlayerColor.WHITE ? 1 : -1;
         // The gap value depends on the direction choose (UP our DOWN)

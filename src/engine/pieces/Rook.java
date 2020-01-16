@@ -11,6 +11,7 @@ public class Rook extends Restricted {
 
     /**
      * Constructor
+     *
      * @param color The Piece color
      */
     public Rook(PlayerColor color) {

@@ -42,7 +42,7 @@ public class ChessBoardController implements ChessController {
         Cell toCell = board[toY][toX];
 
         // If king is check, even if we click random move we still display the Check message
-        if(kingIsCheck)
+        if (kingIsCheck)
             view.displayMessage("Check");
 
         if (fromCell.empty())
@@ -52,7 +52,7 @@ public class ChessBoardController implements ChessController {
         Piece p = fromCell.getPiece();
 
         // Odd turn is white player and even is black (turn begin to 1)
-        if(turn % 2 == 1 && p.getColor() != PlayerColor.WHITE || turn % 2 == 0 && p.getColor() != PlayerColor.BLACK)
+        if (turn % 2 == 1 && p.getColor() != PlayerColor.WHITE || turn % 2 == 0 && p.getColor() != PlayerColor.BLACK)
             return false;
 
         MoveType move = p.isValidMove(board, toX, toY, turn);
@@ -101,16 +101,18 @@ public class ChessBoardController implements ChessController {
 
     /**
      * Specific board game update for castling movement type
-     * @param k The king doing the castle move
+     *
+     * @param k          The king doing the castle move
      * @param castleType While castle to do (KING_SIDE_CASTLE or QUEEN_SIDE_CASTLE)
-     * @param toX Target X coordinate
-     * @param toY Target Y coordinates
+     * @param toX        Target X coordinate
+     * @param toY        Target Y coordinates
      * @return True if castle move was correct, otherwise false
      */
     private boolean doCastle(King k, MoveType castleType, int toX, int toY) {
         Cell kingOgCell = board[k.getY()][k.getX()];
         // get the kings next cells
-        Cell kingNextCell = castleType == MoveType.KING_SIDE_CASTLE ? board[k.getY()][k.getX() + 1] : board[k.getY()][k.getX() - 1];
+        Cell kingNextCell = castleType == MoveType.KING_SIDE_CASTLE ?
+                board[k.getY()][k.getX() + 1] : board[k.getY()][k.getX() - 1];
         Cell kingTargetCell = board[toY][toX];
 
         // check if the king is in check in his original cell
@@ -148,8 +150,10 @@ public class ChessBoardController implements ChessController {
         view.putPiece(k.getType(), k.getColor(), kingTargetCell.getX(), kingTargetCell.getY());
         view.removePiece(kingOgCell.getX(), kingOgCell.getY());
 
-        Cell oldRookCell = castleType == MoveType.KING_SIDE_CASTLE ? board[k.getY()][k.getX() + 1] : board[k.getY()][k.getX() - 2];
-        Cell newRookCell = castleType == MoveType.KING_SIDE_CASTLE ? board[k.getY()][k.getX() - 1] : board[k.getY()][k.getX() + 1];
+        Cell oldRookCell =
+                castleType == MoveType.KING_SIDE_CASTLE ? board[k.getY()][k.getX() + 1] : board[k.getY()][k.getX() - 2];
+        Cell newRookCell =
+                castleType == MoveType.KING_SIDE_CASTLE ? board[k.getY()][k.getX() - 1] : board[k.getY()][k.getX() + 1];
 
         Piece r = oldRookCell.getPiece();
 
@@ -171,9 +175,10 @@ public class ChessBoardController implements ChessController {
 
     /**
      * Specific board game update for "en passant" movement type
+     *
      * @param fromY From Y coordinate
-     * @param toX To X coordinate
-     * @param toY To Y coordinate
+     * @param toX   To X coordinate
+     * @param toY   To Y coordinate
      */
     private void doEnPasant(int fromY, int toX, int toY) {
         int eateeYPos = fromY - toY > 0 ? toY + 1 : toY - 1;
@@ -185,6 +190,7 @@ public class ChessBoardController implements ChessController {
 
     /**
      * Specific board game update for the promotion movement type
+     *
      * @param p The Piece object which doing the promotion
      */
     private void doPromotion(Piece p) {
@@ -205,6 +211,7 @@ public class ChessBoardController implements ChessController {
 
     /**
      * Check if a king is in check
+     *
      * @param opponentColor The color of the opponent
      * @return True if the king is in check, otherwise false
      */
@@ -219,7 +226,8 @@ public class ChessBoardController implements ChessController {
                 if (currentCell.empty() || currentCell.getPiece().getColor() == king.getColor())
                     continue;
 
-                if (currentCell.getPiece().isValidMove(board, king.getX(), king.getY(), turn + 1) != MoveType.IMPOSSIBLE){
+                if (currentCell.getPiece().isValidMove(board, king.getX(), king.getY(), turn + 1) !=
+                        MoveType.IMPOSSIBLE) {
                     kingIsCheck = true;
                     return true;
                 }
@@ -234,6 +242,7 @@ public class ChessBoardController implements ChessController {
 
     /**
      * Return the color of the opponent
+     *
      * @param color Player color
      * @return The color of the opponent
      */
@@ -274,34 +283,34 @@ public class ChessBoardController implements ChessController {
 
         // White pieces
         ArrayList<Piece> whitePieces = new ArrayList<>(
-            Arrays.asList(
-                new Rook(PlayerColor.WHITE),
-                new Knight(PlayerColor.WHITE),
-                new Bishop(PlayerColor.WHITE),
-                new Queen(PlayerColor.WHITE),
-                whiteKing,
-                new Bishop(PlayerColor.WHITE),
-                new Knight(PlayerColor.WHITE),
-                new Rook(PlayerColor.WHITE)
-            )
+                Arrays.asList(
+                        new Rook(PlayerColor.WHITE),
+                        new Knight(PlayerColor.WHITE),
+                        new Bishop(PlayerColor.WHITE),
+                        new Queen(PlayerColor.WHITE),
+                        whiteKing,
+                        new Bishop(PlayerColor.WHITE),
+                        new Knight(PlayerColor.WHITE),
+                        new Rook(PlayerColor.WHITE)
+                )
         );
 
         // Black pieces
         ArrayList<Piece> blackPieces = new ArrayList<>(
-            Arrays.asList(
-                new Rook(PlayerColor.BLACK),
-                new Knight(PlayerColor.BLACK),
-                new Bishop(PlayerColor.BLACK),
-                new Queen(PlayerColor.BLACK),
-                blackKing,
-                new Bishop(PlayerColor.BLACK),
-                new Knight(PlayerColor.BLACK),
-                new Rook(PlayerColor.BLACK)
-            )
+                Arrays.asList(
+                        new Rook(PlayerColor.BLACK),
+                        new Knight(PlayerColor.BLACK),
+                        new Bishop(PlayerColor.BLACK),
+                        new Queen(PlayerColor.BLACK),
+                        blackKing,
+                        new Bishop(PlayerColor.BLACK),
+                        new Knight(PlayerColor.BLACK),
+                        new Rook(PlayerColor.BLACK)
+                )
         );
 
         // Add all white pieces on the board and display them
-        for(int i = 0; i < dimension; ++i){
+        for (int i = 0; i < dimension; ++i) {
             Piece p = whitePieces.get(i);
             // Add piece on the board
             board[0][i].addPiece(p);
@@ -310,7 +319,7 @@ public class ChessBoardController implements ChessController {
         }
 
         // Add all black pieces on the board and display them
-        for(int i = 0; i < dimension; ++i){
+        for (int i = 0; i < dimension; ++i) {
             Piece p = blackPieces.get(i);
             // Add piece on the board
             board[7][i].addPiece(p);

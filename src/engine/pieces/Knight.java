@@ -9,6 +9,7 @@ public class Knight extends Piece {
 
     /**
      * Constructor
+     *
      * @param color The Piece color
      */
     public Knight(PlayerColor color) {
@@ -22,10 +23,11 @@ public class Knight extends Piece {
 
     /**
      * Check if the move is valid
+     *
      * @param board Board
-     * @param toX Target X coordinate
-     * @param toY Target Y coordinate
-     * @param turn Turn n°
+     * @param toX   Target X coordinate
+     * @param toY   Target Y coordinate
+     * @param turn  Turn n°
      * @return True if the move is valid, otherwise false
      */
     public MoveType isValidMove(Cell[][] board, int toX, int toY, int turn) {

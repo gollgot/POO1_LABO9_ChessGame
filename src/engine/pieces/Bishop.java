@@ -10,6 +10,7 @@ public class Bishop extends Piece {
 
     /**
      * Constructor
+     *
      * @param color The Piece color
      */
     public Bishop(PlayerColor color) {

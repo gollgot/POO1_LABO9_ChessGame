@@ -8,6 +8,7 @@ public class Queen extends Piece {
 
     /**
      * Constructor
+     *
      * @param color The Piece color
      */
     public Queen(PlayerColor color) {

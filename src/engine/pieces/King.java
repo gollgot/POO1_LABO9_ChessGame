@@ -9,6 +9,7 @@ public class King extends Restricted {
 
     /**
      * Constructor
+     *
      * @param color The Piece color
      */
     public King(PlayerColor color) {
@@ -31,10 +32,11 @@ public class King extends Restricted {
 
     /**
      * Check if the move is valid
+     *
      * @param board Board
-     * @param toX Target X coordinate
-     * @param toY Target Y coordinate
-     * @param turn Turn n°
+     * @param toX   Target X coordinate
+     * @param toY   Target Y coordinate
+     * @param turn  Turn n°
      * @return True if the move is valid, otherwise false
      */
     public MoveType isValidMove(Cell[][] board, int toX, int toY, int turn) {
@@ -61,9 +63,10 @@ public class King extends Restricted {
 
     /**
      * Check if a move is a castle
-     * @param board Board
+     *
+     * @param board    Board
      * @param rookCell The Rook cell
-     * @param move Move to check
+     * @param move     Move to check
      * @return True if the move is a castle, otherwise false
      */
     private boolean isCastle(Cell[][] board, Cell rookCell, Move move) {
@@ -81,9 +84,10 @@ public class King extends Restricted {
 
     /**
      * Check if the wanted move is a King side castle
+     *
      * @param board Board
-     * @param toX Target X coordinate
-     * @param toY Target Y coordinate
+     * @param toX   Target X coordinate
+     * @param toY   Target Y coordinate
      * @return True if it's a King side castle
      */
     private boolean isKingSideCastle(Cell[][] board, int toX, int toY) {
@@ -97,9 +101,10 @@ public class King extends Restricted {
 
     /**
      * Check if the wanted move is a Queen side castle
+     *
      * @param board Board
-     * @param toX Target X coordinate
-     * @param toY Target Y coordinate
+     * @param toX   Target X coordinate
+     * @param toY   Target Y coordinate
      * @return True if it's a Queen side castle
      */
     private boolean isQueenSideCastle(Cell[][] board, int toX, int toY) {
